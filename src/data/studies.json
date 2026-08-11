@@ -194,5 +194,166 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/j.ssmph.2019.100527"
+  },
+  {
+    "id": "hartmann-2025",
+    "intervention_name": "No Means No Worldwide empowerment-based self-defense (COVID-adapted)",
+    "citation": "Hartmann, Mutangabende, Nash, et al. (2025)",
+    "source": "BMC Women's Health 25:119",
+    "country": "South Africa",
+    "region": "Africa",
+    "income_setting": "Upper-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "10-19 years (mean age 13)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Girls only (primary outcome population); boys additionally included in one intervention arm",
+      "sex_tag": "Girls only",
+      "setting": "School",
+      "sample_size": 1540,
+      "sample_size_detail": "15 schools cluster-randomized 1:1:1 (girls-only intervention, girls-and-boys intervention, control); 1540 enrolled, 1250 with primary outcome data; 83% of participants identified as Black"
+    },
+    "intervention": {
+      "description": "COVID-adapted 'No Means No' empowerment-based self-defense (ESD) program teaching verbal and physical self-defense skills alongside consent/bystander education, delivered in schools; compares girls-only delivery vs. girls-and-boys delivery vs. control",
+      "duration": "Not reported in available excerpts (multi-session, school-based program)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Hybrid type 1 effectiveness-implementation cluster-randomized controlled trial across 15 schools",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant reduction in past-year sexual violence (the primary outcome), but girls' self-defense knowledge significantly improved relative to control",
+      "worked_for": ["Girls' self-reported knowledge of self-defense skills"],
+      "did_not_work_for": ["Past-year sexual violence exposure (harassment or rape) - the primary outcome (35% at baseline vs 33% at follow-up, not significantly different from control)", "Most secondary/intermediate attitude outcomes other than self-defense knowledge"]
+    },
+    "key_message": "A COVID-adapted, school-delivered empowerment self-defense program for girls aged 10-19 in South Africa did not significantly reduce girls' exposure to sexual violence over the trial period, even though it did successfully build girls' self-defense knowledge - echoing a pattern seen elsewhere on this platform where individual-level skill or attitude gains did not translate into measured reductions in violence exposure.",
+    "limitations": [
+      "Programme delivery was adapted for COVID-19 disruption, which may have affected dosage/fidelity relative to the original model",
+      "The primary outcome (past-year sexual violence) relies on girls' self-report, with the usual risks of disclosure and recall bias",
+      "Conducted in a single city (Gqeberha), limiting generalizability to other South African or regional contexts"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); entry compiled from the published abstract and secondary summaries, not the full text - verify details against the primary source before citing",
+    "url": "https://doi.org/10.1186/s12905-025-03647-w"
+  },
+  {
+    "id": "ford-gilboe-2020",
+    "intervention_name": "iCAN Plan 4 Safety: tailored online safety and health intervention",
+    "citation": "Ford-Gilboe, Varcoe, Scott-Storey, et al. (2020)",
+    "source": "BMC Public Health 20:260",
+    "country": "Canada",
+    "region": "North America",
+    "income_setting": "High-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult women (exact age range not reported in available excerpts)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Women only (recent intimate partner violence in the past 6 months)",
+      "sex_tag": "Women only",
+      "setting": "Home/family",
+      "sample_size": 462,
+      "sample_size_detail": "462 Canadian women recently exposed to IPV, individually randomized to a tailored (iCAN Plan 4 Safety) or static/non-tailored online safety and health tool; assessed at baseline, 3, 6, and 12 months"
+    },
+    "intervention": {
+      "description": "iCAN Plan 4 Safety - an interactive, tailored web-based safety-planning and health tool personalized to each woman's risks and priorities, compared against a static, non-tailored version of the same online tool (both arms received a digital intervention; there was no no-intervention control)",
+      "duration": "12-month follow-up (self-paced online tool)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Double-blind, individually randomized controlled trial comparing a tailored vs. static (non-tailored) version of a web-based safety and health tool",
+    "outcomes_measured": ["Mental health/wellbeing", "Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Both the tailored and non-tailored digital tools were followed by significant improvement over 12 months on all measured outcomes, but the tailored version was not significantly better than the non-tailored version - this trial compares two active intervention variants, not intervention vs. no intervention",
+      "worked_for": ["Depressive symptoms decreased significantly over 12 months in both arms (p<.001)", "PTSD symptoms decreased significantly over 12 months in both arms (p<.001)", "All measured secondary outcomes (safety actions, safety-planning self-efficacy, mastery, social support, coercive control, decisional conflict) improved significantly over time in both arms"],
+      "did_not_work_for": ["Tailoring the tool to each woman's specific situation did not produce significantly better outcomes than the static, non-tailored version"]
+    },
+    "key_message": "A web-based safety and health tool for women experiencing intimate partner violence was followed by significant improvements in depression, PTSD symptoms, and safety-related outcomes over 12 months - but personalizing the tool to each woman's situation did not outperform a simpler, static version. For practitioners weighing a resource-intensive tailored digital intervention against a lower-cost static one, this trial suggests the simpler version may deliver comparable benefit - though the lack of a no-intervention control means neither arm's improvement can be firmly attributed to the tool itself rather than time or repeated assessment.",
+    "limitations": [
+      "No true no-intervention control arm - both study arms received a version of the digital tool, so improvements over time cannot be firmly attributed to the intervention versus natural recovery or assessment effects",
+      "Outcomes are self-reported via online survey, with the usual risks of social desirability and attrition bias in longitudinal web-based research",
+      "Conducted with Canadian women, a high-income-country population; findings on why tailoring didn't add benefit may not generalize to lower-resource or lower-literacy settings"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); entry compiled from the published abstract and secondary summaries, not the full text - verify details against the primary source before citing",
+    "url": "https://doi.org/10.1186/s12889-020-8152-8"
+  },
+  {
+    "id": "bourey-2015",
+    "intervention_name": "Structural interventions for IPV prevention (systematic review of economic, social, and combined approaches)",
+    "citation": "Bourey, Williams, Bernstein, & Stephenson (2015)",
+    "source": "BMC Public Health 15:1165",
+    "country": "Multiple countries (9 LMICs)",
+    "region": "Multiple regions",
+    "income_setting": "Low- and middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Varies by included study (predominantly adult women)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Women (synthesis across 16 studies; some interventions also engaged men/couples)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": "16 studies (20 articles)",
+      "sample_size_detail": "20 articles reporting on 16 distinct studies across 9 low- and middle-income countries; 13 randomized controlled trials plus 7 additional quasi-experimental/observational studies"
+    },
+    "intervention": {
+      "description": "Systematic review applying a 'structural interventions' framework to organize and evaluate economic (e.g., cash transfers, microfinance), social (e.g., group education, empowerment), and combined economic-plus-social interventions for preventing male-to-female intimate partner violence",
+      "duration": "Not applicable (review of studies with varying intervention durations)"
+    },
+    "study_design": "Systematic review/synthesis",
+    "study_design_full": "Systematic review of quantitative impact evaluations, identified via PubMed and Web of Science searches, reference-list review, and expert consultation",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "13 of the 20 included articles found a statistically significant effect on at least one primary or secondary outcome (including decreased IPV or controlling behaviors), but effects were inconsistent across intervention types and contexts",
+      "worked_for": ["At least one primary or secondary outcome (often decreased IPV or controlling behaviors) in 13 of 20 reviewed articles", "Economic, social, and combined economic-and-social approaches all showed evidence of effectiveness in at least some studies"],
+      "did_not_work_for": ["Consistent effects across all included studies - roughly a third showed no significant effect on any measured outcome", "Direct comparability across studies, due to substantial heterogeneity in populations, interventions, and contexts"]
+    },
+    "key_message": "Across 16 studies in 9 low- and middle-income countries, structural interventions (economic, social, or combined) for intimate partner violence prevention show real but inconsistent promise: about two-thirds of studies found a significant benefit on at least one outcome, but the evidence is too heterogeneous to say which specific approach works best in which context. For practitioners, this is a signal to look at individual studies from a context similar to their own rather than assuming any single structural approach will transfer directly.",
+    "limitations": [
+      "Considerable heterogeneity across included studies in populations, intervention design, and context limits pooled conclusions",
+      "Most included studies focused on structural/economic primary prevention rather than interventions specifically targeting adolescents or younger age groups",
+      "Review methodology (search terms, inclusion criteria) may have missed relevant non-English-language or unpublished (grey literature) studies"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); entry compiled from the published abstract and secondary summaries, not the full text - verify details against the primary source before citing",
+    "url": "https://doi.org/10.1186/s12889-015-2460-4"
+  },
+  {
+    "id": "cramer-2024",
+    "intervention_name": "Group intervention for male perpetrators of intimate partner violence (pilot/feasibility)",
+    "citation": "Cramer, Gaunt, Shallcross, et al. (2024)",
+    "source": "BMC Public Health 24:1183",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "income_setting": "High-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult men and their female partners (specific age range not reported in available excerpts)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (male perpetrators plus their current or ex female partners)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": 51,
+      "sample_size_detail": "36 men (22 randomized to the group programme, 14 to usual care) plus 15 current/ex female partners (39% of eligible partners), across one site covering three local-authority areas in England"
+    },
+    "intervention": {
+      "description": "A 23-week group programme for male perpetrators of intimate partner violence in heterosexual relationships, with an average of three individual one-to-one sessions, delivered by third-sector organisations alongside one-to-one support for female current/ex-partners",
+      "duration": "23 weeks, with 9-month follow-up assessment"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Pragmatic, individually randomized pilot and feasibility trial with an embedded qualitative study",
+    "outcomes_measured": ["Feasibility and trial-process outcomes (recruitment, retention, fidelity, acceptability)"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "This was a feasibility trial, not a powered effectiveness trial - it tested whether recruitment, randomization, retention, and data collection were feasible and acceptable, not whether the programme reduces violence",
+      "worked_for": ["Recruiting and randomizing male perpetrators and their partners into a trial design", "Retention and data completeness at 9 months (67% of men, 80% of partners completed follow-up questionnaires)", "Participant engagement and self-reported acceptability of both the intervention and the trial design"],
+      "did_not_work_for": ["Partner recruitment reached only 39% of eligible partners, below what a fully powered trial would likely need", "This trial was not designed or powered to demonstrate whether the programme actually reduces intimate partner violence - that question remains open"]
+    },
+    "key_message": "This UK pilot shows it is feasible to recruit, randomize, and retain both male perpetrators and their partners in a trial of a group behaviour-change programme, with reasonably high retention and reported acceptability - but as a feasibility study, it does not yet answer whether the programme reduces intimate partner violence. It's a useful example of the feasibility-stage evidence practitioners need before a full effectiveness trial exists, not effectiveness evidence itself.",
+    "limitations": [
+      "Small sample size (36 men, 15 partners) by design, since this is a feasibility trial not powered to detect effects on violence outcomes",
+      "Partner recruitment was below target (39% of eligible partners), which could affect the feasibility of collecting partner-reported safety data in a full trial",
+      "Single site covering three local-authority areas in England, so feasibility findings may not generalize to other service contexts or countries",
+      "All outcome data, including at 9-month follow-up, were self-reported"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); entry compiled from the published abstract and secondary summaries, not the full text - verify details against the primary source before citing",
+    "url": "https://doi.org/10.1186/s12889-024-18640-5"
   }
 ]
