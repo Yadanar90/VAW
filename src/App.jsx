@@ -2,10 +2,19 @@ import { useState, useMemo } from 'react'
 import studies from './data/studies.json'
 import './App.css'
 
+// A study's own top-level country, plus any individually-named countries of
+// studies it includes (for systematic reviews) - aggregate buckets like
+// "Sub-Saharan Africa (multiple countries)" are excluded since they aren't a
+// single filterable country.
+const countriesOf = s => [
+  s.country,
+  ...(s.included_studies_by_country || []).filter(c => !c.isAggregate).map(c => c.label),
+]
+
 const FILTERS = [
   { key: 'age', label: 'Age group', get: s => s.population?.age_group_tag, options: ['Under 10', '10-14', '15-19', 'Mixed/all ages'] },
   { key: 'sex', label: 'Population', get: s => s.population?.sex_tag, options: ['Girls only', 'Boys only', 'Women only', 'Mixed'] },
-  { key: 'country', label: 'Country', get: s => s.country, options: [...new Set(studies.map(s => s.country))] },
+  { key: 'country', label: 'Country', get: countriesOf, options: [...new Set(studies.flatMap(countriesOf))] },
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
   { key: 'income', label: 'Income setting', get: s => s.income_setting, options: [...new Set(studies.map(s => s.income_setting).filter(Boolean))] },
   { key: 'setting', label: 'Setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
@@ -200,7 +209,10 @@ export default function App() {
     return studies.filter(s => {
       for (const f of FILTERS) {
         const val = active[f.key]
-        if (val && f.get(s) !== val) return false
+        if (!val) continue
+        const got = f.get(s)
+        const matches = Array.isArray(got) ? got.includes(val) : got === val
+        if (!matches) return false
       }
       if (keyword) {
         const hay = `${s.intervention_name} ${s.citation} ${s.country}`.toLowerCase()

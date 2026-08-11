@@ -508,8 +508,8 @@
       { "label": "India", "count": 3 },
       { "label": "Bangladesh", "count": 2 },
       { "label": "Mexico", "count": 1 },
-      { "label": "Sub-Saharan Africa (multiple countries)", "count": 14, "note": "Article text names Kenya, Malawi, South Africa, Ethiopia, and Uganda among these but does not give an exact per-country split; the supplementary appendix with the full study-by-study list was not retrievable (blocked by a bot-check on NCBI's file server)" },
-      { "label": "Other high-income countries", "count": 5, "note": "Not individually named in the accessible article text" }
+      { "label": "Sub-Saharan Africa (multiple countries)", "count": 14, "isAggregate": true, "note": "Article text names Kenya, Malawi, South Africa, Ethiopia, and Uganda among these but does not give an exact per-country split; the supplementary appendix with the full study-by-study list was not retrievable (blocked by a bot-check on NCBI's file server)" },
+      { "label": "Other high-income countries", "count": 5, "isAggregate": true, "note": "Not individually named in the accessible article text" }
     ],
     "intervention": {
       "description": "Systematic review synthesising rigorous evaluations of adolescent dating violence prevention programmes worldwide, comparing study design, programme elements, and outcomes between high-income and low-and-middle-income country contexts",
