@@ -1,0 +1,198 @@
+[
+  {
+    "id": "garzon-segura-2020",
+    "intervention_name": "Gender-based IPV prevention program (unit-based curriculum)",
+    "citation": "Garzón Segura & Carcedo González (2020)",
+    "source": "Frontiers in Psychology 10:3012",
+    "country": "Colombia",
+    "region": "South America",
+    "income_setting": "Upper-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "7-9 years (mean 7.8)",
+      "age_group_tag": "Under 10",
+      "sex": "Mixed (56.7% boys, 43.4% girls)",
+      "sex_tag": "Mixed",
+      "setting": "School",
+      "sample_size": 344,
+      "sample_size_detail": "200 experimental, 144 control"
+    },
+    "intervention": {
+      "description": "3 units (gender stereotypes, gender-based IPV, socio-emotional skills), 2 sessions/week for 3 months, delivered in classroom",
+      "duration": "3 months"
+    },
+    "study_design": "Quasi-experimental",
+    "study_design_full": "Quasi-experimental (non-randomized experimental vs control group, pre/post)",
+    "outcomes_measured": ["Attitudes/knowledge", "Gender stereotypes", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Mixed - effective on most attitude/stereotype outcomes, not effective on self-esteem or emotional intelligence",
+      "worked_for": ["Male and female gender stereotypes", "Gender stereotypes in romantic relationships", "Attitudes toward physical violence and physical violence against women", "Acceptance of peer aggression (weak, strong, against men, against women)", "Affective empathy"],
+      "did_not_work_for": ["Self-esteem", "Emotional intelligence", "Cognitive empathy"]
+    },
+    "key_message": "A short classroom curriculum addressing gender stereotypes, IPV, and socio-emotional skills can shift attitudes and reduce acceptance of violence in children as young as 7-9, before they reach the 10-14 age range where dating and partner violence risk rises - though it did not move self-esteem or emotional intelligence, and effects on aggression acceptance were stronger for boys.",
+    "limitations": [
+      "Quasi-experimental design (non-randomized); groups assigned by class scheduling availability",
+      "Inconsistent teacher engagement interrupted some sessions",
+      "Low family/parent involvement despite intended relevance",
+      "Relies on self-report scales, some risk of social desirability bias",
+      "No follow-up measurement beyond immediate post-test (no medium/long-term data)",
+      "Single school, single country - limited generalizability"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.3389/fpsyg.2019.03012"
+  },
+  {
+    "id": "daruwalla-2025",
+    "intervention_name": "Community mobilisation for domestic violence prevention (SNEHA-TARA)",
+    "citation": "Daruwalla, Adelkar, Chakraborty, et al. (2025)",
+    "source": "Lancet Global Health 13: e2082-96",
+    "country": "India",
+    "region": "Asia",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Women 15-49 years (survey population); men, women, and young people participated in groups",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (women's, men's, and youth groups; primary outcome measured in women)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": 7198,
+      "sample_size_detail": "48 clusters of ~500 households; 3606 women (intervention) and 3592 women (control) in the post-intervention survey"
+    },
+    "intervention": {
+      "description": "Community mobilisation over 3 years of exposure (delivered 2018-2023, delayed by COVID-19): women's, men's, and youth peer-education groups; volunteer \"sanginis\" who identify and support survivors; caseworkers providing crisis, legal, and psychosocial support.",
+      "duration": "3 years of exposure (implemented over ~4-5 years including a COVID-19 pause)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-arm, pragmatic, theory-driven, cluster-randomised controlled trial; 48 clusters, 1:1 allocation",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant reduction in measured population prevalence of violence, but a large, significant increase in disclosure and access to support",
+      "worked_for": [
+        "Disclosure of violence to support services (more than doubled: 9.3% control vs 20.9% intervention; adjusted OR 2.75, 95% CI 1.73-4.37)",
+        "Over 4000 survivors identified and supported through the programme",
+        "80%+ of women who met a caseworker reported reduced violence within 6 months"
+      ],
+      "did_not_work_for": [
+        "Population-level prevalence of physical or sexual domestic violence (adjusted OR 0.85, 95% CI 0.62-1.16 - not statistically significant)",
+        "Population-level prevalence of gender-based household maltreatment (adjusted OR 0.93, 95% CI 0.66-1.33 - not statistically significant)",
+        "Community attitudes to violence, gender inequality, and bystander support (trended favourably but not statistically significant)",
+        "Population mental health/wellbeing (no measurable difference)"
+      ]
+    },
+    "key_message": "A well-implemented, high-fidelity community mobilisation programme (women's/men's/youth groups plus trained volunteer responders) can dramatically increase disclosure of domestic violence and connect survivors to support - but did not produce a statistically significant reduction in population-level violence prevalence within the trial period. This is an important caution for practitioners: strong implementation and individual-level impact does not guarantee measurable population-level prevalence change, and attitude/norm change may not be a precondition for people to take protective action.",
+    "limitations": [
+      "COVID-19 paused in-person activities for ~13 months, disrupting a planned midline survey and complicating interpretation",
+      "Trial was powered to detect a 6% prevalence difference; observed risk differences were smaller than this",
+      "Increased awareness and confidence in intervention communities may have increased disclosure in surveys, narrowing the measured gap between arms",
+      "Binary violence measures may not capture changes in severity or frequency of violence",
+      "Consent-seeking from cluster gatekeepers may have selected against the highest-violence localities",
+      "Two participant suicides occurred in intervention clusters during the trial (investigated, not attributed to the intervention)"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); notably strong methodology - pre-registered, intention-to-treat analysis, TIDieR-reported intervention",
+    "url": "https://doi.org/10.1016/S2214-109X(25)00358-4"
+  },
+  {
+    "id": "stark-2018",
+    "intervention_name": "COMPASS life skills and safe spaces programme",
+    "citation": "Stark, Asghar, Seff, et al. (2018)",
+    "source": "BMJ Global Health 3:e000825",
+    "country": "Ethiopia",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "13-19 years (mean 14.5)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Girls only",
+      "sex_tag": "Girls only",
+      "setting": "Community",
+      "sample_size": 919,
+      "sample_size_detail": "457 intervention, 462 control (wait-list); Sudanese and South Sudanese refugee girls in Ethiopian camps"
+    },
+    "intervention": {
+      "description": "Weekly life skills sessions (30 total) delivered by trained young female refugee mentors in \"safe spaces,\" plus 8 monthly discussion sessions for caregivers, covering communication, GBV awareness, and sexual/reproductive health.",
+      "duration": "Approximately 12 months, refugee camp setting"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-arm, single-blinded, wait-list, cluster-randomised controlled trial across 62 clusters",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant effect on the primary violence outcome, but significant positive effects on protective attitudes and social support",
+      "worked_for": [
+        "Attitudes toward appropriate age of marriage (adjusted OR 1.88, 95% CI 1.07-3.28) and age of first child (aOR 2.04, 95% CI 1.25-3.34)",
+        "Having same-age friends (aOR 1.71) and a trusted non-family female adult (aOR 2.00)",
+        "Reduced child marriage among the subgroup already married/cohabiting at baseline (OR 0.57, 95% CI 0.34-0.95)"
+      ],
+      "did_not_work_for": [
+        "Primary outcome: any past-year sexual violence (adjusted OR 0.96, 95% CI 0.59-1.57 - not significant)",
+        "Physical violence, emotional violence, and transactional sex",
+        "Feelings of safety at home, school, or in the community"
+      ]
+    },
+    "key_message": "In a refugee camp setting, a life-skills and safe-spaces programme for adolescent girls did not measurably reduce direct exposure to violence within 12 months, but it did shift protective attitudes (later marriage/childbearing) and expand girls' social support networks - markers considered earlier steps on the causal pathway to violence reduction. This echoes a pattern seen in other studies on this platform: individual and attitudinal change can occur even when population-level violence outcomes don't shift within a trial's timeframe.",
+    "limitations": [
+      "All outcomes self-reported, with risk of disclosure and social desirability bias (partially mitigated via audio computer-assisted self-interview)",
+      "Programme roll-out was delayed, so the primary outcome's 12-month reference period overlapped with intervention delivery rather than fully following it",
+      "Violence measures were binary (any exposure) rather than measuring frequency or severity",
+      "Potential spillover/contamination between intervention and control girls sharing the same camps",
+      "A planned longer-term follow-up round was not possible due to funding limitations"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1136/bmjgh-2018-000825"
+  },
+  {
+    "id": "ozler-2020",
+    "intervention_name": "Girl Empower (GE / GE+): mentoring, life skills, and cash transfer",
+    "citation": "Özler, Hallman, Guimond, et al. (2020)",
+    "source": "SSM - Population Health 10:100527",
+    "country": "Liberia",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "13-14 years at baseline (mean 13.7)",
+      "age_group_tag": "10-14",
+      "sex": "Girls only",
+      "sex_tag": "Girls only",
+      "setting": "Community",
+      "sample_size": 1216,
+      "sample_size_detail": "84 villages, three arms (control/GE/GE+); 1176 analyzed at 24-month follow-up"
+    },
+    "intervention": {
+      "description": "32 weekly life-skills sessions with trained female mentors in safe spaces, 8 monthly caregiver discussion groups, and individual girl savings accounts ($2/month). GE+ variant adds a cash incentive to caregivers for girls' attendance (~$1.25/session).",
+      "duration": "9 months of programming (Feb-Nov 2016), assessed at 24-month follow-up"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Parallel, three-arm (control, GE, GE+), cluster-randomised controlled trial at the village level",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant effect on sexual or physical violence despite very high programme fidelity, but significant sustained gains in gender attitudes, life skills, and sexual/reproductive health",
+      "worked_for": [
+        "Gender attitudes (GE: 0.206 SD, p<0.05; GE+: 0.228 SD, p<0.05)",
+        "Life skills - HIV knowledge, financial literacy, condom knowledge (GE: 0.224 SD, p<0.05; GE+: 0.289 SD, p<0.01)",
+        "Sexual and reproductive health - later marriage, fewer partners, safer sex (GE: 0.244 SD, p<0.01; GE+: 0.372 SD, p<0.01 - roughly 50% stronger with the added cash transfer)"
+      ],
+      "did_not_work_for": [
+        "Primary outcome: sexual violence index (no significant effect for GE or GE+)",
+        "Physical violence",
+        "Schooling and psychosocial wellbeing (small, not statistically significant)",
+        "Protective factors: social capital and caregivers' gender norms/attitudes were not affected"
+      ]
+    },
+    "key_message": "Even with very high attendance (girls attended ~28 of 32 sessions) and rigorous trial design, a life-skills, mentoring, and small-cash-transfer programme for girls aged 13-14 did not reduce their exposure to sexual or physical violence over 24 months - despite producing real, sustained gains in gender attitudes, life skills, and sexual/reproductive health. This is the third study on this platform showing the same pattern: individual-level attitude and knowledge change is achievable, but doesn't reliably translate into measured reductions in violence within a study's timeframe. Adding a modest cash incentive for caregivers roughly doubled the effect on sexual/reproductive health outcomes specifically.",
+    "limitations": [
+      "All outcomes self-reported; baseline violence prevalence was extremely high (37% ever experienced sexual violence, 94.8% reported physical violence during the 24-month study period), raising questions about measurement sensitivity as well as true exposure",
+      "The trial could not isolate the individual contribution of the cash transfer versus the mentoring programme (no cash-only arm)",
+      "Well powered to detect effects on the seven composite indices, but not on individual sub-components",
+      "The GE+ cash incentive ended up larger than originally planned due to a study implementation error, complicating clean interpretation of the \"plus cash\" effect",
+      "Set in a specific post-Ebola, post-conflict context (rural Liberia) that may limit generalizability elsewhere"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1016/j.ssmph.2019.100527"
+  }
+]

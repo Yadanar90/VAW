@@ -1,0 +1,21 @@
+[
+  {"id": 1, "intervention_name": "Acquaintance rape education program", "citation": "Fay 2006", "country": "USA", "region": "North America"},
+  {"id": 2, "intervention_name": "Adult-led sexual harassment classes", "citation": "Sabella 1995", "country": "USA", "region": "North America"},
+  {"id": 3, "intervention_name": "AHYR strategy", "citation": "Dozois 2016", "country": "Canada", "region": "North America"},
+  {"id": 4, "intervention_name": "AAL", "citation": "Harrington 2019", "country": "USA", "region": "North America"},
+  {"id": 5, "intervention_name": "Battered Women: Violence Behind Closed Door video", "citation": "Walther 1996", "country": "USA", "region": "North America"},
+  {"id": 6, "intervention_name": "Benzies and Batchies", "citation": "de Lijster 2016", "country": "The Netherlands", "region": "Europe"},
+  {"id": 7, "intervention_name": "BVV audio-drama intervention", "citation": "Cockcroft 2019", "country": "Botswana", "region": "Africa"},
+  {"id": 8, "intervention_name": "BRIGHT single + 5-session boost", "citation": "Cascardi 2014", "country": "USA", "region": "North America"},
+  {"id": 9, "intervention_name": "BITB-HSC", "citation": "Edwards 2019", "country": "USA", "region": "North America"},
+  {"id": 10, "intervention_name": "BRIGHT single session", "citation": "Cascardi 2014", "country": "USA", "region": "North America"},
+  {"id": 11, "intervention_name": "Bystander intervention curriculum", "citation": "Lee 2018", "country": "Taiwan", "region": "Asia"},
+  {"id": 12, "intervention_name": "Bystander-focused violence prevention curriculum", "citation": "Edwards 2019", "country": "USA", "region": "North America"},
+  {"id": 13, "intervention_name": "Bystanders", "citation": "Jalusic 2019", "country": "Slovenia", "region": "Europe"},
+  {"id": 14, "intervention_name": "C&C", "citation": "Elias-Lambert 2015", "country": "USA", "region": "North America"},
+  {"id": 15, "intervention_name": "CAMPAIGN", "citation": "Achyut 2011", "country": "India", "region": "Asia"},
+  {"id": 16, "intervention_name": "CARE face to face", "citation": "McGinn 2017", "country": "Ireland", "region": "Europe"},
+  {"id": 17, "intervention_name": "CARE VW", "citation": "McGinn 2017", "country": "Ireland", "region": "Europe"},
+  {"id": 18, "intervention_name": "CPVFK", "citation": "Cameron 2007", "country": "Canada", "region": "North America"},
+  {"id": 19, "intervention_name": "Change up", "citation": "Rogers 2018", "country": "England", "region": "Europe"}
+]
