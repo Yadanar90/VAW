@@ -99,8 +99,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <h1>VAWG Evidence Platform</h1>
-        <p>Filter school-based intervention evidence for preventing violence against girls</p>
+        <h1>Prevention of Violence Against Women and Girls Evidence Platform</h1>
       </header>
 
       <div className="app-body">
