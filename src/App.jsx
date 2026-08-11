@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import studies from './data/studies.json'
+import WorldMap from './WorldMap'
 import './App.css'
 
 const FILTERS = [
@@ -228,7 +229,14 @@ export default function App() {
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
 
-        <EffectivenessChart studies={filtered} />
+        <div className="charts-row">
+          <EffectivenessChart studies={filtered} />
+          <WorldMap
+            studies={filtered}
+            activeCountry={active.country}
+            onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+          />
+        </div>
 
         <main className="results-grid">
           {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}

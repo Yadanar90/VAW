@@ -43,6 +43,14 @@ body { margin: 0; }
 
 .result-count { font-size: 12px; color: #6b6a63; margin: 0 0 12px 4px; }
 
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.charts-row .chart-card { margin-bottom: 0; }
+
 .chart-card {
   background: white; border: 1px solid #e0ddd3; border-radius: 12px;
   padding: 16px; margin-bottom: 14px;
@@ -106,6 +114,34 @@ body { margin: 0; }
 .chart-table th, .chart-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e0ddd3; }
 .chart-table th { color: #6b6a63; font-weight: 600; }
 .chart-table td:not(:first-child), .chart-table th:not(:first-child) { text-align: center; }
+
+.map-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 12px; color: #52514e; }
+.map-legend-label { white-space: nowrap; }
+.map-legend-gradient {
+  width: 110px; height: 10px; border-radius: 4px; flex: none;
+  background: linear-gradient(to right, #cde2fb, #86b6ef, #3987e5, #1c5cab, #0d366b);
+}
+.map-legend-item { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; }
+.map-legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+
+.map-container { position: relative; }
+.world-map-svg { width: 100%; height: auto; display: block; background: #eef4fb; border-radius: 8px; }
+.map-country { stroke: #faf9f6; stroke-width: 0.5; }
+.map-country.is-interactive { cursor: pointer; }
+.map-country.is-interactive:hover, .map-country.is-interactive:focus-visible {
+  filter: brightness(1.1); outline: none; stroke: #2c2c2a; stroke-width: 1;
+}
+.map-country.is-active { stroke: #2c2c2a; stroke-width: 1.5; }
+
+.map-tooltip {
+  position: absolute; transform: translate(-50%, -110%);
+  background: #2c2c2a; color: white; font-size: 11px; line-height: 1.4;
+  padding: 8px 10px; border-radius: 6px; pointer-events: none;
+  max-width: 220px; z-index: 2;
+}
+.map-tooltip strong { font-size: 12px; }
+.map-tooltip ul { margin: 4px 0 0; padding-left: 16px; }
+.map-hint { font-size: 11px; color: #898781; margin: 8px 0 0; }
 
 .results-grid {
   display: grid;
