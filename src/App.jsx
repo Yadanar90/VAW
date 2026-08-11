@@ -14,6 +14,108 @@ const FILTERS = [
   { key: 'completeness', label: 'Completeness', get: s => s.completeness === 'full' ? 'Full record' : 'Citation only', options: ['Full record', 'Citation only'] },
 ]
 
+const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
+const EFFECT_STATUS = [
+  { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
+  { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
+  { key: "Didn't work", label: "Didn't work", status: 'critical', icon: '✕' },
+]
+
+function EffectivenessChart({ studies }) {
+  const [showTable, setShowTable] = useState(false)
+
+  const rows = useMemo(() => {
+    return DESIGN_ORDER
+      .map(design => {
+        const inDesign = studies.filter(s => s.study_design === design)
+        const segments = EFFECT_STATUS.map(e => ({
+          ...e,
+          count: inDesign.filter(s => s.effect?.overall_tag === e.key).length,
+        }))
+        return { design, total: inDesign.length, segments }
+      })
+      .filter(r => r.total > 0)
+  }, [studies])
+
+  const maxTotal = Math.max(1, ...rows.map(r => r.total))
+
+  return (
+    <section className="chart-card">
+      <div className="chart-head">
+        <h2>Trial design &amp; effectiveness</h2>
+        {rows.length > 0 && (
+          <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
+            {showTable ? 'Show chart' : 'Show as table'}
+          </button>
+        )}
+      </div>
+
+      {rows.length === 0 ? (
+        <p className="chart-empty">No studies match these filters yet.</p>
+      ) : (
+        <>
+          <div className="chart-legend">
+            {EFFECT_STATUS.map(e => (
+              <span className="legend-item" key={e.key}>
+                <span className={`legend-swatch status-${e.status}`} aria-hidden="true">{e.icon}</span>
+                {e.label}
+              </span>
+            ))}
+          </div>
+
+          {showTable ? (
+            <table className="chart-table">
+              <thead>
+                <tr>
+                  <th>Trial design</th>
+                  {EFFECT_STATUS.map(e => <th key={e.key}>{e.label}</th>)}
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map(r => (
+                  <tr key={r.design}>
+                    <td>{r.design}</td>
+                    {r.segments.map(s => <td key={s.key}>{s.count}</td>)}
+                    <td>{r.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="chart-bars">
+              {rows.map(r => (
+                <div className="bar-row" key={r.design}>
+                  <div className="bar-label">{r.design}</div>
+                  <div className="bar-track-outer">
+                    <div className="bar-track" style={{ width: `${(r.total / maxTotal) * 100}%` }}>
+                      {r.segments.filter(s => s.count > 0).map(s => (
+                        <button
+                          type="button"
+                          key={s.key}
+                          className={`bar-segment status-${s.status}`}
+                          style={{ flexGrow: s.count, flexBasis: 0 }}
+                        >
+                          {(s.count / r.total) * 100 >= 14 && <span className="segment-label">{s.count}</span>}
+                          <span className="segment-tooltip" role="tooltip">
+                            <strong>{s.count}</strong> {s.label} · {r.design}
+                          </span>
+                          <span className="sr-only">{`${r.design}: ${s.count} of ${r.total} studies ${s.label}`}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bar-total">{r.total}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </section>
+  )
+}
+
 function StudyCard({ study }) {
   const [expanded, setExpanded] = useState(false)
   const isFull = study.completeness === 'full'
@@ -125,6 +227,8 @@ export default function App() {
         </div>
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
+
+        <EffectivenessChart studies={filtered} />
 
         <main className="results-grid">
           {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
