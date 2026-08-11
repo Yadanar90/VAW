@@ -1,10 +1,10 @@
 import { useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
+import { geoNaturalEarth1, geoPath } from 'd3-geo'
 import worldTopo from 'world-atlas/countries-110m.json'
 
 const WIDTH = 960
-const SCALE = WIDTH / 360 // pixels per degree of longitude/latitude (equirectangular)
-const VIEW_HEIGHT = 430 // crops most of the empty Antarctic band below ~-55 lat
+const HEIGHT = 460
 
 // Dataset country name -> world-atlas feature name, only where they differ.
 const COUNTRY_ALIASES = { England: 'United Kingdom' }
@@ -19,29 +19,19 @@ function colorForCount(count, maxCount) {
   return SEQUENTIAL_STEPS[Math.round(t * (SEQUENTIAL_STEPS.length - 1))]
 }
 
-function project([lon, lat]) {
-  return [(lon + 180) * SCALE, (90 - lat) * SCALE]
-}
-
-function ringToPath(ring) {
-  return ring
-    .map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`)
-    .join(' ') + 'Z'
-}
-
-function geometryToPath(geometry) {
-  if (!geometry) return ''
-  const rings = geometry.type === 'Polygon'
-    ? geometry.coordinates
-    : geometry.type === 'MultiPolygon'
-      ? geometry.coordinates.flat()
-      : []
-  return rings.map(ring => ringToPath(ring.map(project))).join(' ')
-}
-
-const countryFeatures = feature(worldTopo, worldTopo.objects.countries).features
+const rawFeatures = feature(worldTopo, worldTopo.objects.countries).features
   .filter(f => f.properties.name !== 'Antarctica')
-  .map(f => ({ name: f.properties.name, d: geometryToPath(f.geometry) }))
+
+// Natural Earth projection reads true, undistorted on a flat map (unlike the
+// naive equirectangular projection, which visibly stretches landmasses at
+// higher latitudes). fitExtent scales/centers it to the visible countries.
+const projection = geoNaturalEarth1().fitExtent([[8, 8], [WIDTH - 8, HEIGHT - 8]], {
+  type: 'FeatureCollection',
+  features: rawFeatures,
+})
+const pathGenerator = geoPath(projection)
+
+const countryFeatures = rawFeatures.map(f => ({ name: f.properties.name, d: pathGenerator(f) }))
 
 export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
   const [showTable, setShowTable] = useState(false)
@@ -119,7 +109,7 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
           </div>
 
           <div className="map-container" ref={containerRef}>
-            <svg viewBox={`0 0 ${WIDTH} ${VIEW_HEIGHT}`} className="world-map-svg" role="img" aria-label="Map of countries with included studies">
+            <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="world-map-svg" role="img" aria-label="Map of countries with included studies">
               {countryFeatures.map(({ name, d }) => {
                 const entry = byMapName.get(name)
                 const count = entry?.count || 0
