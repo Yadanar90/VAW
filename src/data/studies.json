@@ -352,6 +352,12 @@
       "sample_size": 25,
       "sample_size_detail": "25 primary studies included, evaluating ICT-based (mobile app, web-based, and telephone) interventions addressing IPV awareness, screening, prevention, treatment, and mental health"
     },
+    "included_studies_by_country": [
+      { "label": "United States", "count": 20 },
+      { "label": "Canada", "count": 3 },
+      { "label": "Austria", "count": 1 },
+      { "label": "New Zealand", "count": 1 }
+    ],
     "intervention": {
       "description": "Systematic review (PRISMA-guided; PubMed, PsycINFO, and Web of Science searched) synthesizing evidence on ICT-based interventions - mobile apps, websites, and telephone-delivered tools - for IPV awareness, screening, prevention, treatment, and mental health support",
       "duration": "Not applicable (systematic review of studies published up to the 2020 search date)"
@@ -483,7 +489,7 @@
     "id": "reyes-2021",
     "intervention_name": "Adolescent dating violence prevention programmes (global evidence base)",
     "citation": "McNaughton Reyes et al. (2021)",
-    "source": "Lancet Child & Adolescent Health (published online Nov 2020)",
+    "source": "Lancet Child & Adolescent Health 5(3):223-232",
     "country": "Multiple (systematic review)",
     "region": "Multiple",
     "income_setting": null,
@@ -495,8 +501,16 @@
       "sex_tag": "Mixed",
       "setting": "Mixed",
       "sample_size": 52,
-      "sample_size_detail": "52 programme evaluations (experimental and controlled quasi-experimental) met inclusion criteria, of which 20 (38%) were implemented in low- and middle-income countries and 32 (62%) in high-income countries"
+      "sample_size_detail": "52 programme evaluations (from 36 studies; experimental and controlled quasi-experimental) met inclusion criteria, of which 20 (38%) were implemented in low- and middle-income countries and 32 (62%) in high-income countries"
     },
+    "included_studies_by_country": [
+      { "label": "United States", "count": 27 },
+      { "label": "India", "count": 3 },
+      { "label": "Bangladesh", "count": 2 },
+      { "label": "Mexico", "count": 1 },
+      { "label": "Sub-Saharan Africa (multiple countries)", "count": 14, "note": "Article text names Kenya, Malawi, South Africa, Ethiopia, and Uganda among these but does not give an exact per-country split; the supplementary appendix with the full study-by-study list was not retrievable (blocked by a bot-check on NCBI's file server)" },
+      { "label": "Other high-income countries", "count": 5, "note": "Not individually named in the accessible article text" }
+    ],
     "intervention": {
       "description": "Systematic review synthesising rigorous evaluations of adolescent dating violence prevention programmes worldwide, comparing study design, programme elements, and outcomes between high-income and low-and-middle-income country contexts",
       "duration": "Review of evaluation studies published before 1 January 2020"

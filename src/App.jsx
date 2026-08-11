@@ -150,6 +150,18 @@ function StudyCard({ study }) {
               <div><strong>Design:</strong> {study.study_design_full}</div>
               <div><strong>Intervention:</strong> {study.intervention.description}</div>
               <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
+              {study.included_studies_by_country?.length > 0 && (
+                <div>
+                  <strong>Countries of included studies:</strong>
+                  <ul>
+                    {study.included_studies_by_country.map((c, i) => (
+                      <li key={i}>
+                        {c.label} ({c.count}){c.note ? ` — ${c.note}` : ''}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div>
                 <strong>Worked for:</strong>
                 <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
