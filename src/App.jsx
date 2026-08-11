@@ -2,23 +2,14 @@ import { useState, useMemo } from 'react'
 import studies from './data/studies.json'
 import './App.css'
 
-// A study's own top-level country, plus any individually-named countries of
-// studies it includes (for systematic reviews) - aggregate buckets like
-// "Sub-Saharan Africa (multiple countries)" are excluded since they aren't a
-// single filterable country.
-const countriesOf = s => [
-  s.country,
-  ...(s.included_studies_by_country || []).filter(c => !c.isAggregate).map(c => c.label),
-]
-
 const FILTERS = [
   { key: 'age', label: 'Age group', get: s => s.population?.age_group_tag, options: ['Under 10', '10-14', '15-19', 'Mixed/all ages'] },
   { key: 'sex', label: 'Population', get: s => s.population?.sex_tag, options: ['Girls only', 'Boys only', 'Women only', 'Mixed'] },
-  { key: 'country', label: 'Country', get: countriesOf, options: [...new Set(studies.flatMap(countriesOf))] },
+  { key: 'country', label: 'Country', get: s => s.country, options: [...new Set(studies.map(s => s.country))] },
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
   { key: 'income', label: 'Income setting', get: s => s.income_setting, options: [...new Set(studies.map(s => s.income_setting).filter(Boolean))] },
   { key: 'setting', label: 'Setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
-  { key: 'design', label: 'Study design', get: s => s.study_design, options: ['RCT', 'Quasi-experimental', 'Cohort', 'Qualitative', 'Systematic review/synthesis'] },
+  { key: 'design', label: 'Study design', get: s => s.study_design, options: ['RCT', 'Quasi-experimental', 'Cohort', 'Qualitative'] },
   { key: 'effect', label: 'Effectiveness', get: s => s.effect?.overall_tag, options: ['Worked', 'Mixed', "Didn't work"] },
   { key: 'completeness', label: 'Completeness', get: s => s.completeness === 'full' ? 'Full record' : 'Citation only', options: ['Full record', 'Citation only'] },
 ]
@@ -159,18 +150,6 @@ function StudyCard({ study }) {
               <div><strong>Design:</strong> {study.study_design_full}</div>
               <div><strong>Intervention:</strong> {study.intervention.description}</div>
               <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
-              {study.included_studies_by_country?.length > 0 && (
-                <div>
-                  <strong>Countries of included studies:</strong>
-                  <ul>
-                    {study.included_studies_by_country.map((c, i) => (
-                      <li key={i}>
-                        {c.label} ({c.count}){c.note ? ` — ${c.note}` : ''}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
               <div>
                 <strong>Worked for:</strong>
                 <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
@@ -209,10 +188,7 @@ export default function App() {
     return studies.filter(s => {
       for (const f of FILTERS) {
         const val = active[f.key]
-        if (!val) continue
-        const got = f.get(s)
-        const matches = Array.isArray(got) ? got.includes(val) : got === val
-        if (!matches) return false
+        if (val && f.get(s) !== val) return false
       }
       if (keyword) {
         const hay = `${s.intervention_name} ${s.citation} ${s.country}`.toLowerCase()
