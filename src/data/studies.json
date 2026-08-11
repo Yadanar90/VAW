@@ -381,5 +381,149 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review); note this is a review of primary studies rather than a single primary study",
     "url": "https://doi.org/10.1186/s12889-020-09408-8"
+  },
+  {
+    "id": "kapiga-2019",
+    "intervention_name": "MAISHA: participatory gender-training social empowerment intervention (microfinance-linked)",
+    "citation": "Kapiga et al. (2019)",
+    "source": "Lancet Global Health 7(10):e1423-e1434",
+    "country": "Tanzania",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult women in group-based microfinance loan schemes",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Women only",
+      "sex_tag": "Women only",
+      "setting": "Community",
+      "sample_size": 1049,
+      "sample_size_detail": "66 pre-existing microfinance loan groups in Mwanza City randomised in blocks of six (33 intervention groups, n=544 women; 33 control groups, n=505 women)"
+    },
+    "intervention": {
+      "description": "10-session participatory gender-training curriculum ('MAISHA') delivered to women in their existing microfinance loan groups, addressing gender norms, communication, and economic/social empowerment to prevent intimate partner violence; control groups were wait-listed for the intervention after the trial",
+      "duration": "10 sessions, delivered September 2014-June 2015"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Cluster-randomised controlled trial; 66 pre-existing microfinance loan groups randomised in blocks of six to intervention or wait-list control",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Women in the intervention arm were less likely to report past-year physical or sexual IPV (23% vs 27%; adjusted OR 0.69, 95% CI 0.47-1.01; p=0.056, narrowly missing conventional significance), and significantly less likely to report physical IPV alone (aOR 0.64, 95% CI 0.41-0.99; p=0.043); effects on attitudes accepting of IPV were strong and highly significant",
+      "worked_for": [
+        "Physical intimate partner violence alone (aOR 0.64, 95% CI 0.41-0.99; p=0.043)",
+        "Attitudes accepting of intimate partner violence (aOR 0.45, 95% CI 0.34-0.61; p<0.0001)",
+        "Belief that IPV is a private matter (aOR 0.51, 95% CI 0.32-0.81; p=0.005)",
+        "A companion trial (CRT01) restricted to pre-existing microfinance groups found stronger effects on physical IPV among women who were younger, more financially independent, and without prior physical IPV"
+      ],
+      "did_not_work_for": [
+        "Composite past-year physical-or-sexual-IPV outcome fell just short of conventional statistical significance (aOR 0.69, 95% CI 0.47-1.01; p=0.056)",
+        "Belief that IPV should be tolerated - borderline, not significant (aOR 0.68, 95% CI 0.45-1.01; p=0.055)",
+        "A related trial (CRT02) delivering the same curriculum to newly formed groups without a pre-existing microfinance link found no impact on physical IPV, overall or in subgroups"
+      ]
+    },
+    "key_message": "A 10-session participatory gender-training curriculum delivered to women already participating in microfinance loan groups in Tanzania was associated with less physical intimate partner violence and a strong shift away from attitudes that excuse or normalise IPV, though the composite physical-or-sexual-violence outcome narrowly missed conventional statistical significance. A companion trial found the same curriculum had no effect when delivered to newly formed groups without a pre-existing microfinance relationship - suggesting that combining gender-transformative training with real economic ties/group cohesion, not curriculum content alone, may be what drives impact.",
+    "limitations": [
+      "Composite primary outcome (any physical or sexual IPV) did not reach conventional statistical significance (p=0.056), so findings are suggestive rather than conclusive on the primary endpoint",
+      "Effectiveness appears contingent on delivery through pre-existing microfinance groups; a companion trial in newly formed, non-microfinance groups found no effect, limiting generalizability of the standalone curriculum",
+      "Outcomes are self-reported experiences of a highly sensitive topic, with potential for social desirability and disclosure bias",
+      "Single city (Mwanza) in Tanzania - generalizability to other settings uncertain"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1016/S2214-109X(19)30316-X"
+  },
+  {
+    "id": "wagman-2015",
+    "intervention_name": "SHARE: integrated intimate partner violence and HIV prevention intervention",
+    "citation": "Wagman et al. (2015)",
+    "source": "Lancet Global Health 3(1):e23-e33",
+    "country": "Uganda",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adults (married/cohabiting couples in an existing HIV research cohort)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (women and men)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": "11 clusters",
+      "sample_size_detail": "4 intervention clusters and 7 control clusters drawn from the existing Rakai Community Cohort Study; individual-level enrollment numbers not confirmed in available secondary sources"
+    },
+    "intervention": {
+      "description": "Community-level mobilisation to shift attitudes, social norms, and behaviours around intimate partner violence, layered onto standard HIV testing/counselling services, plus screening and brief intervention promoting safe HIV-status disclosure among women (the SHARE Project)",
+      "duration": "Baseline survey Feb 2005-Jun 2006; two follow-up survey rounds through Dec 2009"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Analysis of an intervention nested within an existing cluster-randomised cohort (Rakai Community Cohort Study); 4 intervention vs 7 control clusters",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Exposure to SHARE was associated with reductions in some forms of IPV against women and in overall HIV incidence, plausibly via reduced forced sex and increased disclosure of HIV status; effects were not uniform across all forms of IPV or subgroups",
+      "worked_for": [
+        "Some forms of intimate partner violence against women (reductions associated with intervention exposure)",
+        "Overall HIV incidence in the intervention population",
+        "Participant engagement - 77% of the intervention population were aware of SHARE, of whom 73% participated in activities, and two-thirds of participants felt it influenced their own behaviour around IPV"
+      ],
+      "did_not_work_for": [
+        "Effects were not uniform across all forms of IPV or all subgroups; exact effect sizes for each individual violence outcome were not confirmed in available secondary sources - consult the primary article for full figures"
+      ]
+    },
+    "key_message": "By layering a community mobilisation and safe-disclosure intervention onto an existing HIV research and service infrastructure in rural Uganda, the SHARE project was associated with reductions in some forms of intimate partner violence against women alongside reduced HIV incidence - suggesting IPV prevention and HIV prevention can be meaningfully combined rather than run as separate programmes. The authors argued this ecological approach could be adopted as part of standard care within other HIV programmes in sub-Saharan Africa.",
+    "limitations": [
+      "Nested within a pre-existing HIV cohort study rather than a purpose-built trial, with clusters unevenly split (4 intervention vs 7 control)",
+      "Precise effect sizes and confidence intervals for individual violence outcomes were not confirmed in the secondary sources available for this summary",
+      "Self-reported IPV and HIV-status disclosure are both sensitive to social desirability and recall bias",
+      "The same research group has separately discussed the ethical and methodological complexities of randomising exposure to a violence-prevention intervention within an existing cohort"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1016/S2214-109X(14)70344-4"
+  },
+  {
+    "id": "reyes-2021",
+    "intervention_name": "Adolescent dating violence prevention programmes (global evidence base)",
+    "citation": "McNaughton Reyes et al. (2021)",
+    "source": "Lancet Child & Adolescent Health (published online Nov 2020)",
+    "country": "Multiple (systematic review)",
+    "region": "Multiple",
+    "income_setting": null,
+    "completeness": "full",
+    "population": {
+      "age_range": "10-19 years (at least half of the study population in each included evaluation)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (adolescent boys and girls; victimisation and/or perpetration outcomes)",
+      "sex_tag": "Mixed",
+      "setting": "Mixed",
+      "sample_size": 52,
+      "sample_size_detail": "52 programme evaluations (experimental and controlled quasi-experimental) met inclusion criteria, of which 20 (38%) were implemented in low- and middle-income countries and 32 (62%) in high-income countries"
+    },
+    "intervention": {
+      "description": "Systematic review synthesising rigorous evaluations of adolescent dating violence prevention programmes worldwide, comparing study design, programme elements, and outcomes between high-income and low-and-middle-income country contexts",
+      "duration": "Review of evaluation studies published before 1 January 2020"
+    },
+    "study_design": "Systematic review/synthesis",
+    "study_design_full": "Systematic review of experimental and controlled quasi-experimental evaluations of adolescent dating violence prevention programmes (victimisation and/or perpetration outcomes), comparing HIC and LMIC evidence",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "26 of 52 (50%) evaluations reported at least one significant positive effect on dating violence victimisation and/or perpetration outcomes; evidence quality and programme reach varied substantially between high-income and low/middle-income country contexts, and programmes targeting specific higher-risk adolescent subgroups were rare",
+      "worked_for": [
+        "About half (26 of 52, 50%) of evaluations found a significant positive effect on victimisation and/or perpetration outcomes",
+        "LMIC evaluations made up a substantial share of the evidence base (20 of 52, 38%), showing this is not solely a high-income-country research field"
+      ],
+      "did_not_work_for": [
+        "The other half of evaluations found no significant effect on dating violence outcomes",
+        "Programmes specifically targeting adolescents at elevated risk of dating violence victimisation or perpetration remain scarce across the evidence base"
+      ]
+    },
+    "key_message": "Pulling together 52 rigorous evaluations of adolescent dating violence prevention programmes worldwide, this review found that only about half showed a significant positive effect on victimisation or perpetration - a reminder that programme existence and evaluation are not the same as programme effectiveness. It also found a meaningful share of the evidence base now comes from low- and middle-income countries, though programmes tailored to higher-risk adolescent subgroups remain rare, pointing to where future intervention design and research should focus.",
+    "limitations": [
+      "As with any systematic review, findings are only as strong as the underlying primary studies, which vary widely in quality, sample size, and outcome measurement",
+      "Restricted to evaluations published before January 2020, so more recent programmes and trials are not captured",
+      "\"Significant positive effect\" was defined as at least one outcome improving - programmes could show partial effects without being categorised as fully effective or ineffective",
+      "Substantial variation in what counts as a dating violence 'programme' across contexts complicates direct comparison"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); note this is a review of primary studies rather than a single primary study",
+    "url": "https://doi.org/10.1016/S2352-4642(20)30276-5"
   }
 ]

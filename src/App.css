@@ -6,6 +6,7 @@ body { margin: 0; }
   color: #2c2c2a;
   background: #faf9f6;
   min-height: 100vh;
+  line-height: 1.5;
 }
 
 .app-header {
@@ -59,7 +60,7 @@ body { margin: 0; }
 .tag-success { background: #EAF3DE; color: #27500A; }
 .tag-neutral { background: #F1EFE8; color: #5F5E5A; }
 
-.study-card h3 { margin: 4px 0 0; font-size: 15px; font-weight: 600; line-height: 1.3; }
+.study-card h3 { margin: 4px 0 0; font-size: 15px; font-weight: 600; line-height: 1.5; }
 .citation { margin: 0; font-size: 12px; color: #6b6a63; }
 .location { margin: 0 0 4px; font-size: 12px; color: #6b6a63; }
 .quick-facts { margin: 0; font-size: 12px; color: #6b6a63; }
