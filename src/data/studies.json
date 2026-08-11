@@ -194,5 +194,192 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/j.ssmph.2019.100527"
+  },
+  {
+    "id": "hartmann-2025",
+    "intervention_name": "No Means No (COVID-adapted): empowerment-based self-defense program",
+    "citation": "Hartmann et al. (2025)",
+    "source": "BMC Women's Health 25:119",
+    "country": "South Africa",
+    "region": "Africa",
+    "income_setting": "Upper-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "10-19 years",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Girls (girls-only arm) and girls plus boys (co-ed arm)",
+      "sex_tag": "Girls only",
+      "setting": "School",
+      "sample_size": "15 schools",
+      "sample_size_detail": "15 schools cluster-randomised 1:1:1 to a girls-only intervention arm, a girls-plus-boys intervention arm, or control; individual participant count not confirmed in available secondary sources"
+    },
+    "intervention": {
+      "description": "COVID-adapted 'No Means No' empowerment-based self-defense curriculum using experiential learning (e.g. role play) to build practical skills for recognizing and resisting sexual assault situations, delivered either to girls only or to girls and boys separately within the same schools",
+      "duration": "School-based delivery; outcomes assessed at baseline, 3, 6, and 12 months"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Hybrid type-1 effectiveness-implementation, three-arm, cluster-randomised controlled trial across 15 schools (girls-only intervention vs girls+boys intervention vs control, 1:1:1 allocation)",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Didn't work",
+      "direction": "No statistically significant reduction in the primary outcome (past-year sexual violence exposure, including harassment or rape) in either intervention arm compared to control at 12 months",
+      "worked_for": [
+        "Demonstrated feasibility of delivering and evaluating a COVID-adapted empowerment self-defense curriculum via a hybrid effectiveness-implementation cluster trial across 15 schools despite pandemic-related disruption"
+      ],
+      "did_not_work_for": [
+        "Primary outcome: past-year sexual violence exposure (harassment or rape) among girls - no statistically significant difference between either intervention arm and control"
+      ]
+    },
+    "key_message": "A COVID-adapted version of the widely used 'No Means No' empowerment self-defense curriculum did not produce a statistically significant reduction in South African girls' past-year exposure to sexual violence after 12 months, in either the girls-only or mixed-sex delivery format. This is a notable caution alongside more positive results from earlier in-person 'No Means No' trials in Kenya and Malawi: pandemic-driven adaptations to delivery format and intensity may have diluted impact on the primary violence outcome, even where the trial itself was delivered successfully.",
+    "limitations": [
+      "COVID-19-adapted delivery and timeline may differ meaningfully from the original in-person 'No Means No' model evaluated in earlier Kenya and Malawi trials",
+      "Primary outcome relies on girls' self-reported experiences of sexual violence, with possible disclosure and social desirability bias",
+      "Trial conducted in a single city (Gqeberha) - generalizability to other South African or regional contexts is uncertain",
+      "Hybrid effectiveness-implementation design balances feasibility/implementation questions alongside effectiveness, which may affect statistical power for detecting the primary outcome"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1186/s12905-025-03647-w"
+  },
+  {
+    "id": "ford-gilboe-2020",
+    "intervention_name": "iCAN Plan 4 Safety: tailored online safety and health decision aid",
+    "citation": "Ford-Gilboe et al. (2020)",
+    "source": "BMC Public Health 20:260",
+    "country": "Canada",
+    "region": "North America",
+    "income_setting": "High-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult women",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Women only (recent IPV survivors)",
+      "sex_tag": "Women only",
+      "setting": "Online/digital",
+      "sample_size": 462,
+      "sample_size_detail": "462 Canadian women who had experienced recent intimate partner violence, randomised to a tailored interactive version or a static non-tailored version of the online tool"
+    },
+    "intervention": {
+      "description": "Interactive, tailored online safety and health decision aid (iCAN Plan 4 Safety) that generates personalized safety planning content based on a woman's own risk and context, compared against a static, non-tailored version of the same tool",
+      "duration": "Self-directed online use; outcomes measured at baseline and 3, 6, and 12 months via online surveys"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Double-blind, two-arm randomised controlled trial (tailored interactive tool vs static non-tailored tool)",
+    "outcomes_measured": ["Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Women in both the tailored and non-tailored arms improved significantly over time on depressive symptoms and PTSD symptoms (both p<.001) and on all secondary outcomes, but the tailored version showed no significant advantage over the static, non-tailored version",
+      "worked_for": [
+        "Depressive symptoms - improved over time in both arms (p<.001)",
+        "PTSD symptoms - improved over time in both arms (p<.001)",
+        "Secondary outcomes (helpfulness of safety actions, confidence in safety planning, mastery, social support, coercive control, decisional conflict) - improved over time in both arms"
+      ],
+      "did_not_work_for": [
+        "Tailoring/personalization did not produce significantly better outcomes than the static, non-tailored version on any primary or secondary measure"
+      ]
+    },
+    "key_message": "Both a tailored, interactive online safety-planning tool and a simpler static version of it were followed by sustained improvements in depression, PTSD symptoms, and safety-related outcomes for Canadian women experiencing intimate partner violence over 12 months - but personalizing the tool's content added no measurable extra benefit over the plain version. This suggests that simply providing structured, accessible online safety and health information/support may be the active ingredient, not the sophistication of tailoring, which has cost and complexity implications for how such digital tools are built and scaled.",
+    "limitations": [
+      "No true no-intervention control arm - both arms received an online tool, so overall improvement cannot be fully attributed to either version versus no support at all",
+      "All outcomes self-reported via online survey, with potential attrition and social desirability bias",
+      "Sample restricted to women who could access and were willing to use an online tool, which may limit generalizability to women with less digital access or literacy",
+      "Single-country (Canada) high-income setting; applicability to lower-resource contexts unclear"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1186/s12889-020-8152-8"
+  },
+  {
+    "id": "cramer-2024",
+    "intervention_name": "Group programme for male perpetrators of intimate partner violence, with parallel partner support",
+    "citation": "Cramer et al. (2024)",
+    "source": "BMC Public Health 24:1183",
+    "country": "England",
+    "region": "Europe",
+    "income_setting": "High-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult men and women",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (male perpetrators plus their current/ex female partners)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": 36,
+      "sample_size_detail": "36 men (22 randomised to the intervention group programme, 14 to usual care) plus 15 current/ex-partners (39% of eligible partners) providing one-to-one support and outcome data"
+    },
+    "intervention": {
+      "description": "23-week group programme for male perpetrators of intimate partner violence in heterosexual relationships, with an average of three individual one-to-one sessions for men, plus separate one-to-one support for their current or ex female partners",
+      "duration": "23 weeks group programming; outcomes assessed via self-report at 9 months"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Pragmatic, individually randomised pilot and feasibility trial with an integrated qualitative study, conducted at one site (three local-authority areas) in England",
+    "outcomes_measured": ["Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "This was a feasibility trial, not powered to detect effects on abuse outcomes; it found it was feasible to recruit, randomise, and retain both male perpetrators and female victim/survivors and to collect self-reported outcome data, with participants reporting positive engagement",
+      "worked_for": [
+        "Recruitment, randomisation, and retention of both male perpetrators and female (ex-)partners were feasible - 67% (24/36) of men and 80% (12/15) of women completed 9-month self-report questionnaires",
+        "Men who completed all or most of the programme gave positive qualitative feedback and reported behaviour change",
+        "Trial design and procedures were judged acceptable to participants"
+      ],
+      "did_not_work_for": [
+        "Not powered or designed to establish whether the programme actually reduces intimate partner violence - a full-scale effectiveness trial would be needed"
+      ]
+    },
+    "key_message": "This UK pilot showed that a randomised trial of a perpetrator-focused group programme - paired with dedicated support for (ex-)partners - is feasible to run: recruitment, randomisation, and follow-up all worked well, and men who engaged reported positive change. But as a feasibility study it cannot say whether the programme reduces abuse; that requires a larger, adequately powered effectiveness trial, which the authors recommend as a next step.",
+    "limitations": [
+      "Small sample (36 men, 15 partners) explicitly not powered to detect effectiveness on violence outcomes",
+      "Only 39% of eligible partners consented to take part, and partner data relies on their own self-report",
+      "Single site (one area, three local authorities) in England limits generalizability",
+      "No blinding of participants or intervention facilitators to allocation (not possible for a group-format behavioural intervention)"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); explicitly a feasibility/pilot study, not designed to assess effectiveness",
+    "url": "https://doi.org/10.1186/s12889-024-18640-5"
+  },
+  {
+    "id": "el-morr-2020",
+    "intervention_name": "ICT-based (mobile, web, and telephone) intimate partner violence interventions",
+    "citation": "El Morr & Layal (2020)",
+    "source": "BMC Public Health 20:1372",
+    "country": "Multiple (systematic review)",
+    "region": "Multiple",
+    "income_setting": null,
+    "completeness": "full",
+    "population": {
+      "age_range": "Varies across included studies",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Predominantly women experiencing or at risk of IPV (varies by included study)",
+      "sex_tag": "Women only",
+      "setting": "Online/digital",
+      "sample_size": 25,
+      "sample_size_detail": "25 primary studies included, evaluating ICT-based (mobile app, web-based, and telephone) interventions addressing IPV awareness, screening, prevention, treatment, and mental health"
+    },
+    "intervention": {
+      "description": "Systematic review (PRISMA-guided; PubMed, PsycINFO, and Web of Science searched) synthesizing evidence on ICT-based interventions - mobile apps, websites, and telephone-delivered tools - for IPV awareness, screening, prevention, treatment, and mental health support",
+      "duration": "Not applicable (systematic review of studies published up to the 2020 search date)"
+    },
+    "study_design": "Systematic review/synthesis",
+    "study_design_full": "Systematic review following PRISMA guidelines of 25 studies evaluating ICT-based IPV interventions",
+    "outcomes_measured": ["Attitudes/knowledge", "Violence victimization"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "ICT-based interventions were found effective mainly for screening, disclosure, and prevention, but the evidence base showed substantial heterogeneity in outcome measures, sample sizes, control groups, intervention types, and recruitment settings across the 25 studies",
+      "worked_for": [
+        "Screening for IPV via digital/ICT tools",
+        "Facilitating disclosure of IPV experiences",
+        "Prevention-oriented outcomes in several included studies"
+      ],
+      "did_not_work_for": [
+        "Consistent, comparable evidence across studies - substantial heterogeneity in design, measures, and populations limits pooled conclusions",
+        "Software usability was formally assessed in only one of the 25 included studies"
+      ]
+    },
+    "key_message": "Across 25 studies, ICT-based tools (mobile apps, websites, telephone support) show real promise for IPV screening, disclosure, and prevention - but the evidence base is too heterogeneous in design, outcomes, and populations to draw strong pooled conclusions about overall effectiveness. The review flags a near-total lack of attention to usability testing and calls for more rigorous, comparable research, including on safety, equity, and unintended consequences of digital tools in IPV programming.",
+    "limitations": [
+      "Substantial heterogeneity across included studies in outcome measures, sample sizes, control conditions, intervention types, and recruitment settings prevents meta-analytic pooling",
+      "Most included studies were from high-income settings, limiting applicability to lower-resource contexts with less digital access",
+      "Long-term effects of ICT-based interventions were rarely studied",
+      "Safety and unintended-consequences considerations (e.g. partner surveillance of app/device use) were inconsistently addressed across included studies"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); note this is a review of primary studies rather than a single primary study",
+    "url": "https://doi.org/10.1186/s12889-020-09408-8"
   }
 ]
