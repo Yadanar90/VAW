@@ -280,6 +280,7 @@ function StudyCard({ study }) {
 }
 
 export default function App() {
+  const [view, setView] = useState('dashboard') // 'dashboard' | 'results'
   const [keyword, setKeyword] = useState('')
   const [active, setActive] = useState({})
   const [yearFrom, setYearFrom] = useState(MIN_YEAR)
@@ -378,19 +379,35 @@ export default function App() {
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
 
-        <div className="charts-row">
-          <EffectivenessChart studies={filtered} />
-          <WorldMap
-            studies={filtered}
-            activeCountry={active.country}
-            onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
-          />
-        </div>
+        {view === 'dashboard' ? (
+          <>
+            <div className="charts-row">
+              <EffectivenessChart studies={filtered} />
+              <WorldMap
+                studies={filtered}
+                activeCountry={active.country}
+                onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+              />
+            </div>
 
-        <main className="results-grid">
-          {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
-          {filtered.map(s => <StudyCard key={s.id} study={s} />)}
-        </main>
+            <button className="view-results-cta" onClick={() => setView('results')} disabled={filtered.length === 0}>
+              {filtered.length === 0
+                ? 'No studies match these filters yet'
+                : `Read the ${filtered.length} matching ${filtered.length === 1 ? 'study' : 'studies'} →`}
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="back-to-dashboard" onClick={() => setView('dashboard')}>
+              &larr; Back to overview
+            </button>
+
+            <main className="results-grid">
+              {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
+              {filtered.map(s => <StudyCard key={s.id} study={s} />)}
+            </main>
+          </>
+        )}
       </div>
     </div>
   )
