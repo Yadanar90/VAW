@@ -8,13 +8,15 @@ const FILTERS = [
   { key: 'country', label: 'Country', get: s => s.country, options: [...new Set(studies.map(s => s.country))] },
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
   { key: 'income', label: 'Income setting', get: s => s.income_setting, options: [...new Set(studies.map(s => s.income_setting).filter(Boolean))] },
-  { key: 'setting', label: 'Setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
+  { key: 'setting', label: 'Intervention setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
   { key: 'design', label: 'Study design', get: s => s.study_design, options: ['RCT', 'Quasi-experimental', 'Cohort', 'Qualitative'] },
   { key: 'effect', label: 'Effectiveness', get: s => s.effect?.overall_tag, options: ['Worked', 'Mixed', "Didn't work"] },
-  { key: 'completeness', label: 'Completeness', get: s => s.completeness === 'full' ? 'Full record' : 'Citation only', options: ['Full record', 'Citation only'] },
 ]
 
 const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
+const AGE_GROUP_ORDER = ['Under 10', '10-14', '15-19', 'Mixed/all ages']
+const INCOME_ORDER = ['Low-income', 'Lower-middle-income', 'Upper-middle-income', 'High-income']
+const REGION_ORDER = [...new Set(studies.map(s => s.region))]
 const EFFECT_STATUS = [
   { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
   { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
@@ -30,8 +32,10 @@ const STUDY_YEARS = studies.map(getYear).filter(Boolean)
 const MIN_YEAR = Math.min(...STUDY_YEARS)
 const MAX_YEAR = Math.max(...STUDY_YEARS)
 
-const MIN_AGE = Math.min(...studies.map(s => s.population?.age_min).filter(v => v != null))
-const MAX_AGE = Math.max(...studies.map(s => s.population?.age_max).filter(v => v != null))
+// Fixed at the full plausible human age span, not derived from the current
+// dataset, so the filter isn't artificially narrower than what's typable.
+const MIN_AGE = 0
+const MAX_AGE = 99
 
 // Whether a study matches the current filter/search state. `skipKey` excludes
 // one FILTERS entry from the check - used to work out, for each dropdown
@@ -114,28 +118,32 @@ function FilterDropdown({ label, value, onChange, options }) {
   )
 }
 
-function EffectivenessChart({ studies }) {
+// A stacked-bar chart of effectiveness (Worked/Mixed/Didn't work) broken
+// down by some other categorical field - trial design, age group, income
+// setting, region, etc. `categories` is the fixed display order; rows with
+// zero studies are hidden rather than shown empty.
+function CategoryEffectivenessChart({ studies, title, columnLabel, categories, getCategory }) {
   const [showTable, setShowTable] = useState(false)
 
   const rows = useMemo(() => {
-    return DESIGN_ORDER
-      .map(design => {
-        const inDesign = studies.filter(s => s.study_design === design)
+    return categories
+      .map(category => {
+        const inCategory = studies.filter(s => getCategory(s) === category)
         const segments = EFFECT_STATUS.map(e => ({
           ...e,
-          count: inDesign.filter(s => s.effect?.overall_tag === e.key).length,
+          count: inCategory.filter(s => s.effect?.overall_tag === e.key).length,
         }))
-        return { design, total: inDesign.length, segments }
+        return { category, total: inCategory.length, segments }
       })
       .filter(r => r.total > 0)
-  }, [studies])
+  }, [studies, categories, getCategory])
 
   const maxTotal = Math.max(1, ...rows.map(r => r.total))
 
   return (
     <section className="chart-card">
       <div className="chart-head">
-        <h2>Trial design &amp; effectiveness</h2>
+        <h2>{title}</h2>
         {rows.length > 0 && (
           <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
             {showTable ? 'Show chart' : 'Show as table'}
@@ -160,15 +168,15 @@ function EffectivenessChart({ studies }) {
             <table className="chart-table">
               <thead>
                 <tr>
-                  <th>Trial design</th>
+                  <th>{columnLabel}</th>
                   {EFFECT_STATUS.map(e => <th key={e.key}>{e.label}</th>)}
                   <th>Total</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map(r => (
-                  <tr key={r.design}>
-                    <td>{r.design}</td>
+                  <tr key={r.category}>
+                    <td>{r.category}</td>
                     {r.segments.map(s => <td key={s.key}>{s.count}</td>)}
                     <td>{r.total}</td>
                   </tr>
@@ -178,8 +186,8 @@ function EffectivenessChart({ studies }) {
           ) : (
             <div className="chart-bars">
               {rows.map(r => (
-                <div className="bar-row" key={r.design}>
-                  <div className="bar-label">{r.design}</div>
+                <div className="bar-row" key={r.category}>
+                  <div className="bar-label">{r.category}</div>
                   <div className="bar-track-outer">
                     <div className="bar-track" style={{ width: `${(r.total / maxTotal) * 100}%` }}>
                       {r.segments.filter(s => s.count > 0).map(s => (
@@ -191,9 +199,9 @@ function EffectivenessChart({ studies }) {
                         >
                           {(s.count / r.total) * 100 >= 14 && <span className="segment-label">{s.count}</span>}
                           <span className="segment-tooltip" role="tooltip">
-                            <strong>{s.count}</strong> {s.label} · {r.design}
+                            <strong>{s.count}</strong> {s.label} · {r.category}
                           </span>
-                          <span className="sr-only">{`${r.design}: ${s.count} of ${r.total} studies ${s.label}`}</span>
+                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}`}</span>
                         </button>
                       ))}
                     </div>
@@ -280,6 +288,7 @@ function StudyCard({ study }) {
 }
 
 export default function App() {
+  const [view, setView] = useState('dashboard') // 'dashboard' | 'results'
   const [keyword, setKeyword] = useState('')
   const [active, setActive] = useState({})
   const [yearFrom, setYearFrom] = useState(MIN_YEAR)
@@ -289,12 +298,41 @@ export default function App() {
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
 
-  const matchState = { active, keyword, yearFrom, yearTo, ageFrom, ageTo }
+  // The inputs allow a transient empty string while typing (e.g. after
+  // backspacing to clear a field) without forcing it back to a number on
+  // every keystroke - see the range inputs below. An empty field just means
+  // "no bound on this side yet" for filtering purposes.
+  const numOr = (raw, fallback) => (raw === '' || Number.isNaN(raw) ? fallback : raw)
+  const effYearFrom = numOr(yearFrom, MIN_YEAR)
+  const effYearTo = numOr(yearTo, MAX_YEAR)
+  const effAgeFrom = numOr(ageFrom, MIN_AGE)
+  const effAgeTo = numOr(ageTo, MAX_AGE)
+
+  const matchState = { active, keyword, yearFrom: effYearFrom, yearTo: effYearTo, ageFrom: effAgeFrom, ageTo: effAgeTo }
 
   const filtered = useMemo(
     () => studies.filter(s => studyMatches(s, { ...matchState, skipKey: null })),
-    [active, keyword, yearFrom, yearTo, ageFrom, ageTo]
+    [active, keyword, effYearFrom, effYearTo, effAgeFrom, effAgeTo]
   )
+
+  const renderFilterDropdown = key => {
+    const f = FILTERS.find(x => x.key === key)
+    const options = f.options.map(o => ({
+      value: o,
+      label: o,
+      count: studies.filter(s => f.get(s) === o).length,
+      available: studies.some(s => f.get(s) === o && studyMatches(s, { ...matchState, skipKey: f.key })),
+    }))
+    return (
+      <FilterDropdown
+        key={f.key}
+        label={f.label}
+        value={active[f.key] || ''}
+        onChange={v => setFilter(f.key, v)}
+        options={options}
+      />
+    )
+  }
 
   return (
     <div className="app-shell">
@@ -313,84 +351,121 @@ export default function App() {
               onChange={e => setKeyword(e.target.value)}
             />
           </div>
-          <div className="filter-field">
-            <label>Publication year</label>
-            <div className="year-range">
-              <input
-                type="number"
-                min={MIN_YEAR}
-                max={yearTo}
-                value={yearFrom}
-                onChange={e => setYearFrom(Math.min(Number(e.target.value) || MIN_YEAR, yearTo))}
-                aria-label="From year"
-              />
-              <span aria-hidden="true">–</span>
-              <input
-                type="number"
-                min={yearFrom}
-                max={MAX_YEAR}
-                value={yearTo}
-                onChange={e => setYearTo(Math.max(Number(e.target.value) || MAX_YEAR, yearFrom))}
-                aria-label="To year"
-              />
-            </div>
-          </div>
+
+          {renderFilterDropdown('sex')}
+
           <div className="filter-field">
             <label>Age range</label>
             <div className="year-range">
               <input
                 type="number"
                 min={MIN_AGE}
-                max={ageTo}
+                max={MAX_AGE}
                 value={ageFrom}
-                onChange={e => setAgeFrom(Math.min(Number(e.target.value) || MIN_AGE, ageTo))}
+                onChange={e => setAgeFrom(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setAgeFrom(prev => numOr(prev, MIN_AGE))}
                 aria-label="From age"
               />
               <span aria-hidden="true">–</span>
               <input
                 type="number"
-                min={ageFrom}
+                min={MIN_AGE}
                 max={MAX_AGE}
                 value={ageTo}
-                onChange={e => setAgeTo(Math.max(Number(e.target.value) || MAX_AGE, ageFrom))}
+                onChange={e => setAgeTo(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setAgeTo(prev => numOr(prev, MAX_AGE))}
                 aria-label="To age"
               />
             </div>
           </div>
-          {FILTERS.map(f => {
-            const options = f.options.map(o => ({
-              value: o,
-              label: o,
-              count: studies.filter(s => f.get(s) === o).length,
-              available: studies.some(s => f.get(s) === o && studyMatches(s, { ...matchState, skipKey: f.key })),
-            }))
-            return (
-              <FilterDropdown
-                key={f.key}
-                label={f.label}
-                value={active[f.key] || ''}
-                onChange={v => setFilter(f.key, v)}
-                options={options}
+
+          {FILTERS.filter(f => f.key !== 'sex').map(f => renderFilterDropdown(f.key))}
+
+          <div className="filter-field">
+            <label>Publication year</label>
+            <div className="year-range">
+              <input
+                type="number"
+                min={MIN_YEAR}
+                max={MAX_YEAR}
+                value={yearFrom}
+                onChange={e => setYearFrom(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setYearFrom(prev => numOr(prev, MIN_YEAR))}
+                aria-label="From year"
               />
-            )
-          })}
+              <span aria-hidden="true">–</span>
+              <input
+                type="number"
+                min={MIN_YEAR}
+                max={MAX_YEAR}
+                value={yearTo}
+                onChange={e => setYearTo(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setYearTo(prev => numOr(prev, MAX_YEAR))}
+                aria-label="To year"
+              />
+            </div>
+          </div>
         </div>
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
 
-        <div className="charts-row">
-          <EffectivenessChart studies={filtered} />
-          <WorldMap
-            studies={filtered}
-            activeCountry={active.country}
-            onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
-          />
-        </div>
+        {view === 'dashboard' ? (
+          <>
+            <div className="charts-grid">
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Trial design & effectiveness"
+                columnLabel="Trial design"
+                categories={DESIGN_ORDER}
+                getCategory={s => s.study_design}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Age group & effectiveness"
+                columnLabel="Age group"
+                categories={AGE_GROUP_ORDER}
+                getCategory={s => s.population?.age_group_tag}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Income setting & effectiveness"
+                columnLabel="Income setting"
+                categories={INCOME_ORDER}
+                getCategory={s => s.income_setting}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Region & effectiveness"
+                columnLabel="Region"
+                categories={REGION_ORDER}
+                getCategory={s => s.region}
+              />
+            </div>
 
-        <main className="results-grid">
-          {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
-          {filtered.map(s => <StudyCard key={s.id} study={s} />)}
-        </main>
+            <WorldMap
+              studies={filtered}
+              activeCountry={active.country}
+              onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+            />
+
+            <button className="view-results-cta" onClick={() => setView('results')} disabled={filtered.length === 0}>
+              {filtered.length === 0
+                ? 'No studies match these filters yet'
+                : `Read the ${filtered.length} matching ${filtered.length === 1 ? 'study' : 'studies'} →`}
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="back-to-dashboard" onClick={() => setView('dashboard')}>
+              &larr; Back to overview
+            </button>
+
+            <main className="results-grid">
+              {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
+              {filtered.map(s => <StudyCard key={s.id} study={s} />)}
+            </main>
+          </>
+        )}
       </div>
     </div>
   )

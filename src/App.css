@@ -74,13 +74,32 @@ body { margin: 0; }
 
 .result-count { font-size: 12px; color: #6b6a63; margin: 0 0 12px 4px; }
 
-.charts-row {
+.view-results-cta {
+  display: block; width: 100%; margin-top: 4px; padding: 14px 16px;
+  background: #0C447C; color: white; border: 0; border-radius: 10px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.view-results-cta:hover:not(:disabled) { background: #0a3665; }
+.view-results-cta:disabled { background: #E6E4DB; color: #898781; cursor: default; }
+
+.back-to-dashboard {
+  align-self: flex-start; margin-bottom: 4px; background: none; border: 1px solid #d3d1c7; border-radius: 6px;
+  padding: 6px 12px; font-size: 13px; cursor: pointer; color: #2c2c2a;
+}
+.back-to-dashboard:hover { background: #F5F3EC; }
+
+.charts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   margin-bottom: 14px;
 }
-.charts-row .chart-card { margin-bottom: 0; }
+.charts-grid .chart-card { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .charts-grid { grid-template-columns: 1fr; }
+}
+
+.world-map-card { margin-bottom: 14px; }
 
 .chart-card {
   background: white; border: 1px solid #e0ddd3; border-radius: 12px;
@@ -150,7 +169,7 @@ body { margin: 0; }
 .map-legend-label { white-space: nowrap; }
 .map-legend-gradient {
   width: 110px; height: 10px; border-radius: 4px; flex: none;
-  background: linear-gradient(to right, #cde2fb, #86b6ef, #3987e5, #1c5cab, #0d366b);
+  background: linear-gradient(to right, #9ecbf5, #63a2ec, #3979dc, #1f52a8, #0d2f66);
 }
 .map-legend-item { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; }
 .map-legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex: none; }

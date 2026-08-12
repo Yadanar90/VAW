@@ -9,7 +9,7 @@ const HEIGHT = 460
 // Dataset country name -> world-atlas feature name, only where they differ.
 const COUNTRY_ALIASES = { England: 'United Kingdom' }
 
-const SEQUENTIAL_STEPS = ['#cde2fb', '#86b6ef', '#3987e5', '#1c5cab', '#0d366b']
+const SEQUENTIAL_STEPS = ['#9ecbf5', '#63a2ec', '#3979dc', '#1f52a8', '#0d2f66']
 const NO_DATA_FILL = '#eceae2'
 
 function colorForCount(count, maxCount) {
@@ -70,7 +70,7 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
     .sort((a, b) => b.count - a.count)
 
   return (
-    <section className="chart-card">
+    <section className="chart-card world-map-card">
       <div className="chart-head">
         <h2>Where the evidence comes from</h2>
         {tableRows.length > 0 && (
