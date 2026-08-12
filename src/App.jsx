@@ -32,8 +32,10 @@ const STUDY_YEARS = studies.map(getYear).filter(Boolean)
 const MIN_YEAR = Math.min(...STUDY_YEARS)
 const MAX_YEAR = Math.max(...STUDY_YEARS)
 
-const MIN_AGE = Math.min(...studies.map(s => s.population?.age_min).filter(v => v != null))
-const MAX_AGE = Math.max(...studies.map(s => s.population?.age_max).filter(v => v != null))
+// Fixed at the full plausible human age span, not derived from the current
+// dataset, so the filter isn't artificially narrower than what's typable.
+const MIN_AGE = 0
+const MAX_AGE = 99
 
 // Whether a study matches the current filter/search state. `skipKey` excludes
 // one FILTERS entry from the check - used to work out, for each dropdown
@@ -296,11 +298,21 @@ export default function App() {
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
 
-  const matchState = { active, keyword, yearFrom, yearTo, ageFrom, ageTo }
+  // The inputs allow a transient empty string while typing (e.g. after
+  // backspacing to clear a field) without forcing it back to a number on
+  // every keystroke - see the range inputs below. An empty field just means
+  // "no bound on this side yet" for filtering purposes.
+  const numOr = (raw, fallback) => (raw === '' || Number.isNaN(raw) ? fallback : raw)
+  const effYearFrom = numOr(yearFrom, MIN_YEAR)
+  const effYearTo = numOr(yearTo, MAX_YEAR)
+  const effAgeFrom = numOr(ageFrom, MIN_AGE)
+  const effAgeTo = numOr(ageTo, MAX_AGE)
+
+  const matchState = { active, keyword, yearFrom: effYearFrom, yearTo: effYearTo, ageFrom: effAgeFrom, ageTo: effAgeTo }
 
   const filtered = useMemo(
     () => studies.filter(s => studyMatches(s, { ...matchState, skipKey: null })),
-    [active, keyword, yearFrom, yearTo, ageFrom, ageTo]
+    [active, keyword, effYearFrom, effYearTo, effAgeFrom, effAgeTo]
   )
 
   const renderFilterDropdown = key => {
@@ -348,18 +360,20 @@ export default function App() {
               <input
                 type="number"
                 min={MIN_AGE}
-                max={ageTo}
+                max={MAX_AGE}
                 value={ageFrom}
-                onChange={e => setAgeFrom(Math.min(Number(e.target.value) || MIN_AGE, ageTo))}
+                onChange={e => setAgeFrom(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setAgeFrom(prev => numOr(prev, MIN_AGE))}
                 aria-label="From age"
               />
               <span aria-hidden="true">–</span>
               <input
                 type="number"
-                min={ageFrom}
+                min={MIN_AGE}
                 max={MAX_AGE}
                 value={ageTo}
-                onChange={e => setAgeTo(Math.max(Number(e.target.value) || MAX_AGE, ageFrom))}
+                onChange={e => setAgeTo(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setAgeTo(prev => numOr(prev, MAX_AGE))}
                 aria-label="To age"
               />
             </div>
@@ -373,18 +387,20 @@ export default function App() {
               <input
                 type="number"
                 min={MIN_YEAR}
-                max={yearTo}
+                max={MAX_YEAR}
                 value={yearFrom}
-                onChange={e => setYearFrom(Math.min(Number(e.target.value) || MIN_YEAR, yearTo))}
+                onChange={e => setYearFrom(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setYearFrom(prev => numOr(prev, MIN_YEAR))}
                 aria-label="From year"
               />
               <span aria-hidden="true">–</span>
               <input
                 type="number"
-                min={yearFrom}
+                min={MIN_YEAR}
                 max={MAX_YEAR}
                 value={yearTo}
-                onChange={e => setYearTo(Math.max(Number(e.target.value) || MAX_YEAR, yearFrom))}
+                onChange={e => setYearTo(e.target.value === '' ? '' : Number(e.target.value))}
+                onBlur={() => setYearTo(prev => numOr(prev, MAX_YEAR))}
                 aria-label="To year"
               />
             </div>
