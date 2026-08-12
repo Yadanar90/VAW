@@ -713,5 +713,215 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review); landmark, widely cited trial with a strong pre-specified conceptual framework and analysis plan",
     "url": "https://doi.org/10.1186/s12916-014-0122-5"
+  },
+  {
+    "id": "baird-2012",
+    "intervention_name": "Zomba cash transfer programme (conditional and unconditional cash transfers for schooling)",
+    "citation": "Baird, Garfein, McIntosh & \u00d6zler (2012)",
+    "source": "The Lancet 379(9823):1320-1329",
+    "country": "Malawi",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "13-22 years, never-married",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Girls only",
+      "sex_tag": "Girls only",
+      "setting": "Community",
+      "sample_size": 3796,
+      "sample_size_detail": "2907 baseline schoolgirls + 889 baseline dropouts across 176 enumeration areas randomised to conditional CT, unconditional CT, or control",
+      "age_min": 13,
+      "age_max": 22
+    },
+    "intervention": {
+      "description": "Monthly cash transfers to never-married adolescent girls/young women and their households over 2 school years; conditional arm required 80% school attendance, unconditional arm had no conditions; household amount $4-10/month, girl's amount $1-5/month, both randomly varied",
+      "duration": "2 years (Jan 2008-Dec 2009)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Cluster-randomised controlled trial; 176 enumeration areas in Zomba district randomised to conditional cash transfer, unconditional cash transfer, or control arms",
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
+    "effect": {
+      "overall_tag": "Worked",
+      "direction": "Effective for girls enrolled in school at baseline - large reductions in HIV and HSV-2 prevalence at 18 months; no significant effect for girls who had already dropped out of school at baseline, and no significant difference between conditional and unconditional sub-arms",
+      "worked_for": [
+        "Girls enrolled in school at baseline: HIV prevalence 1.2% (intervention) vs 3.0% (control), adjusted OR 0.36 (95% CI 0.14-0.91)",
+        "Girls enrolled in school at baseline: HSV-2 prevalence 0.7% vs 3.0%, adjusted OR 0.24 (95% CI 0.09-0.65)",
+        "Secondary outcomes: reduced early marriage and pregnancy, increased school enrolment"
+      ],
+      "did_not_work_for": [
+        "Girls who were already out of school at baseline (no significant effect on HIV/HSV-2)",
+        "No significant difference in effect between conditional vs unconditional transfer arms"
+      ]
+    },
+    "key_message": "A two-year cash transfer programme tied to school enrolment - with no direct focus on sexual behaviour change - nearly halved HIV and HSV-2 prevalence among adolescent girls who were in school at baseline, while also reducing early marriage, showing that addressing the economic and educational drivers of girls' vulnerability can meaningfully reduce violence-adjacent and health harms; it did not help girls who had already left school.",
+    "limitations": [
+      "No baseline HIV/HSV-2 data, so incidence between arms cannot be directly compared, only prevalence at 18 months",
+      "Low absolute number of biological events (7 HIV cases in the combined intervention group vs 17 in control) means effect estimates should be interpreted cautiously",
+      "Not powered to detect differences between conditional and unconditional cash transfer sub-arms",
+      "Short 2-year intervention period; durability of effects beyond the transfer period unknown",
+      "Restricted to never-married girls/young women aged 13-22 in one district of Malawi; findings may not generalise elsewhere"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1016/S0140-6736(11)61709-1"
+  },
+  {
+    "id": "devries-2015",
+    "intervention_name": "Good School Toolkit (whole-school violence prevention intervention)",
+    "citation": "Devries et al. (2015)",
+    "source": "The Lancet Global Health 3(7):e378-e386",
+    "country": "Uganda",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Primary 5-7 students, approx. 11-14 years",
+      "age_group_tag": "10-14",
+      "sex": "Mixed",
+      "sex_tag": "Mixed",
+      "setting": "School",
+      "sample_size": 3820,
+      "sample_size_detail": "3820 of 4138 randomly sampled students (92.4%) across 42 primary schools (21 intervention, 21 waitlist control)",
+      "age_min": 11,
+      "age_max": 14
+    },
+    "intervention": {
+      "description": "Good School Toolkit - a complex behavioural, whole-school intervention developed by Ugandan NGO Raising Voices, designed to change school culture and reduce corporal punishment/violence from staff toward students",
+      "duration": "18 months (Sept 2012-April 2014)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-arm cluster-randomised controlled trial; 42 primary schools in Luwero District randomised to intervention (21) or waitlist control (21), cross-sectional baseline (2012) and endline (2014) student surveys",
+    "outcomes_measured": [
+      "Violence victimization"
+    ],
+    "effect": {
+      "overall_tag": "Worked",
+      "direction": "Effective - large reduction in past-week physical violence from school staff to students at 18 months",
+      "worked_for": [
+        "Past-week physical violence from school staff: 31.0% (intervention) vs 48.7% (control), odds ratio 0.40 (95% CI 0.26-0.64, p<0.0001)"
+      ],
+      "did_not_work_for": []
+    },
+    "key_message": "A whole-school behaviour-change intervention - not targeted at individual perpetrators but at changing school culture and governance - cut the prevalence of physical violence from teachers/staff to primary school students by around 60% within 18 months, showing that structural/institutional violence prevention approaches can work at scale even without direct disciplinary sanctions.",
+    "limitations": [
+      "Could not mask school staff/students to intervention assignment, given the nature of the intervention",
+      "Possible contamination between arms noted at one point during the trial (would bias effect towards the null, so true effect may be larger)",
+      "Relies on students' self-reported experiences of violence, which may be subject to reporting/recall bias",
+      "Single district in Uganda; generalisability to other settings and age profiles may vary",
+      "434 children were referred to child protective services based on survey disclosures - an important ethical/safeguarding consideration for future replications"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1016/S2214-109X(15)00060-1"
+  },
+  {
+    "id": "stark-2018-drc",
+    "intervention_name": "Caregiver support curriculum added to adolescent girls' life skills programme (Journeys of Empowerment)",
+    "citation": "Stark et al. (2018)",
+    "source": "BMJ Global Health 3(5):e000824",
+    "country": "Democratic Republic of Congo",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Girls 10-14 years; caregivers of participating girls",
+      "age_group_tag": "10-14",
+      "sex": "Girls only (girls' outcomes); caregivers (mixed) received the added intervention",
+      "sex_tag": "Girls only",
+      "setting": "Community",
+      "sample_size": 869,
+      "sample_size_detail": "869 adolescent girls and 764 caregivers across 35 clusters (18 treatment, 17 wait-list control) in South Kivu",
+      "age_min": 10,
+      "age_max": 14
+    },
+    "intervention": {
+      "description": "Adolescent girls in both arms received 32 life skills sessions; caregivers in the treatment arm additionally received 13 complementary caregiver sessions on emotional, parental and social support skills",
+      "duration": "12 months follow-up"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-arm, single-blinded, cluster-randomised controlled trial; 35 clusters (18 treatment, 17 wait-list control) in a humanitarian/conflict-affected setting in South Kivu, DRC",
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
+    "effect": {
+      "overall_tag": "Didn't work",
+      "direction": "No effect on girls' exposure to sexual violence or other measured violence outcomes; improved caregivers' supportive parenting behaviours",
+      "worked_for": [
+        "Caregivers' supportive parenting behaviours (improved in treatment arm)",
+        "Protocol adherence (attending sessions) was associated with better outcomes"
+      ],
+      "did_not_work_for": [
+        "Girls' self-reported exposure to sexual violence in the past 12 months (primary outcome): adjusted OR 0.95 (95% CI 0.65-1.37) - no significant difference",
+        "Secondary violence outcomes for girls (physical/emotional violence, transactional sex, child marriage) - no significant differences"
+      ]
+    },
+    "key_message": "Adding a caregiver-focused curriculum to an adolescent girls' life skills programme improved caregivers' parenting behaviours, but this did not translate into a measurable reduction in girls' exposure to sexual or other violence over 12 months in this conflict-affected setting - suggesting that caregiver-only add-ons may need to be paired with more direct or frequent engagement to shift girls' violence outcomes.",
+    "limitations": [
+      "Possible within-village contamination since both treatment and control groups existed in some villages, which would bias results toward the null",
+      "All outcomes were self-reported and subject to disclosure bias, though ACASI was used to reduce social desirability bias",
+      "Conducted in a conflict-affected humanitarian setting; findings may not generalise to other populations in the region",
+      "Only 12-month follow-up; longer-term effects unknown"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1136/bmjgh-2018-000824"
+  },
+  {
+    "id": "jewkes-2019",
+    "intervention_name": "Skhokho holistic school intervention (Life Orientation curriculum plus caregiver-teen family programme)",
+    "citation": "Jewkes et al. (2019)",
+    "source": "PLOS ONE 14(10):e0223562",
+    "country": "South Africa",
+    "region": "Africa",
+    "income_setting": "Upper-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Grade 8 learners, 12-15 years",
+      "age_group_tag": "10-14",
+      "sex": "Mixed",
+      "sex_tag": "Mixed",
+      "setting": "School",
+      "sample_size": 3756,
+      "sample_size_detail": "3756 Grade 8 learners at baseline (61.8% of total), 3411 (90.8%) provided endline data, across 24 schools",
+      "age_min": 12,
+      "age_max": 15
+    },
+    "intervention": {
+      "description": "Three-arm trial: (1) no-intervention control, (2) schools' package - a Life Orientation curriculum workbook plus teacher training, (3) combined schools' package plus a family package - caregiver/teen workshops supported by clubs in year 2",
+      "duration": "18 months"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Pragmatic, three-arm cluster-randomised controlled trial across 24 state schools in Grade 8 classes; under-powered by enrolment shortfalls",
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Primary IPV/rape outcomes not statistically significant but consistently trended toward protection; several secondary violence-related outcomes significantly improved",
+      "worked_for": [
+        "Trend of lower incidence of any/severe IPV and non-partner rape perpetration across both intervention arms vs control (not statistically significant, aIRR ~0.84 for girls)",
+        "Reduced childhood trauma, bullying, and more equitable gender attitudes among boys (schools arm)",
+        "Reduced depression and bullying among girls",
+        "Reduced transactional sex and fewer pregnancies reported by girls in the family's arm",
+        "Caregivers reported improved communication, lower parenting stress, and less own IPV exposure"
+      ],
+      "did_not_work_for": [
+        "Primary outcomes (incidence of physical/sexual IPV, severe IPV, non-partner rape) did not reach statistical significance - study was substantially under-powered"
+      ]
+    },
+    "key_message": "A low-cost, holistic school intervention combining a classroom Life Orientation curriculum with an optional family/caregiver workshop showed a consistent (though not statistically significant, due to under-powering) trend toward reduced dating and sexual violence, alongside significant improvements in bullying, depression, gender attitudes and caregiver-reported outcomes - suggesting real promise that warrants a fully powered replication.",
+    "limitations": [
+      "Substantially under-powered - fewer learners contributed to the primary outcome analysis than planned, partly due to caregiver/learner consent rates",
+      "Randomisation occurred prior to recruitment, which may have influenced who consented to participate",
+      "No fidelity data for the classroom curriculum - design reflects the impact of making materials available rather than curriculum delivery itself (a pragmatic trial)",
+      "Only around a third of caregivers and learners attended all four family intervention sessions",
+      "Self-reported violence perpetration/experience may be affected by honesty and social desirability, particularly for boys"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1371/journal.pone.0223562"
   }
 ]
