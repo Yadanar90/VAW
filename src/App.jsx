@@ -21,6 +21,15 @@ const EFFECT_STATUS = [
   { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
   { key: "Didn't work", label: "Didn't work", status: 'critical', icon: '✕' },
 ]
+const EFFECT_TAG_CLASS = { Worked: 'tag-success', Mixed: 'tag-warning', "Didn't work": 'tag-critical' }
+
+const getYear = s => {
+  const m = s.citation?.match(/\((\d{4})\)/)
+  return m ? Number(m[1]) : null
+}
+const STUDY_YEARS = studies.map(getYear).filter(Boolean)
+const MIN_YEAR = Math.min(...STUDY_YEARS)
+const MAX_YEAR = Math.max(...STUDY_YEARS)
 
 function EffectivenessChart({ studies }) {
   const [showTable, setShowTable] = useState(false)
@@ -120,32 +129,40 @@ function EffectivenessChart({ studies }) {
 function StudyCard({ study }) {
   const [expanded, setExpanded] = useState(false)
   const isFull = study.completeness === 'full'
+  const effectTag = study.effect?.overall_tag
+  const effectMeta = EFFECT_STATUS.find(e => e.key === effectTag)
 
   return (
     <div className="study-card">
       <div className="card-tags">
         {isFull && study.study_design && <span className="tag tag-accent">{study.study_design}</span>}
-        <span className={`tag ${isFull ? 'tag-success' : 'tag-neutral'}`}>
-          {isFull ? 'Full record' : 'Citation only'}
-        </span>
+        {isFull && effectMeta ? (
+          <span className={`tag ${EFFECT_TAG_CLASS[effectTag]}`}>{effectMeta.icon} {effectMeta.label}</span>
+        ) : (
+          <span className="tag tag-neutral">Citation only</span>
+        )}
       </div>
       <h3>{study.intervention_name}</h3>
-      <p className="citation">{study.citation}{study.source ? ` · ${study.source}` : ''}</p>
+      <p className="citation">{study.citation}</p>
       <p className="location">{study.country}{study.region ? `, ${study.region}` : ''}</p>
 
       {isFull ? (
         <>
-          <p className="quick-facts">
-            {study.population.age_range} · n={study.population.sample_size}
-          </p>
-          <p className="key-message">{study.key_message}</p>
+          <p className="quick-facts">n={study.population.sample_size}</p>
 
-          <button className="expand-btn" onClick={() => setExpanded(!expanded)}>
-            {expanded ? 'Show less' : 'Show full detail'}
+          <button
+            className="expand-btn"
+            onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            aria-label={expanded ? 'Show less' : 'Show more'}
+          >
+            <span className={`expand-icon${expanded ? ' is-expanded' : ''}`} aria-hidden="true">⌄</span>
           </button>
 
           {expanded && (
             <div className="detail-panel">
+              <div className="key-message">{study.key_message}</div>
+              {study.source && <div><strong>Source:</strong> {study.source}</div>}
               <div><strong>Population:</strong> {study.population.age_range}, {study.population.sex}, {study.population.setting} setting</div>
               <div><strong>Sample size:</strong> {study.population.sample_size} ({study.population.sample_size_detail})</div>
               <div><strong>Design:</strong> {study.study_design_full}</div>
@@ -182,6 +199,8 @@ function StudyCard({ study }) {
 export default function App() {
   const [keyword, setKeyword] = useState('')
   const [active, setActive] = useState({})
+  const [yearFrom, setYearFrom] = useState(MIN_YEAR)
+  const [yearTo, setYearTo] = useState(MAX_YEAR)
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
 
@@ -191,13 +210,15 @@ export default function App() {
         const val = active[f.key]
         if (val && f.get(s) !== val) return false
       }
+      const year = getYear(s)
+      if (year && (year < yearFrom || year > yearTo)) return false
       if (keyword) {
         const hay = `${s.intervention_name} ${s.citation} ${s.country}`.toLowerCase()
         if (!hay.includes(keyword.toLowerCase())) return false
       }
       return true
     })
-  }, [active, keyword])
+  }, [active, keyword, yearFrom, yearTo])
 
   return (
     <div className="app-shell">
@@ -215,6 +236,28 @@ export default function App() {
               value={keyword}
               onChange={e => setKeyword(e.target.value)}
             />
+          </div>
+          <div className="filter-field">
+            <label>Publication year</label>
+            <div className="year-range">
+              <input
+                type="number"
+                min={MIN_YEAR}
+                max={yearTo}
+                value={yearFrom}
+                onChange={e => setYearFrom(Math.min(Number(e.target.value) || MIN_YEAR, yearTo))}
+                aria-label="From year"
+              />
+              <span aria-hidden="true">–</span>
+              <input
+                type="number"
+                min={yearFrom}
+                max={MAX_YEAR}
+                value={yearTo}
+                onChange={e => setYearTo(Math.max(Number(e.target.value) || MAX_YEAR, yearFrom))}
+                aria-label="To year"
+              />
+            </div>
           </div>
           {FILTERS.map(f => (
             <div className="filter-field" key={f.key}>

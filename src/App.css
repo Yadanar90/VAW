@@ -41,6 +41,11 @@ body { margin: 0; }
   width: 100%; padding: 6px 8px; border: 1px solid #d3d1c7; border-radius: 6px; font-size: 13px;
 }
 
+.year-range { display: flex; align-items: center; gap: 6px; color: #6b6a63; }
+.year-range input {
+  width: 62px; padding: 6px 6px; border: 1px solid #d3d1c7; border-radius: 6px; font-size: 13px;
+}
+
 .result-count { font-size: 12px; color: #6b6a63; margin: 0 0 12px 4px; }
 
 .charts-row {
@@ -158,6 +163,8 @@ body { margin: 0; }
 .tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
 .tag-accent { background: #E6F1FB; color: #0C447C; }
 .tag-success { background: #EAF3DE; color: #27500A; }
+.tag-warning { background: #FBF0DC; color: #7A4E06; }
+.tag-critical { background: #FBE4E1; color: #8A241C; }
 .tag-neutral { background: #F1EFE8; color: #5F5E5A; }
 
 .study-card h3 { margin: 4px 0 0; font-size: 15px; font-weight: 600; line-height: 1.5; }
@@ -168,10 +175,13 @@ body { margin: 0; }
 .key-message { font-size: 13px; line-height: 1.5; margin: 4px 0 0; }
 
 .expand-btn {
-  align-self: flex-start; margin-top: 6px; background: none; border: 1px solid #d3d1c7; border-radius: 6px;
-  padding: 5px 10px; font-size: 12px; cursor: pointer; color: #2c2c2a;
+  align-self: flex-start; margin-top: 6px; background: none; border: 1px solid #d3d1c7; border-radius: 999px;
+  width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #2c2c2a; padding: 0;
 }
 .expand-btn:hover { background: #F5F3EC; }
+.expand-icon { font-size: 16px; line-height: 1; transition: transform 0.15s ease; }
+.expand-icon.is-expanded { transform: rotate(180deg); }
 
 .detail-panel { margin-top: 8px; font-size: 13px; display: flex; flex-direction: column; gap: 8px; }
 .detail-panel ul { margin: 4px 0 0; padding-left: 18px; }
