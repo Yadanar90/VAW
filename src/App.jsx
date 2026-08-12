@@ -8,10 +8,9 @@ const FILTERS = [
   { key: 'country', label: 'Country', get: s => s.country, options: [...new Set(studies.map(s => s.country))] },
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
   { key: 'income', label: 'Income setting', get: s => s.income_setting, options: [...new Set(studies.map(s => s.income_setting).filter(Boolean))] },
-  { key: 'setting', label: 'Setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
+  { key: 'setting', label: 'Intervention setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
   { key: 'design', label: 'Study design', get: s => s.study_design, options: ['RCT', 'Quasi-experimental', 'Cohort', 'Qualitative'] },
   { key: 'effect', label: 'Effectiveness', get: s => s.effect?.overall_tag, options: ['Worked', 'Mixed', "Didn't work"] },
-  { key: 'completeness', label: 'Completeness', get: s => s.completeness === 'full' ? 'Full record' : 'Citation only', options: ['Full record', 'Citation only'] },
 ]
 
 const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
@@ -304,6 +303,25 @@ export default function App() {
     [active, keyword, yearFrom, yearTo, ageFrom, ageTo]
   )
 
+  const renderFilterDropdown = key => {
+    const f = FILTERS.find(x => x.key === key)
+    const options = f.options.map(o => ({
+      value: o,
+      label: o,
+      count: studies.filter(s => f.get(s) === o).length,
+      available: studies.some(s => f.get(s) === o && studyMatches(s, { ...matchState, skipKey: f.key })),
+    }))
+    return (
+      <FilterDropdown
+        key={f.key}
+        label={f.label}
+        value={active[f.key] || ''}
+        onChange={v => setFilter(f.key, v)}
+        options={options}
+      />
+    )
+  }
+
   return (
     <div className="app-shell">
       <header className="app-header">
@@ -321,28 +339,9 @@ export default function App() {
               onChange={e => setKeyword(e.target.value)}
             />
           </div>
-          <div className="filter-field">
-            <label>Publication year</label>
-            <div className="year-range">
-              <input
-                type="number"
-                min={MIN_YEAR}
-                max={yearTo}
-                value={yearFrom}
-                onChange={e => setYearFrom(Math.min(Number(e.target.value) || MIN_YEAR, yearTo))}
-                aria-label="From year"
-              />
-              <span aria-hidden="true">–</span>
-              <input
-                type="number"
-                min={yearFrom}
-                max={MAX_YEAR}
-                value={yearTo}
-                onChange={e => setYearTo(Math.max(Number(e.target.value) || MAX_YEAR, yearFrom))}
-                aria-label="To year"
-              />
-            </div>
-          </div>
+
+          {renderFilterDropdown('sex')}
+
           <div className="filter-field">
             <label>Age range</label>
             <div className="year-range">
@@ -365,23 +364,31 @@ export default function App() {
               />
             </div>
           </div>
-          {FILTERS.map(f => {
-            const options = f.options.map(o => ({
-              value: o,
-              label: o,
-              count: studies.filter(s => f.get(s) === o).length,
-              available: studies.some(s => f.get(s) === o && studyMatches(s, { ...matchState, skipKey: f.key })),
-            }))
-            return (
-              <FilterDropdown
-                key={f.key}
-                label={f.label}
-                value={active[f.key] || ''}
-                onChange={v => setFilter(f.key, v)}
-                options={options}
+
+          {FILTERS.filter(f => f.key !== 'sex').map(f => renderFilterDropdown(f.key))}
+
+          <div className="filter-field">
+            <label>Publication year</label>
+            <div className="year-range">
+              <input
+                type="number"
+                min={MIN_YEAR}
+                max={yearTo}
+                value={yearFrom}
+                onChange={e => setYearFrom(Math.min(Number(e.target.value) || MIN_YEAR, yearTo))}
+                aria-label="From year"
               />
-            )
-          })}
+              <span aria-hidden="true">–</span>
+              <input
+                type="number"
+                min={yearFrom}
+                max={MAX_YEAR}
+                value={yearTo}
+                onChange={e => setYearTo(Math.max(Number(e.target.value) || MAX_YEAR, yearFrom))}
+                aria-label="To year"
+              />
+            </div>
+          </div>
         </div>
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
