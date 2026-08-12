@@ -471,5 +471,53 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S2214-109X(14)70344-4"
+  },
+  {
+    "id": "baiocchi-2017",
+    "intervention_name": "IMpower (girls) + 50:50 (boys): empowerment, self-defense, and gender-norms curriculum",
+    "citation": "Baiocchi et al. (2017)",
+    "source": "Prevention Science 18:818-827",
+    "country": "Kenya",
+    "region": "Africa",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "10-16 years",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Girls (outcomes measured); boys received a parallel gender-norms curriculum (50:50) alongside them",
+      "sex_tag": "Girls only",
+      "setting": "School",
+      "sample_size": 5686,
+      "sample_size_detail": "28 primary schools in Nairobi informal settlements (14 intervention, 14 standard-of-care control); 3147 girls surveyed in intervention schools and 2539 in control schools (open-cohort, cross-sectional surveys at baseline and ~9-month follow-up)"
+    },
+    "intervention": {
+      "description": "Six 2-hour classroom sessions delivered by instructors from the same informal settlements: girls received IMpower (empowerment, gender relations, and self-defense skills), boys received 50:50 (healthy gender norms), delivered in parallel at the same schools; control schools received a health and hygiene curriculum",
+      "duration": "6 sessions; outcomes assessed at baseline and ~9 months later"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Cluster-randomised, matched-pairs, parallel trial; 28 primary schools matched on school size, academic performance, and other covariates before randomisation to intervention or standard-of-care control (14 pairs)",
+    "outcomes_measured": ["Violence victimization", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Worked",
+      "direction": "Significant reduction in past-year sexual assault (risk difference -3.7 percentage points, p=0.03, 95% CI 0.4-8.0) and significant increase in generalised self-efficacy (+0.19 on a 1-4 scale, p=0.0004) in intervention schools relative to control",
+      "worked_for": [
+        "Past-year sexual assault - reduced from a baseline of ~7.3% (risk difference -3.7 percentage points; p=0.03, 95% CI 0.4-8.0%)",
+        "Generalised self-efficacy scale (GSES) - increased by 0.19 points on a 1-4 scale (p=0.0004, 95% CI 0.08-0.39)",
+        "Disclosure of sexual assault at follow-up trended higher in the intervention group (65%) than control (52%, p=0.051), though this was an exploratory rather than primary outcome"
+      ],
+      "did_not_work_for": [
+        "Distribution of who girls disclosed their assault to (boyfriend, relative, friend, authority figure) showed no meaningful shift between intervention and control - though this was an exploratory, not primary, outcome"
+      ]
+    },
+    "key_message": "In a large cluster-randomised trial across 28 Nairobi informal-settlement primary schools, a parallel empowerment/self-defense curriculum for girls (IMpower) alongside a gender-norms curriculum for boys (50:50) produced a statistically significant reduction in past-year sexual assault and a significant increase in girls' self-efficacy after just six 2-hour sessions. This is a notable positive counterpoint within the empowerment self-defense literature on this platform - the same intervention family's COVID-adapted South African replication (Hartmann et al. 2025) did not find a significant effect on its primary violence outcome, suggesting delivery intensity, age group, or context may matter for whether these programmes work.",
+    "limitations": [
+      "All outcomes self-reported via unlinked, ballot-box-style classroom surveys with no individual identifiers, limiting ability to track individual-level change over time",
+      "Course instructors also administered the outcome surveys to their own students, creating potential demand effects/social desirability bias, especially in the intervention arm",
+      "Relatively short follow-up period (about 9 months)",
+      "Possible cross-contamination between geographically close intervention and control schools/communities, despite using distance in the matching/randomisation",
+      "Two schools were lost to follow-up after randomisation, and the open-cohort design meant individual students were not tracked between baseline and follow-up"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); notably strong methodology for its setting - matched-pairs cluster randomisation across 28 schools with a pre-specified difference-in-differences/bootstrap analysis",
+    "url": "https://doi.org/10.1007/s11121-016-0701-0"
   }
 ]
