@@ -1,10 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import studies from './data/studies.json'
 import WorldMap from './WorldMap'
 import './App.css'
 
 const FILTERS = [
-  { key: 'age', label: 'Age group', get: s => s.population?.age_group_tag, options: ['Under 10', '10-14', '15-19', 'Mixed/all ages'] },
   { key: 'sex', label: 'Population', get: s => s.population?.sex_tag, options: ['Girls only', 'Boys only', 'Women only', 'Mixed'] },
   { key: 'country', label: 'Country', get: s => s.country, options: [...new Set(studies.map(s => s.country))] },
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
@@ -30,6 +29,90 @@ const getYear = s => {
 const STUDY_YEARS = studies.map(getYear).filter(Boolean)
 const MIN_YEAR = Math.min(...STUDY_YEARS)
 const MAX_YEAR = Math.max(...STUDY_YEARS)
+
+const MIN_AGE = Math.min(...studies.map(s => s.population?.age_min).filter(v => v != null))
+const MAX_AGE = Math.max(...studies.map(s => s.population?.age_max).filter(v => v != null))
+
+// Whether a study matches the current filter/search state. `skipKey` excludes
+// one FILTERS entry from the check - used to work out, for each dropdown
+// option, whether it's reachable in combination with every OTHER active
+// filter (so we can show "3 studies have this tag, but 0 combine with your
+// other selections" instead of silently hiding or renumbering options).
+function studyMatches(s, { active, skipKey, keyword, yearFrom, yearTo, ageFrom, ageTo }) {
+  for (const f of FILTERS) {
+    if (f.key === skipKey) continue
+    const val = active[f.key]
+    if (val && f.get(s) !== val) return false
+  }
+  const year = getYear(s)
+  if (year && (year < yearFrom || year > yearTo)) return false
+  const { age_min, age_max } = s.population || {}
+  if (age_min != null && age_max != null && (age_min > ageTo || age_max < ageFrom)) return false
+  if (keyword) {
+    const hay = `${s.intervention_name} ${s.citation} ${s.country}`.toLowerCase()
+    if (!hay.includes(keyword.toLowerCase())) return false
+  }
+  return true
+}
+
+// A dropdown whose options show how many studies carry that value (dataset-
+// wide, so the number never changes) and are colored green/grey depending on
+// whether that option is still reachable given every other active filter.
+function FilterDropdown({ label, value, onChange, options }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onDocClick = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    const onKeyDown = e => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('mousedown', onDocClick)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', onDocClick)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
+
+  const selected = options.find(o => o.value === value)
+
+  return (
+    <div className="filter-field dropdown-field" ref={ref}>
+      <label>{label}</label>
+      <button
+        type="button"
+        className="dropdown-trigger"
+        onClick={() => setOpen(v => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>{selected ? selected.label : 'Any'}</span>
+        <span className={`expand-icon${open ? ' is-expanded' : ''}`} aria-hidden="true">⌄</span>
+      </button>
+      {open && (
+        <ul className="dropdown-menu" role="listbox">
+          <li role="option" aria-selected={!value}>
+            <button type="button" className="dropdown-option" onClick={() => { onChange(''); setOpen(false) }}>
+              Any
+            </button>
+          </li>
+          {options.map(o => (
+            <li key={o.value} role="option" aria-selected={value === o.value}>
+              <button
+                type="button"
+                className={`dropdown-option${value === o.value ? ' is-selected' : ''}`}
+                onClick={() => { onChange(o.value); setOpen(false) }}
+              >
+                <span>{o.label}</span>
+                <span className={o.available ? 'count-available' : 'count-unavailable'}>({o.count})</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}
 
 function EffectivenessChart({ studies }) {
   const [showTable, setShowTable] = useState(false)
@@ -201,24 +284,17 @@ export default function App() {
   const [active, setActive] = useState({})
   const [yearFrom, setYearFrom] = useState(MIN_YEAR)
   const [yearTo, setYearTo] = useState(MAX_YEAR)
+  const [ageFrom, setAgeFrom] = useState(MIN_AGE)
+  const [ageTo, setAgeTo] = useState(MAX_AGE)
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
 
-  const filtered = useMemo(() => {
-    return studies.filter(s => {
-      for (const f of FILTERS) {
-        const val = active[f.key]
-        if (val && f.get(s) !== val) return false
-      }
-      const year = getYear(s)
-      if (year && (year < yearFrom || year > yearTo)) return false
-      if (keyword) {
-        const hay = `${s.intervention_name} ${s.citation} ${s.country}`.toLowerCase()
-        if (!hay.includes(keyword.toLowerCase())) return false
-      }
-      return true
-    })
-  }, [active, keyword, yearFrom, yearTo])
+  const matchState = { active, keyword, yearFrom, yearTo, ageFrom, ageTo }
+
+  const filtered = useMemo(
+    () => studies.filter(s => studyMatches(s, { ...matchState, skipKey: null })),
+    [active, keyword, yearFrom, yearTo, ageFrom, ageTo]
+  )
 
   return (
     <div className="app-shell">
@@ -259,15 +335,45 @@ export default function App() {
               />
             </div>
           </div>
-          {FILTERS.map(f => (
-            <div className="filter-field" key={f.key}>
-              <label>{f.label}</label>
-              <select value={active[f.key] || ''} onChange={e => setFilter(f.key, e.target.value)}>
-                <option value="">Any</option>
-                {f.options.map(o => <option key={o} value={o}>{o}</option>)}
-              </select>
+          <div className="filter-field">
+            <label>Age range</label>
+            <div className="year-range">
+              <input
+                type="number"
+                min={MIN_AGE}
+                max={ageTo}
+                value={ageFrom}
+                onChange={e => setAgeFrom(Math.min(Number(e.target.value) || MIN_AGE, ageTo))}
+                aria-label="From age"
+              />
+              <span aria-hidden="true">–</span>
+              <input
+                type="number"
+                min={ageFrom}
+                max={MAX_AGE}
+                value={ageTo}
+                onChange={e => setAgeTo(Math.max(Number(e.target.value) || MAX_AGE, ageFrom))}
+                aria-label="To age"
+              />
             </div>
-          ))}
+          </div>
+          {FILTERS.map(f => {
+            const options = f.options.map(o => ({
+              value: o,
+              label: o,
+              count: studies.filter(s => f.get(s) === o).length,
+              available: studies.some(s => f.get(s) === o && studyMatches(s, { ...matchState, skipKey: f.key })),
+            }))
+            return (
+              <FilterDropdown
+                key={f.key}
+                label={f.label}
+                value={active[f.key] || ''}
+                onChange={v => setFilter(f.key, v)}
+                options={options}
+              />
+            )
+          })}
         </div>
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>

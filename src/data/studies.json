@@ -15,7 +15,9 @@
       "sex_tag": "Mixed",
       "setting": "School",
       "sample_size": 344,
-      "sample_size_detail": "200 experimental, 144 control"
+      "sample_size_detail": "200 experimental, 144 control",
+      "age_min": 7,
+      "age_max": 9
     },
     "intervention": {
       "description": "3 units (gender stereotypes, gender-based IPV, socio-emotional skills), 2 sessions/week for 3 months, delivered in classroom",
@@ -72,7 +74,9 @@
       "sex_tag": "Mixed",
       "setting": "Community",
       "sample_size": 7198,
-      "sample_size_detail": "48 clusters of ~500 households; 3606 women (intervention) and 3592 women (control) in the post-intervention survey"
+      "sample_size_detail": "48 clusters of ~500 households; 3606 women (intervention) and 3592 women (control) in the post-intervention survey",
+      "age_min": 15,
+      "age_max": 49
     },
     "intervention": {
       "description": "Community mobilisation over 3 years of exposure (delivered 2018-2023, delayed by COVID-19): women's, men's, and youth peer-education groups; volunteer \"sanginis\" who identify and support survivors; caseworkers providing crisis, legal, and psychosocial support.",
@@ -128,7 +132,9 @@
       "sex_tag": "Girls only",
       "setting": "Community",
       "sample_size": 919,
-      "sample_size_detail": "457 intervention, 462 control (wait-list); Sudanese and South Sudanese refugee girls in Ethiopian camps"
+      "sample_size_detail": "457 intervention, 462 control (wait-list); Sudanese and South Sudanese refugee girls in Ethiopian camps",
+      "age_min": 13,
+      "age_max": 19
     },
     "intervention": {
       "description": "Weekly life skills sessions (30 total) delivered by trained young female refugee mentors in \"safe spaces,\" plus 8 monthly discussion sessions for caregivers, covering communication, GBV awareness, and sexual/reproductive health.",
@@ -182,7 +188,9 @@
       "sex_tag": "Girls only",
       "setting": "Community",
       "sample_size": 1216,
-      "sample_size_detail": "84 villages, three arms (control/GE/GE+); 1176 analyzed at 24-month follow-up"
+      "sample_size_detail": "84 villages, three arms (control/GE/GE+); 1176 analyzed at 24-month follow-up",
+      "age_min": 13,
+      "age_max": 14
     },
     "intervention": {
       "description": "32 weekly life-skills sessions with trained female mentors in safe spaces, 8 monthly caregiver discussion groups, and individual girl savings accounts ($2/month). GE+ variant adds a cash incentive to caregivers for girls' attendance (~$1.25/session).",
@@ -237,7 +245,9 @@
       "sex_tag": "Girls only",
       "setting": "School",
       "sample_size": "15 schools",
-      "sample_size_detail": "15 schools cluster-randomised 1:1:1 to a girls-only intervention arm, a girls-plus-boys intervention arm, or control; individual participant count not confirmed in available secondary sources"
+      "sample_size_detail": "15 schools cluster-randomised 1:1:1 to a girls-only intervention arm, a girls-plus-boys intervention arm, or control; individual participant count not confirmed in available secondary sources",
+      "age_min": 10,
+      "age_max": 19
     },
     "intervention": {
       "description": "COVID-adapted 'No Means No' empowerment-based self-defense curriculum using experiential learning (e.g. role play) to build practical skills for recognizing and resisting sexual assault situations, delivered either to girls only or to girls and boys separately within the same schools",
@@ -285,7 +295,9 @@
       "sex_tag": "Women only",
       "setting": "Online/digital",
       "sample_size": 462,
-      "sample_size_detail": "462 Canadian women who had experienced recent intimate partner violence, randomised to a tailored interactive version or a static non-tailored version of the online tool"
+      "sample_size_detail": "462 Canadian women who had experienced recent intimate partner violence, randomised to a tailored interactive version or a static non-tailored version of the online tool",
+      "age_min": 18,
+      "age_max": 99
     },
     "intervention": {
       "description": "Interactive, tailored online safety and health decision aid (iCAN Plan 4 Safety) that generates personalized safety planning content based on a woman's own risk and context, compared against a static, non-tailored version of the same tool",
@@ -335,7 +347,9 @@
       "sex_tag": "Mixed",
       "setting": "Community",
       "sample_size": 36,
-      "sample_size_detail": "36 men (22 randomised to the intervention group programme, 14 to usual care) plus 15 current/ex-partners (39% of eligible partners) providing one-to-one support and outcome data"
+      "sample_size_detail": "36 men (22 randomised to the intervention group programme, 14 to usual care) plus 15 current/ex-partners (39% of eligible partners) providing one-to-one support and outcome data",
+      "age_min": 18,
+      "age_max": 99
     },
     "intervention": {
       "description": "23-week group programme for male perpetrators of intimate partner violence in heterosexual relationships, with an average of three individual one-to-one sessions for men, plus separate one-to-one support for their current or ex female partners",
@@ -385,7 +399,9 @@
       "sex_tag": "Women only",
       "setting": "Community",
       "sample_size": 1049,
-      "sample_size_detail": "66 pre-existing microfinance loan groups in Mwanza City randomised in blocks of six (33 intervention groups, n=544 women; 33 control groups, n=505 women)"
+      "sample_size_detail": "66 pre-existing microfinance loan groups in Mwanza City randomised in blocks of six (33 intervention groups, n=544 women; 33 control groups, n=505 women)",
+      "age_min": 18,
+      "age_max": 99
     },
     "intervention": {
       "description": "10-session participatory gender-training curriculum ('MAISHA') delivered to women in their existing microfinance loan groups, addressing gender norms, communication, and economic/social empowerment to prevent intimate partner violence; control groups were wait-listed for the intervention after the trial",
@@ -438,7 +454,9 @@
       "sex_tag": "Mixed",
       "setting": "Community",
       "sample_size": "11 clusters",
-      "sample_size_detail": "4 intervention clusters and 7 control clusters drawn from the existing Rakai Community Cohort Study; individual-level enrollment numbers not confirmed in available secondary sources"
+      "sample_size_detail": "4 intervention clusters and 7 control clusters drawn from the existing Rakai Community Cohort Study; individual-level enrollment numbers not confirmed in available secondary sources",
+      "age_min": 18,
+      "age_max": 99
     },
     "intervention": {
       "description": "Community-level mobilisation to shift attitudes, social norms, and behaviours around intimate partner violence, layered onto standard HIV testing/counselling services, plus screening and brief intervention promoting safe HIV-status disclosure among women (the SHARE Project)",
@@ -488,7 +506,9 @@
       "sex_tag": "Girls only",
       "setting": "School",
       "sample_size": 5686,
-      "sample_size_detail": "28 primary schools in Nairobi informal settlements (14 intervention, 14 standard-of-care control); 3147 girls surveyed in intervention schools and 2539 in control schools (open-cohort, cross-sectional surveys at baseline and ~9-month follow-up)"
+      "sample_size_detail": "28 primary schools in Nairobi informal settlements (14 intervention, 14 standard-of-care control); 3147 girls surveyed in intervention schools and 2539 in control schools (open-cohort, cross-sectional surveys at baseline and ~9-month follow-up)",
+      "age_min": 10,
+      "age_max": 16
     },
     "intervention": {
       "description": "Six 2-hour classroom sessions delivered by instructors from the same informal settlements: girls received IMpower (empowerment, gender relations, and self-defense skills), boys received 50:50 (healthy gender norms), delivered in parallel at the same schools; control schools received a health and hygiene curriculum",
@@ -496,7 +516,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Cluster-randomised, matched-pairs, parallel trial; 28 primary schools matched on school size, academic performance, and other covariates before randomisation to intervention or standard-of-care control (14 pairs)",
-    "outcomes_measured": ["Violence victimization", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Worked",
       "direction": "Significant reduction in past-year sexual assault (risk difference -3.7 percentage points, p=0.03, 95% CI 0.4-8.0) and significant increase in generalised self-efficacy (+0.19 on a 1-4 scale, p=0.0004) in intervention schools relative to control",
@@ -536,7 +559,9 @@
       "sex_tag": "Mixed",
       "setting": "School",
       "sample_size": 1752,
-      "sample_size_detail": "40 single-sex public schools in Hyderabad, Pakistan (20 intervention, 20 control); 1752 grade 6 students enrolled (929 intervention, 823 control), 91% retained at 24 months, no school dropout"
+      "sample_size_detail": "40 single-sex public schools in Hyderabad, Pakistan (20 intervention, 20 control); 1752 grade 6 students enrolled (929 intervention, 823 control), 91% retained at 24 months, no school dropout",
+      "age_min": 10,
+      "age_max": 12
     },
     "intervention": {
       "description": "Two-year play-based life-skills programme (Right To Play's Positive Child and Youth Development Programme): biweekly structured game led by a trained coach, followed by 30 minutes of critical reflection and discussion",
@@ -544,7 +569,11 @@
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm cluster-randomised controlled trial; 40 single-sex public schools (20 intervention, 20 control)",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Worked",
       "direction": "Significant reductions in peer violence victimization, perpetration, and depression for both boys and girls at 24 months, with substantially larger effects for girls",
@@ -588,7 +617,9 @@
       "sex_tag": "Women only",
       "setting": "Community",
       "sample_size": 934,
-      "sample_size_detail": "24 rural villages randomised (village-level, non-blinded RCT); 981 partnered women enrolled, 934 (95.2%) completed baseline and endline data collection"
+      "sample_size_detail": "24 rural villages randomised (village-level, non-blinded RCT); 981 partnered women enrolled, 934 (95.2%) completed baseline and endline data collection",
+      "age_min": 18,
+      "age_max": 99
     },
     "intervention": {
       "description": "Addition of 'Gender Dialogue Groups' (8 sessions targeting women and their male partners on gender norms) to an existing Village Savings and Loan Association (VSLA) economic-empowerment group savings program, compared to VSLA savings alone",
@@ -596,7 +627,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Two-armed, non-blinded, village-randomised controlled pilot trial (VSLA + Gender Dialogue Groups vs VSLA only); 24 villages",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "No significant reduction in the primary outcome (past-year physical and/or sexual IPV) in intent-to-treat analysis, but significant reductions in economic abuse and acceptance of wife-beating; per-protocol analysis among higher-attendance couples showed a significant reduction in physical IPV",
@@ -640,7 +674,9 @@
       "sex_tag": "Mixed",
       "setting": "Community",
       "sample_size": 4115,
-      "sample_size_detail": "8 communities in Kampala, Uganda (4 intervention, 4 control), pair-matched; repeated cross-sectional random samples of community members aged 18-49 at baseline (n=1583) and 4-year follow-up (n=2532)"
+      "sample_size_detail": "8 communities in Kampala, Uganda (4 intervention, 4 control), pair-matched; repeated cross-sectional random samples of community members aged 18-49 at baseline (n=1583) and 4-year follow-up (n=2532)",
+      "age_min": 18,
+      "age_max": 49
     },
     "intervention": {
       "description": "SASA! community mobilisation intervention: local activists and staged phases (Start, Awareness, Support, Action) working to shift community norms around power, gender, and violence, aiming to reduce IPV and HIV risk",
@@ -648,7 +684,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Pair-matched, cluster-randomised controlled trial; 8 communities (4 intervention, 4 control) in Kampala, Uganda; repeated cross-sectional surveys at baseline and 4-year follow-up, adjusted cluster-level intention-to-treat analysis",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "Significant improvements in attitudes/social norms and community response to violence, and directionally lower past-year physical and sexual IPV, though the IPV prevalence reductions themselves did not reach statistical significance",
