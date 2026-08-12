@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import studies from './data/studies.json'
 import WorldMap from './WorldMap'
-import headerPattern from './assets/header-pattern.svg'
 import './App.css'
 
 const FILTERS = [
@@ -337,7 +336,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="app-header" style={{ backgroundImage: `url("${headerPattern}")` }}>
+      <header className="app-header">
         <h1>Prevention of Violence Against Women and Girls Evidence Platform</h1>
       </header>
 
