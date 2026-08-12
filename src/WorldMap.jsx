@@ -70,7 +70,7 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
     .sort((a, b) => b.count - a.count)
 
   return (
-    <section className="chart-card">
+    <section className="chart-card world-map-card">
       <div className="chart-head">
         <h2>Where the evidence comes from</h2>
         {tableRows.length > 0 && (

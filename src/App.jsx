@@ -15,6 +15,9 @@ const FILTERS = [
 ]
 
 const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
+const AGE_GROUP_ORDER = ['Under 10', '10-14', '15-19', 'Mixed/all ages']
+const INCOME_ORDER = ['Low-income', 'Lower-middle-income', 'Upper-middle-income', 'High-income']
+const REGION_ORDER = [...new Set(studies.map(s => s.region))]
 const EFFECT_STATUS = [
   { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
   { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
@@ -114,28 +117,32 @@ function FilterDropdown({ label, value, onChange, options }) {
   )
 }
 
-function EffectivenessChart({ studies }) {
+// A stacked-bar chart of effectiveness (Worked/Mixed/Didn't work) broken
+// down by some other categorical field - trial design, age group, income
+// setting, region, etc. `categories` is the fixed display order; rows with
+// zero studies are hidden rather than shown empty.
+function CategoryEffectivenessChart({ studies, title, columnLabel, categories, getCategory }) {
   const [showTable, setShowTable] = useState(false)
 
   const rows = useMemo(() => {
-    return DESIGN_ORDER
-      .map(design => {
-        const inDesign = studies.filter(s => s.study_design === design)
+    return categories
+      .map(category => {
+        const inCategory = studies.filter(s => getCategory(s) === category)
         const segments = EFFECT_STATUS.map(e => ({
           ...e,
-          count: inDesign.filter(s => s.effect?.overall_tag === e.key).length,
+          count: inCategory.filter(s => s.effect?.overall_tag === e.key).length,
         }))
-        return { design, total: inDesign.length, segments }
+        return { category, total: inCategory.length, segments }
       })
       .filter(r => r.total > 0)
-  }, [studies])
+  }, [studies, categories, getCategory])
 
   const maxTotal = Math.max(1, ...rows.map(r => r.total))
 
   return (
     <section className="chart-card">
       <div className="chart-head">
-        <h2>Trial design &amp; effectiveness</h2>
+        <h2>{title}</h2>
         {rows.length > 0 && (
           <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
             {showTable ? 'Show chart' : 'Show as table'}
@@ -160,15 +167,15 @@ function EffectivenessChart({ studies }) {
             <table className="chart-table">
               <thead>
                 <tr>
-                  <th>Trial design</th>
+                  <th>{columnLabel}</th>
                   {EFFECT_STATUS.map(e => <th key={e.key}>{e.label}</th>)}
                   <th>Total</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map(r => (
-                  <tr key={r.design}>
-                    <td>{r.design}</td>
+                  <tr key={r.category}>
+                    <td>{r.category}</td>
                     {r.segments.map(s => <td key={s.key}>{s.count}</td>)}
                     <td>{r.total}</td>
                   </tr>
@@ -178,8 +185,8 @@ function EffectivenessChart({ studies }) {
           ) : (
             <div className="chart-bars">
               {rows.map(r => (
-                <div className="bar-row" key={r.design}>
-                  <div className="bar-label">{r.design}</div>
+                <div className="bar-row" key={r.category}>
+                  <div className="bar-label">{r.category}</div>
                   <div className="bar-track-outer">
                     <div className="bar-track" style={{ width: `${(r.total / maxTotal) * 100}%` }}>
                       {r.segments.filter(s => s.count > 0).map(s => (
@@ -191,9 +198,9 @@ function EffectivenessChart({ studies }) {
                         >
                           {(s.count / r.total) * 100 >= 14 && <span className="segment-label">{s.count}</span>}
                           <span className="segment-tooltip" role="tooltip">
-                            <strong>{s.count}</strong> {s.label} · {r.design}
+                            <strong>{s.count}</strong> {s.label} · {r.category}
                           </span>
-                          <span className="sr-only">{`${r.design}: ${s.count} of ${r.total} studies ${s.label}`}</span>
+                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}`}</span>
                         </button>
                       ))}
                     </div>
@@ -381,14 +388,42 @@ export default function App() {
 
         {view === 'dashboard' ? (
           <>
-            <div className="charts-row">
-              <EffectivenessChart studies={filtered} />
-              <WorldMap
+            <div className="charts-grid">
+              <CategoryEffectivenessChart
                 studies={filtered}
-                activeCountry={active.country}
-                onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+                title="Trial design & effectiveness"
+                columnLabel="Trial design"
+                categories={DESIGN_ORDER}
+                getCategory={s => s.study_design}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Age group & effectiveness"
+                columnLabel="Age group"
+                categories={AGE_GROUP_ORDER}
+                getCategory={s => s.population?.age_group_tag}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Income setting & effectiveness"
+                columnLabel="Income setting"
+                categories={INCOME_ORDER}
+                getCategory={s => s.income_setting}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Region & effectiveness"
+                columnLabel="Region"
+                categories={REGION_ORDER}
+                getCategory={s => s.region}
               />
             </div>
+
+            <WorldMap
+              studies={filtered}
+              activeCountry={active.country}
+              onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+            />
 
             <button className="view-results-cta" onClick={() => setView('results')} disabled={filtered.length === 0}>
               {filtered.length === 0
