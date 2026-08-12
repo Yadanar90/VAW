@@ -519,5 +519,160 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review); notably strong methodology for its setting - matched-pairs cluster randomisation across 28 schools with a pre-specified difference-in-differences/bootstrap analysis",
     "url": "https://doi.org/10.1007/s11121-016-0701-0"
+  },
+  {
+    "id": "karmaliani-2020",
+    "intervention_name": "Right To Play Positive Child and Youth Development Programme (play-based life-skills)",
+    "citation": "Karmaliani et al. (2020)",
+    "source": "Global Health Action 13:1836604",
+    "country": "Pakistan",
+    "region": "Asia",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Grade 6 students (approx. 10-12 years)",
+      "age_group_tag": "10-14",
+      "sex": "Mixed (delivered in single-sex schools: 20 boys' schools, 20 girls' schools)",
+      "sex_tag": "Mixed",
+      "setting": "School",
+      "sample_size": 1752,
+      "sample_size_detail": "40 single-sex public schools in Hyderabad, Pakistan (20 intervention, 20 control); 1752 grade 6 students enrolled (929 intervention, 823 control), 91% retained at 24 months, no school dropout"
+    },
+    "intervention": {
+      "description": "Two-year play-based life-skills programme (Right To Play's Positive Child and Youth Development Programme): biweekly structured game led by a trained coach, followed by 30 minutes of critical reflection and discussion",
+      "duration": "2 years; outcomes assessed at 24 months"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-arm cluster-randomised controlled trial; 40 single-sex public schools (20 intervention, 20 control)",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "effect": {
+      "overall_tag": "Worked",
+      "direction": "Significant reductions in peer violence victimization, perpetration, and depression for both boys and girls at 24 months, with substantially larger effects for girls",
+      "worked_for": [
+        "Peer violence victimization - girls: 58.5% reduction (intervention) vs 21.3% (control); boys: 33.3% vs 27.8%",
+        "Peer violence perpetration - girls: 55.6% reduction vs 27.6% (control); boys: 25.3% vs 11.1%",
+        "Depression scores - girls: 9.5% reduction vs 5.6% (control); boys: 7.2% vs 4.8%",
+        "Gender attitudes became significantly less patriarchal in the intervention arm, with a greater shift for girls",
+        "Corporal punishment at school and physical punishment at home reported significantly less often in the intervention arm, with a greater reduction for girls",
+        "Exploratory outcomes (experiencing hunger, witnessing fighting between father figures, witnessing mother being beaten at home) were significantly less common in the intervention arm for both sexes"
+      ],
+      "did_not_work_for": [
+        "Self-assessed school performance score - no significant change",
+        "Days of school missed in the past 4 weeks - increased in both arms, not significantly different between them",
+        "Proportion of children promised in marriage - trended favourably but not statistically significant"
+      ]
+    },
+    "key_message": "A two-year, biweekly play-based life-skills programme delivered in Pakistani public schools produced significant reductions in peer violence victimization, perpetration, and depression for both boys and girls - with notably larger effects for girls (e.g. a 58.5% reduction in victimization vs 21.3% in control, compared to 33.3% vs 27.8% for boys). The programme also shifted gender attitudes and reduced corporal/physical punishment exposure, again with stronger effects for girls, and reduced children's exposure to witnessing violence at home - suggesting that broad life-skills empowerment programming in early adolescence can have gendered protective effects that go beyond its immediate peer-violence target.",
+    "limitations": [
+      "All outcome measures were self-reported over a 'last four weeks' recall window",
+      "Coaches were not blinded to primary outcomes, and the independent research team's closer-than-usual oversight of sessions may have strengthened programme adherence beyond typical delivery conditions",
+      "Individual-level intervention dose/attendance was not analysed",
+      "Girls in the intervention arm had slightly higher baseline scores for victimization, depression, and corporal punishment than control-arm girls, requiring baseline adjustment"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); large sample, low attrition (91% retained), no school dropout, independent evaluation team",
+    "url": "https://doi.org/10.1080/16549716.2020.1836604"
+  },
+  {
+    "id": "gupta-2013",
+    "intervention_name": "Gender Dialogue Groups added to an economic empowerment savings program (VSLA + GDG)",
+    "citation": "Gupta et al. (2013)",
+    "source": "BMC International Health and Human Rights 13:46",
+    "country": "Cote d'Ivoire",
+    "region": "Africa",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adult women (18+) and their male partners",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Women only (primary outcome); male partners also participated in the gender dialogue sessions",
+      "sex_tag": "Women only",
+      "setting": "Community",
+      "sample_size": 934,
+      "sample_size_detail": "24 rural villages randomised (village-level, non-blinded RCT); 981 partnered women enrolled, 934 (95.2%) completed baseline and endline data collection"
+    },
+    "intervention": {
+      "description": "Addition of 'Gender Dialogue Groups' (8 sessions targeting women and their male partners on gender norms) to an existing Village Savings and Loan Association (VSLA) economic-empowerment group savings program, compared to VSLA savings alone",
+      "duration": "8 sessions; study conducted 2010-2012, assessed at endline"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Two-armed, non-blinded, village-randomised controlled pilot trial (VSLA + Gender Dialogue Groups vs VSLA only); 24 villages",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant reduction in the primary outcome (past-year physical and/or sexual IPV) in intent-to-treat analysis, but significant reductions in economic abuse and acceptance of wife-beating; per-protocol analysis among higher-attendance couples showed a significant reduction in physical IPV",
+      "worked_for": [
+        "Economic abuse (intent-to-treat): OR 0.39, 95% CI 0.25-0.60, p<0.0001",
+        "Acceptance of wife-beating (intent-to-treat): beta -0.97, 95% CI -1.67 to -0.28, p=0.006",
+        "Physical IPV among couples attending more than 75% of sessions (per-protocol): adjusted OR 0.45, 95% CI 0.21-0.94, p=0.04",
+        "Justifications for wife-beating among higher-attendance couples (per-protocol): adjusted beta -1.14, 95% CI -2.01 to -0.28, p=0.01",
+        "Economic abuse among both low- and high-adherence women (per-protocol): adjusted OR 0.31 and 0.47 respectively (p<=0.01)"
+      ],
+      "did_not_work_for": [
+        "Primary outcome - past-year physical and/or sexual IPV (intent-to-treat): OR 0.92, 95% CI 0.58-1.47, not significant",
+        "Physical IPV alone (intent-to-treat): OR 0.69, 95% CI 0.39-1.21, not significant",
+        "Sexual IPV alone (intent-to-treat or per-protocol) - not significant",
+        "Attitudes toward a woman's ability to refuse sex - did not significantly change"
+      ]
+    },
+    "key_message": "In this pilot RCT in conflict-affected rural Cote d'Ivoire, adding gender dialogue sessions for women and their male partners to an economic savings program did not significantly reduce the primary outcome of past-year physical/sexual IPV in the full intent-to-treat sample - but it did significantly reduce economic abuse and acceptance of wife-beating, and among couples who attended more than 75% of sessions together, physical IPV itself was significantly reduced. This dose-response pattern (higher attendance leading to real violence reduction) suggests the gender-dialogue component can work, but only when male partners are genuinely engaged, not just nominally exposed to the programme.",
+    "limitations": [
+      "Self-reported IPV is subject to social desirability and disclosure bias in both directions (under- or over-reporting)",
+      "Participants, facilitators, and researchers were not blinded to treatment status, and treatment/control groups shared villages, creating a risk of contamination biasing results toward the null",
+      "Small pilot scale (24 villages); the authors call for larger-scale replication",
+      "Per-protocol (attendance-based) findings are not randomised comparisons and may reflect self-selection - couples who attend more may differ systematically from those who don't"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); explicitly described by the authors as a pilot study",
+    "url": "https://doi.org/10.1186/1472-698X-13-46"
+  },
+  {
+    "id": "abramsky-2014",
+    "intervention_name": "SASA!: community mobilisation intervention to prevent violence against women and reduce HIV risk",
+    "citation": "Abramsky et al. (2014)",
+    "source": "BMC Medicine 12:122",
+    "country": "Uganda",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Adults 18-49 years",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (community members, women and men)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": 4115,
+      "sample_size_detail": "8 communities in Kampala, Uganda (4 intervention, 4 control), pair-matched; repeated cross-sectional random samples of community members aged 18-49 at baseline (n=1583) and 4-year follow-up (n=2532)"
+    },
+    "intervention": {
+      "description": "SASA! community mobilisation intervention: local activists and staged phases (Start, Awareness, Support, Action) working to shift community norms around power, gender, and violence, aiming to reduce IPV and HIV risk",
+      "duration": "Implemented 2007-2012; outcomes assessed approximately 4 years post-implementation via repeated cross-sectional surveys"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Pair-matched, cluster-randomised controlled trial; 8 communities (4 intervention, 4 control) in Kampala, Uganda; repeated cross-sectional surveys at baseline and 4-year follow-up, adjusted cluster-level intention-to-treat analysis",
+    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Significant improvements in attitudes/social norms and community response to violence, and directionally lower past-year physical and sexual IPV, though the IPV prevalence reductions themselves did not reach statistical significance",
+      "worked_for": [
+        "Social acceptance of IPV among women: adjusted risk ratio 0.54, 95% CI 0.38-0.79",
+        "Acceptance that a woman can refuse sex - women: adjusted risk ratio 1.28, 95% CI 1.07-1.52; men: adjusted risk ratio 1.31, 95% CI 1.00-1.70",
+        "Women experiencing violence in intervention communities were more likely to receive supportive community responses",
+        "Past-year sexual concurrency reported by men: adjusted risk ratio 0.57, 95% CI 0.36-0.91"
+      ],
+      "did_not_work_for": [
+        "Past-year physical IPV among women: adjusted risk ratio 0.48, 95% CI 0.16-1.39 (a 52% lower point estimate, but the confidence interval crosses 1 - not statistically significant)",
+        "Past-year sexual IPV among women: adjusted risk ratio 0.76, 95% CI 0.33-1.72 - not statistically significant",
+        "Social acceptance of IPV among men: adjusted risk ratio 0.13, 95% CI 0.01-1.15 - large point estimate but not statistically significant given the very wide confidence interval"
+      ]
+    },
+    "key_message": "SASA!, one of the most widely replicated community-mobilisation interventions to prevent violence against women (now delivered in 15+ countries), significantly shifted community attitudes toward IPV and toward women's right to refuse sex in this landmark Kampala cluster-RCT, and community members became more supportive when women disclosed violence - but the directional reductions in past-year physical and sexual IPV prevalence itself, while substantial in size (e.g. a 52% lower point estimate for physical IPV), did not reach statistical significance, likely reflecting the small number of clusters (8) relative to how entrenched these behaviours are. This pattern - attitude and norm change outpacing measurable violence reduction within a single trial's timeframe - recurs across several other studies in this dataset.",
+    "limitations": [
+      "Small number of clusters (8 communities total) limits statistical power/precision, especially for the primary violence-prevalence outcomes",
+      "Repeated cross-sectional (not longitudinal individual-level) design measures community-level change, not individual trajectories",
+      "Possible undetected contamination between intervention and control communities despite geographical buffers, given the small overall study area and the socially diffusive nature of the intervention",
+      "Self-reported attitudes and violence are subject to social desirability/reporting bias, which may differ by study arm and sex",
+      "External programming interruptions and population mobility during the study period may have limited or diluted intervention exposure among respondents"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review); landmark, widely cited trial with a strong pre-specified conceptual framework and analysis plan",
+    "url": "https://doi.org/10.1186/s12916-014-0122-5"
   }
 ]
