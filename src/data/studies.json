@@ -2,7 +2,7 @@
   {
     "id": "garzon-segura-2020",
     "intervention_name": "Gender-based IPV prevention program (unit-based curriculum)",
-    "citation": "Garzón Segura & Carcedo González (2020)",
+    "citation": "Garz\u00f3n Segura & Carcedo Gonz\u00e1lez (2020)",
     "source": "Frontiers in Psychology 10:3012",
     "country": "Colombia",
     "region": "South America",
@@ -23,12 +23,26 @@
     },
     "study_design": "Quasi-experimental",
     "study_design_full": "Quasi-experimental (non-randomized experimental vs control group, pre/post)",
-    "outcomes_measured": ["Attitudes/knowledge", "Gender stereotypes", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Attitudes/knowledge",
+      "Gender stereotypes",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "Mixed - effective on most attitude/stereotype outcomes, not effective on self-esteem or emotional intelligence",
-      "worked_for": ["Male and female gender stereotypes", "Gender stereotypes in romantic relationships", "Attitudes toward physical violence and physical violence against women", "Acceptance of peer aggression (weak, strong, against men, against women)", "Affective empathy"],
-      "did_not_work_for": ["Self-esteem", "Emotional intelligence", "Cognitive empathy"]
+      "worked_for": [
+        "Male and female gender stereotypes",
+        "Gender stereotypes in romantic relationships",
+        "Attitudes toward physical violence and physical violence against women",
+        "Acceptance of peer aggression (weak, strong, against men, against women)",
+        "Affective empathy"
+      ],
+      "did_not_work_for": [
+        "Self-esteem",
+        "Emotional intelligence",
+        "Cognitive empathy"
+      ]
     },
     "key_message": "A short classroom curriculum addressing gender stereotypes, IPV, and socio-emotional skills can shift attitudes and reduce acceptance of violence in children as young as 7-9, before they reach the 10-14 age range where dating and partner violence risk rises - though it did not move self-esteem or emotional intelligence, and effects on aggression acceptance were stronger for boys.",
     "limitations": [
@@ -66,7 +80,11 @@
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm, pragmatic, theory-driven, cluster-randomised controlled trial; 48 clusters, 1:1 allocation",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "No significant reduction in measured population prevalence of violence, but a large, significant increase in disclosure and access to support",
@@ -118,7 +136,11 @@
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm, single-blinded, wait-list, cluster-randomised controlled trial across 62 clusters",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "No significant effect on the primary violence outcome, but significant positive effects on protective attitudes and social support",
@@ -147,7 +169,7 @@
   {
     "id": "ozler-2020",
     "intervention_name": "Girl Empower (GE / GE+): mentoring, life skills, and cash transfer",
-    "citation": "Özler, Hallman, Guimond, et al. (2020)",
+    "citation": "\u00d6zler, Hallman, Guimond, et al. (2020)",
     "source": "SSM - Population Health 10:100527",
     "country": "Liberia",
     "region": "Africa",
@@ -168,7 +190,11 @@
     },
     "study_design": "RCT",
     "study_design_full": "Parallel, three-arm (control, GE, GE+), cluster-randomised controlled trial at the village level",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "No significant effect on sexual or physical violence despite very high programme fidelity, but significant sustained gains in gender attitudes, life skills, and sexual/reproductive health",
@@ -219,7 +245,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Hybrid type-1 effectiveness-implementation, three-arm, cluster-randomised controlled trial across 15 schools (girls-only intervention vs girls+boys intervention vs control, 1:1:1 allocation)",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
     "effect": {
       "overall_tag": "Didn't work",
       "direction": "No statistically significant reduction in the primary outcome (past-year sexual violence exposure, including harassment or rape) in either intervention arm compared to control at 12 months",
@@ -264,7 +293,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Double-blind, two-arm randomised controlled trial (tailored interactive tool vs static non-tailored tool)",
-    "outcomes_measured": ["Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "Women in both the tailored and non-tailored arms improved significantly over time on depressive symptoms and PTSD symptoms (both p<.001) and on all secondary outcomes, but the tailored version showed no significant advantage over the static, non-tailored version",
@@ -311,7 +343,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Pragmatic, individually randomised pilot and feasibility trial with an integrated qualitative study, conducted at one site (three local-authority areas) in England",
-    "outcomes_measured": ["Attitudes/knowledge", "Socio-emotional skills"],
+    "outcomes_measured": [
+      "Attitudes/knowledge",
+      "Socio-emotional skills"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "This was a feasibility trial, not powered to detect effects on abuse outcomes; it found it was feasible to recruit, randomise, and retain both male perpetrators and female victim/survivors and to collect self-reported outcome data, with participants reporting positive engagement",
@@ -333,54 +368,6 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review); explicitly a feasibility/pilot study, not designed to assess effectiveness",
     "url": "https://doi.org/10.1186/s12889-024-18640-5"
-  },
-  {
-    "id": "el-morr-2020",
-    "intervention_name": "ICT-based (mobile, web, and telephone) intimate partner violence interventions",
-    "citation": "El Morr & Layal (2020)",
-    "source": "BMC Public Health 20:1372",
-    "country": "Multiple (systematic review)",
-    "region": "Multiple",
-    "income_setting": null,
-    "completeness": "full",
-    "population": {
-      "age_range": "Varies across included studies",
-      "age_group_tag": "Mixed/all ages",
-      "sex": "Predominantly women experiencing or at risk of IPV (varies by included study)",
-      "sex_tag": "Women only",
-      "setting": "Online/digital",
-      "sample_size": 25,
-      "sample_size_detail": "25 primary studies included, evaluating ICT-based (mobile app, web-based, and telephone) interventions addressing IPV awareness, screening, prevention, treatment, and mental health"
-    },
-    "intervention": {
-      "description": "Systematic review (PRISMA-guided; PubMed, PsycINFO, and Web of Science searched) synthesizing evidence on ICT-based interventions - mobile apps, websites, and telephone-delivered tools - for IPV awareness, screening, prevention, treatment, and mental health support",
-      "duration": "Not applicable (systematic review of studies published up to the 2020 search date)"
-    },
-    "study_design": "Systematic review/synthesis",
-    "study_design_full": "Systematic review following PRISMA guidelines of 25 studies evaluating ICT-based IPV interventions",
-    "outcomes_measured": ["Attitudes/knowledge", "Violence victimization"],
-    "effect": {
-      "overall_tag": "Mixed",
-      "direction": "ICT-based interventions were found effective mainly for screening, disclosure, and prevention, but the evidence base showed substantial heterogeneity in outcome measures, sample sizes, control groups, intervention types, and recruitment settings across the 25 studies",
-      "worked_for": [
-        "Screening for IPV via digital/ICT tools",
-        "Facilitating disclosure of IPV experiences",
-        "Prevention-oriented outcomes in several included studies"
-      ],
-      "did_not_work_for": [
-        "Consistent, comparable evidence across studies - substantial heterogeneity in design, measures, and populations limits pooled conclusions",
-        "Software usability was formally assessed in only one of the 25 included studies"
-      ]
-    },
-    "key_message": "Across 25 studies, ICT-based tools (mobile apps, websites, telephone support) show real promise for IPV screening, disclosure, and prevention - but the evidence base is too heterogeneous in design, outcomes, and populations to draw strong pooled conclusions about overall effectiveness. The review flags a near-total lack of attention to usability testing and calls for more rigorous, comparable research, including on safety, equity, and unintended consequences of digital tools in IPV programming.",
-    "limitations": [
-      "Substantial heterogeneity across included studies in outcome measures, sample sizes, control conditions, intervention types, and recruitment settings prevents meta-analytic pooling",
-      "Most included studies were from high-income settings, limiting applicability to lower-resource contexts with less digital access",
-      "Long-term effects of ICT-based interventions were rarely studied",
-      "Safety and unintended-consequences considerations (e.g. partner surveillance of app/device use) were inconsistently addressed across included studies"
-    ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); note this is a review of primary studies rather than a single primary study",
-    "url": "https://doi.org/10.1186/s12889-020-09408-8"
   },
   {
     "id": "kapiga-2019",
@@ -406,7 +393,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Cluster-randomised controlled trial; 66 pre-existing microfinance loan groups randomised in blocks of six to intervention or wait-list control",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "Women in the intervention arm were less likely to report past-year physical or sexual IPV (23% vs 27%; adjusted OR 0.69, 95% CI 0.47-1.01; p=0.056, narrowly missing conventional significance), and significantly less likely to report physical IPV alone (aOR 0.64, 95% CI 0.41-0.99; p=0.043); effects on attitudes accepting of IPV were strong and highly significant",
@@ -456,7 +446,10 @@
     },
     "study_design": "RCT",
     "study_design_full": "Analysis of an intervention nested within an existing cluster-randomised cohort (Rakai Community Cohort Study); 4 intervention vs 7 control clusters",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
+    "outcomes_measured": [
+      "Violence victimization",
+      "Attitudes/knowledge"
+    ],
     "effect": {
       "overall_tag": "Mixed",
       "direction": "Exposure to SHARE was associated with reductions in some forms of IPV against women and in overall HIV incidence, plausibly via reduced forced sex and increased disclosure of HIV status; effects were not uniform across all forms of IPV or subgroups",
@@ -478,52 +471,5 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S2214-109X(14)70344-4"
-  },
-  {
-    "id": "reyes-2021",
-    "intervention_name": "Adolescent dating violence prevention programmes (global evidence base)",
-    "citation": "McNaughton Reyes et al. (2021)",
-    "source": "Lancet Child & Adolescent Health (published online Nov 2020)",
-    "country": "Multiple (systematic review)",
-    "region": "Multiple",
-    "income_setting": null,
-    "completeness": "full",
-    "population": {
-      "age_range": "10-19 years (at least half of the study population in each included evaluation)",
-      "age_group_tag": "Mixed/all ages",
-      "sex": "Mixed (adolescent boys and girls; victimisation and/or perpetration outcomes)",
-      "sex_tag": "Mixed",
-      "setting": "Mixed",
-      "sample_size": 52,
-      "sample_size_detail": "52 programme evaluations (experimental and controlled quasi-experimental) met inclusion criteria, of which 20 (38%) were implemented in low- and middle-income countries and 32 (62%) in high-income countries"
-    },
-    "intervention": {
-      "description": "Systematic review synthesising rigorous evaluations of adolescent dating violence prevention programmes worldwide, comparing study design, programme elements, and outcomes between high-income and low-and-middle-income country contexts",
-      "duration": "Review of evaluation studies published before 1 January 2020"
-    },
-    "study_design": "Systematic review/synthesis",
-    "study_design_full": "Systematic review of experimental and controlled quasi-experimental evaluations of adolescent dating violence prevention programmes (victimisation and/or perpetration outcomes), comparing HIC and LMIC evidence",
-    "outcomes_measured": ["Violence victimization", "Attitudes/knowledge"],
-    "effect": {
-      "overall_tag": "Mixed",
-      "direction": "26 of 52 (50%) evaluations reported at least one significant positive effect on dating violence victimisation and/or perpetration outcomes; evidence quality and programme reach varied substantially between high-income and low/middle-income country contexts, and programmes targeting specific higher-risk adolescent subgroups were rare",
-      "worked_for": [
-        "About half (26 of 52, 50%) of evaluations found a significant positive effect on victimisation and/or perpetration outcomes",
-        "LMIC evaluations made up a substantial share of the evidence base (20 of 52, 38%), showing this is not solely a high-income-country research field"
-      ],
-      "did_not_work_for": [
-        "The other half of evaluations found no significant effect on dating violence outcomes",
-        "Programmes specifically targeting adolescents at elevated risk of dating violence victimisation or perpetration remain scarce across the evidence base"
-      ]
-    },
-    "key_message": "Pulling together 52 rigorous evaluations of adolescent dating violence prevention programmes worldwide, this review found that only about half showed a significant positive effect on victimisation or perpetration - a reminder that programme existence and evaluation are not the same as programme effectiveness. It also found a meaningful share of the evidence base now comes from low- and middle-income countries, though programmes tailored to higher-risk adolescent subgroups remain rare, pointing to where future intervention design and research should focus.",
-    "limitations": [
-      "As with any systematic review, findings are only as strong as the underlying primary studies, which vary widely in quality, sample size, and outcome measurement",
-      "Restricted to evaluations published before January 2020, so more recent programmes and trials are not captured",
-      "\"Significant positive effect\" was defined as at least one outcome improving - programmes could show partial effects without being categorised as fully effective or ineffective",
-      "Substantial variation in what counts as a dating violence 'programme' across contexts complicates direct comparison"
-    ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); note this is a review of primary studies rather than a single primary study",
-    "url": "https://doi.org/10.1016/S2352-4642(20)30276-5"
   }
 ]
