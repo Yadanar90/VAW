@@ -337,6 +337,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="app-header">
+        <span className="header-kicker">Evidence for prevention</span>
         <h1>Prevention of Violence Against Women and Girls Evidence Platform</h1>
       </header>
 
@@ -451,7 +452,7 @@ export default function App() {
             <button className="view-results-cta" onClick={() => setView('results')} disabled={filtered.length === 0}>
               {filtered.length === 0
                 ? 'No studies match these filters yet'
-                : `Read the ${filtered.length} matching ${filtered.length === 1 ? 'study' : 'studies'} →`}
+                : <>Read the {filtered.length} matching {filtered.length === 1 ? 'study' : 'studies'} <span className="cta-arrow">→</span></>}
             </button>
           </>
         ) : (
