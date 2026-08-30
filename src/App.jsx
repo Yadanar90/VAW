@@ -217,8 +217,72 @@ function CategoryEffectivenessChart({ studies, title, columnLabel, categories, g
   )
 }
 
+function StudyDetails({ study }) {
+  return (
+    <div className="detail-panel">
+      <div className="key-message">{study.key_message}</div>
+      {study.source && <div><strong>Source:</strong> {study.source}</div>}
+      <div><strong>Population:</strong> {study.population.age_range}, {study.population.sex}, {study.population.setting} setting</div>
+      <div><strong>Sample size:</strong> {study.population.sample_size} ({study.population.sample_size_detail})</div>
+      <div><strong>Design:</strong> {study.study_design_full}</div>
+      <div><strong>Intervention:</strong> {study.intervention.description}</div>
+      <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
+      <div>
+        <strong>Worked for:</strong>
+        <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
+      </div>
+      {study.effect.did_not_work_for?.length > 0 && (
+        <div>
+          <strong>Did not work for:</strong>
+          <ul>{study.effect.did_not_work_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
+        </div>
+      )}
+      <div>
+        <strong>Limitations:</strong>
+        <ul>{study.limitations.map((x, i) => <li key={i}>{x}</li>)}</ul>
+      </div>
+      {study.url && (
+        <div>
+          <a className="view-source-btn" href={study.url} target="_blank" rel="noreferrer">View source</a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function StudyModal({ study, onClose }) {
+  useEffect(() => {
+    const onKeyDown = e => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKeyDown)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [onClose])
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label={study.intervention_name}
+        onClick={e => e.stopPropagation()}
+      >
+        <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
+        <h3>{study.intervention_name}</h3>
+        <p className="citation">{study.citation}</p>
+        <p className="location">{study.country}{study.region ? `, ${study.region}` : ''}</p>
+        <StudyDetails study={study} />
+      </div>
+    </div>
+  )
+}
+
 function StudyCard({ study }) {
-  const [expanded, setExpanded] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const isFull = study.completeness === 'full'
   const effectTag = study.effect?.overall_tag
   const effectMeta = EFFECT_STATUS.find(e => e.key === effectTag)
@@ -241,41 +305,11 @@ function StudyCard({ study }) {
         <>
           <p className="quick-facts">n={study.population.sample_size}</p>
 
-          <button
-            className="expand-btn"
-            onClick={() => setExpanded(!expanded)}
-            aria-expanded={expanded}
-            aria-label={expanded ? 'Show less' : 'Show more'}
-          >
-            <span className={`expand-icon${expanded ? ' is-expanded' : ''}`} aria-hidden="true">⌄</span>
+          <button className="show-more-btn" onClick={() => setShowModal(true)}>
+            Show more
           </button>
 
-          {expanded && (
-            <div className="detail-panel">
-              <div className="key-message">{study.key_message}</div>
-              {study.source && <div><strong>Source:</strong> {study.source}</div>}
-              <div><strong>Population:</strong> {study.population.age_range}, {study.population.sex}, {study.population.setting} setting</div>
-              <div><strong>Sample size:</strong> {study.population.sample_size} ({study.population.sample_size_detail})</div>
-              <div><strong>Design:</strong> {study.study_design_full}</div>
-              <div><strong>Intervention:</strong> {study.intervention.description}</div>
-              <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
-              <div>
-                <strong>Worked for:</strong>
-                <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
-              </div>
-              {study.effect.did_not_work_for?.length > 0 && (
-                <div>
-                  <strong>Did not work for:</strong>
-                  <ul>{study.effect.did_not_work_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
-                </div>
-              )}
-              <div>
-                <strong>Limitations:</strong>
-                <ul>{study.limitations.map((x, i) => <li key={i}>{x}</li>)}</ul>
-              </div>
-              {study.url && <div><a href={study.url} target="_blank" rel="noreferrer">View source</a></div>}
-            </div>
-          )}
+          {showModal && <StudyModal study={study} onClose={() => setShowModal(false)} />}
         </>
       ) : (
         <p className="incomplete-note">
