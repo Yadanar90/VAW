@@ -188,6 +188,19 @@ body { margin: 0; }
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+.timeline-chart { position: relative; }
+.timeline-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.timeline-baseline { stroke: #e0ddd3; stroke-width: 1; }
+.timeline-area { fill: #7C1030; fill-opacity: 0.1; stroke: none; }
+.timeline-line { stroke: #7C1030; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.timeline-dot { fill: white; stroke: #7C1030; stroke-width: 2.5; cursor: pointer; outline: none; }
+.timeline-year-label { font-size: 10px; fill: #6b6a63; }
+.timeline-tooltip {
+  position: absolute; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap;
+  background: #2c2c2a; color: white; font-size: 11px; padding: 4px 8px; border-radius: 6px;
+  pointer-events: none; z-index: 1;
+}
+
 .chart-table { width: 100%; border-collapse: collapse; font-size: 12px; }
 .chart-table th, .chart-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e0ddd3; }
 .chart-table th { color: #6b6a63; font-weight: 600; }
