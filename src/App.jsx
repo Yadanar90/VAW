@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import studies from './data/studies.json'
 import WorldMap from './WorldMap'
+import { EFFECT_STATUS, ViewToggle, CategoryStudyList } from './ChartControls.jsx'
 import './App.css'
 
 const FILTERS = [
@@ -21,11 +22,6 @@ const INCOME_ORDER = ['Low income', 'Lower middle income', 'Upper middle income'
 const REGION_ORDER = [...new Set(studies.map(s => s.region))]
 const SETTING_ORDER = ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed']
 const DURATION_ORDER = ['Short (<6 months)', 'Medium (6-18 months)', 'Long (>18 months)', 'Not reported']
-const EFFECT_STATUS = [
-  { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
-  { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
-  { key: "Didn't work", label: "Didn't work", status: 'critical', icon: '✕' },
-]
 const EFFECT_TAG_CLASS = { Worked: 'tag-success', Mixed: 'tag-warning', "Didn't work": 'tag-critical' }
 
 const getYear = s => {
@@ -127,7 +123,7 @@ function FilterDropdown({ label, value, onChange, options }) {
 // setting, region, etc. `categories` is the fixed display order; rows with
 // zero studies are hidden rather than shown empty.
 function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory, filterKey, active, onFilterChange }) {
-  const [showTable, setShowTable] = useState(false)
+  const [viewMode, setViewMode] = useState('chart')
 
   const rows = useMemo(() => {
     return categories
@@ -137,7 +133,7 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
           ...e,
           count: inCategory.filter(s => s.effect?.overall_tag === e.key).length,
         }))
-        return { category, total: inCategory.length, segments }
+        return { category, total: inCategory.length, segments, studies: inCategory }
       })
       .filter(r => r.total > 0)
   }, [studies, categories, getCategory])
@@ -155,16 +151,7 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
     <section className="chart-card">
       <div className="chart-head">
         <h2>{title}</h2>
-        {rows.length > 0 && (
-          <button
-            className="table-toggle"
-            onClick={() => setShowTable(v => !v)}
-            aria-label={showTable ? 'Show chart' : 'Show as table'}
-            title={showTable ? 'Show chart' : 'Show as table'}
-          >
-            ▦
-          </button>
-        )}
+        {rows.length > 0 && <ViewToggle mode={viewMode} onChange={setViewMode} />}
       </div>
       {subtitle && <p className="chart-subtitle">{subtitle}</p>}
 
@@ -172,16 +159,20 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
         <p className="chart-empty">No studies match these filters yet.</p>
       ) : (
         <>
-          <div className="chart-legend">
-            {EFFECT_STATUS.map(e => (
-              <span className="legend-item" key={e.key}>
-                <span className={`legend-swatch status-${e.status}`} aria-hidden="true">{e.icon}</span>
-                {e.label}
-              </span>
-            ))}
-          </div>
+          {viewMode !== 'list' && (
+            <div className="chart-legend">
+              {EFFECT_STATUS.map(e => (
+                <span className="legend-item" key={e.key}>
+                  <span className={`legend-swatch status-${e.status}`} aria-hidden="true">{e.icon}</span>
+                  {e.label}
+                </span>
+              ))}
+            </div>
+          )}
 
-          {showTable ? (
+          {viewMode === 'list' ? (
+            <CategoryStudyList rows={rows.map(r => ({ label: r.category, total: r.total, studies: r.studies }))} />
+          ) : viewMode === 'table' ? (
             <table className="chart-table">
               <thead>
                 <tr>
@@ -246,7 +237,7 @@ const TIMELINE_PAD = { left: 28, right: 16, top: 16, bottom: 28 }
 // Gap years with zero studies are filled in so the line's shape over time
 // is accurate rather than jumping straight between non-adjacent years.
 function PublicationTimelineChart({ studies }) {
-  const [showTable, setShowTable] = useState(false)
+  const [viewMode, setViewMode] = useState('chart')
   const [hoverIdx, setHoverIdx] = useState(null)
 
   const rows = useMemo(() => {
@@ -254,10 +245,11 @@ function PublicationTimelineChart({ studies }) {
     if (years.length === 0) return []
     const minYear = Math.min(...years)
     const maxYear = Math.max(...years)
-    const counts = new Map()
-    for (const y of years) counts.set(y, (counts.get(y) || 0) + 1)
     const out = []
-    for (let y = minYear; y <= maxYear; y++) out.push({ year: y, total: counts.get(y) || 0 })
+    for (let y = minYear; y <= maxYear; y++) {
+      const studiesInYear = studies.filter(s => getYear(s) === y)
+      out.push({ year: y, total: studiesInYear.length, studies: studiesInYear })
+    }
     return out
   }, [studies])
 
@@ -280,22 +272,17 @@ function PublicationTimelineChart({ studies }) {
     <section className="chart-card publication-timeline-card">
       <div className="chart-head">
         <h2>Publication Timeline</h2>
-        {rows.length > 0 && (
-          <button
-            className="table-toggle"
-            onClick={() => setShowTable(v => !v)}
-            aria-label={showTable ? 'Show chart' : 'Show as table'}
-            title={showTable ? 'Show chart' : 'Show as table'}
-          >
-            ▦
-          </button>
-        )}
+        {rows.length > 0 && <ViewToggle mode={viewMode} onChange={setViewMode} />}
       </div>
       <p className="chart-subtitle">When the underlying research was published, and which years it's concentrated in.</p>
 
       {rows.length === 0 ? (
         <p className="chart-empty">No studies match these filters yet.</p>
-      ) : showTable ? (
+      ) : viewMode === 'list' ? (
+        <CategoryStudyList
+          rows={rows.filter(r => r.total > 0).map(r => ({ label: r.year, total: r.total, studies: r.studies }))}
+        />
+      ) : viewMode === 'table' ? (
         <table className="chart-table">
           <thead>
             <tr><th>Year</th><th>Studies</th></tr>

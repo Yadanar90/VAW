@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
 import { geoNaturalEarth1, geoPath } from 'd3-geo'
 import worldTopo from 'world-atlas/countries-110m.json'
+import { ViewToggle, CategoryStudyList } from './ChartControls.jsx'
 
 const WIDTH = 960
 const HEIGHT = 460
@@ -34,7 +35,7 @@ const pathGenerator = geoPath(projection)
 const countryFeatures = rawFeatures.map(f => ({ name: f.properties.name, d: pathGenerator(f) }))
 
 export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
-  const [showTable, setShowTable] = useState(false)
+  const [viewMode, setViewMode] = useState('chart')
   const [hover, setHover] = useState(null)
   const containerRef = useRef(null)
 
@@ -42,10 +43,11 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
     const map = new Map()
     for (const s of studies) {
       const mapName = COUNTRY_ALIASES[s.country] || s.country
-      if (!map.has(mapName)) map.set(mapName, { rawCountry: s.country, count: 0, studyNames: [] })
+      if (!map.has(mapName)) map.set(mapName, { rawCountry: s.country, count: 0, studyNames: [], studies: [] })
       const entry = map.get(mapName)
       entry.count += 1
       entry.studyNames.push(s.intervention_name)
+      entry.studies.push(s)
     }
     return map
   }, [studies])
@@ -73,22 +75,17 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
     <section className="chart-card world-map-card">
       <div className="chart-head">
         <h2>Where the Evidence Comes From</h2>
-        {tableRows.length > 0 && (
-          <button
-            className="table-toggle"
-            onClick={() => setShowTable(v => !v)}
-            aria-label={showTable ? 'Show map' : 'Show as table'}
-            title={showTable ? 'Show map' : 'Show as table'}
-          >
-            ▦
-          </button>
-        )}
+        {tableRows.length > 0 && <ViewToggle mode={viewMode} onChange={setViewMode} />}
       </div>
       <p className="chart-subtitle">Which countries the included studies were conducted in, and how many per country.</p>
 
       {tableRows.length === 0 ? (
         <p className="chart-empty">No studies match these filters yet.</p>
-      ) : showTable ? (
+      ) : viewMode === 'list' ? (
+        <CategoryStudyList
+          rows={tableRows.map(r => ({ label: r.rawCountry, total: r.count, studies: r.studies }))}
+        />
+      ) : viewMode === 'table' ? (
         <table className="chart-table">
           <thead>
             <tr><th>Country</th><th>Studies</th></tr>
