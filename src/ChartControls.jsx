@@ -2,6 +2,8 @@
 // and WorldMap.jsx - kept in their own module so WorldMap can reuse them
 // without an App.jsx <-> WorldMap.jsx circular import.
 
+import { useState, useEffect } from 'react'
+
 export const EFFECT_STATUS = [
   { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
   { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
@@ -63,18 +65,92 @@ export function ViewToggle({ mode, onChange }) {
   )
 }
 
+function StudyDetails({ study }) {
+  return (
+    <div className="detail-panel">
+      <div className="key-message">{study.key_message}</div>
+      {study.source && <div><strong>Source:</strong> {study.source}</div>}
+      <div><strong>Population:</strong> {study.population.age_range}, {study.population.sex}, {study.population.setting} setting</div>
+      <div><strong>Sample size:</strong> {study.population.sample_size} ({study.population.sample_size_detail})</div>
+      <div><strong>Design:</strong> {study.study_design_full}</div>
+      <div><strong>Intervention:</strong> {study.intervention.description}</div>
+      <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
+      <div>
+        <strong>Worked for:</strong>
+        <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
+      </div>
+      {study.effect.did_not_work_for?.length > 0 && (
+        <div>
+          <strong>Did not work for:</strong>
+          <ul>{study.effect.did_not_work_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
+        </div>
+      )}
+      <div>
+        <strong>Limitations:</strong>
+        <ul>{study.limitations.map((x, i) => <li key={i}>{x}</li>)}</ul>
+      </div>
+      {study.url && (
+        <div>
+          <a className="view-source-btn" href={study.url} target="_blank" rel="noreferrer">View source</a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function StudyModal({ study, onClose }) {
+  useEffect(() => {
+    const onKeyDown = e => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKeyDown)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [onClose])
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label={study.intervention_name}
+        onClick={e => e.stopPropagation()}
+      >
+        <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
+        <h3>{study.intervention_name}</h3>
+        <p className="citation">{study.citation}</p>
+        <p className="location">{study.country}{study.region ? `, ${study.region}` : ''}</p>
+        <StudyDetails study={study} />
+      </div>
+    </div>
+  )
+}
+
 // The "list" view shared by every chart card: one group per category/year/
 // country, each listing the studies behind it with a small effect-status
 // dot (or a neutral dot for citation-only records with no effect tag yet).
-export function CategoryStudyList({ rows }) {
+// `onClear`, when given, renders a "back to all categories" link above the
+// groups - used when a chart has drilled into a single clicked segment.
+export function CategoryStudyList({ rows, onClear }) {
+  const [openStudy, setOpenStudy] = useState(null)
+
   return (
     <div className="chart-list">
+      {onClear && (
+        <button type="button" className="list-clear-btn" onClick={onClear}>
+          &larr; Back to all categories
+        </button>
+      )}
       {rows.map(r => (
         <div className="list-group" key={r.label}>
           <h3 className="list-group-title">{r.label} <span className="list-group-count">{r.total}</span></h3>
           <ul>
             {r.studies.map(s => {
               const effectMeta = EFFECT_STATUS.find(e => e.key === s.effect?.overall_tag)
+              const isFull = s.completeness === 'full'
               return (
                 <li key={s.id}>
                   <span
@@ -82,13 +158,21 @@ export function CategoryStudyList({ rows }) {
                     title={effectMeta ? effectMeta.label : 'Citation only'}
                     aria-hidden="true"
                   />
-                  {s.intervention_name} <span className="list-study-citation">— {s.citation}</span>
+                  {isFull ? (
+                    <button type="button" className="list-study-link" onClick={() => setOpenStudy(s)}>
+                      {s.intervention_name}
+                    </button>
+                  ) : (
+                    s.intervention_name
+                  )}
+                  {' '}<span className="list-study-citation">— {s.citation}</span>
                 </li>
               )
             })}
           </ul>
         </div>
       ))}
+      {openStudy && <StudyModal study={openStudy} onClose={() => setOpenStudy(null)} />}
     </div>
   )
 }
