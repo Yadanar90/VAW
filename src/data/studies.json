@@ -55,7 +55,6 @@
       "No follow-up measurement beyond immediate post-test (no medium/long-term data)",
       "Single school, single country - limited generalizability"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.3389/fpsyg.2019.03012"
   },
   {
@@ -113,7 +112,6 @@
       "Consent-seeking from cluster gatekeepers may have selected against the highest-violence localities",
       "Two participant suicides occurred in intervention clusters during the trial (investigated, not attributed to the intervention)"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); notably strong methodology - pre-registered, intention-to-treat analysis, TIDieR-reported intervention",
     "url": "https://doi.org/10.1016/S2214-109X(25)00358-4"
   },
   {
@@ -169,7 +167,6 @@
       "Potential spillover/contamination between intervention and control girls sharing the same camps",
       "A planned longer-term follow-up round was not possible due to funding limitations"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1136/bmjgh-2018-000825"
   },
   {
@@ -226,7 +223,6 @@
       "The GE+ cash incentive ended up larger than originally planned due to a study implementation error, complicating clean interpretation of the \"plus cash\" effect",
       "Set in a specific post-Ebola, post-conflict context (rural Liberia) that may limit generalizability elsewhere"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/j.ssmph.2019.100527"
   },
   {
@@ -276,7 +272,6 @@
       "Trial conducted in a single city (Gqeberha) - generalizability to other South African or regional contexts is uncertain",
       "Hybrid effectiveness-implementation design balances feasibility/implementation questions alongside effectiveness, which may affect statistical power for detecting the primary outcome"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1186/s12905-025-03647-w"
   },
   {
@@ -328,7 +323,6 @@
       "Sample restricted to women who could access and were willing to use an online tool, which may limit generalizability to women with less digital access or literacy",
       "Single-country (Canada) high-income setting; applicability to lower-resource contexts unclear"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1186/s12889-020-8152-8"
   },
   {
@@ -380,7 +374,6 @@
       "Single site (one area, three local authorities) in England limits generalizability",
       "No blinding of participants or intervention facilitators to allocation (not possible for a group-format behavioural intervention)"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); explicitly a feasibility/pilot study, not designed to assess effectiveness",
     "url": "https://doi.org/10.1186/s12889-024-18640-5"
   },
   {
@@ -435,7 +428,6 @@
       "Outcomes are self-reported experiences of a highly sensitive topic, with potential for social desirability and disclosure bias",
       "Single city (Mwanza) in Tanzania - generalizability to other settings uncertain"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S2214-109X(19)30316-X"
   },
   {
@@ -487,7 +479,6 @@
       "Self-reported IPV and HIV-status disclosure are both sensitive to social desirability and recall bias",
       "The same research group has separately discussed the ethical and methodological complexities of randomising exposure to a violence-prevention intervention within an existing cohort"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S2214-109X(14)70344-4"
   },
   {
@@ -540,7 +531,6 @@
       "Possible cross-contamination between geographically close intervention and control schools/communities, despite using distance in the matching/randomisation",
       "Two schools were lost to follow-up after randomisation, and the open-cohort design meant individual students were not tracked between baseline and follow-up"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); notably strong methodology for its setting - matched-pairs cluster randomisation across 28 schools with a pre-specified difference-in-differences/bootstrap analysis",
     "url": "https://doi.org/10.1007/s11121-016-0701-0"
   },
   {
@@ -598,7 +588,6 @@
       "Individual-level intervention dose/attendance was not analysed",
       "Girls in the intervention arm had slightly higher baseline scores for victimization, depression, and corporal punishment than control-arm girls, requiring baseline adjustment"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); large sample, low attrition (91% retained), no school dropout, independent evaluation team",
     "url": "https://doi.org/10.1080/16549716.2020.1836604"
   },
   {
@@ -655,7 +644,6 @@
       "Small pilot scale (24 villages); the authors call for larger-scale replication",
       "Per-protocol (attendance-based) findings are not randomised comparisons and may reflect self-selection - couples who attend more may differ systematically from those who don't"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); explicitly described by the authors as a pilot study",
     "url": "https://doi.org/10.1186/1472-698X-13-46"
   },
   {
@@ -711,7 +699,6 @@
       "Self-reported attitudes and violence are subject to social desirability/reporting bias, which may differ by study arm and sex",
       "External programming interruptions and population mobility during the study period may have limited or diluted intervention exposure among respondents"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review); landmark, widely cited trial with a strong pre-specified conceptual framework and analysis plan",
     "url": "https://doi.org/10.1186/s12916-014-0122-5"
   },
   {
@@ -765,7 +752,6 @@
       "Short 2-year intervention period; durability of effects beyond the transfer period unknown",
       "Restricted to never-married girls/young women aged 13-22 in one district of Malawi; findings may not generalise elsewhere"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S0140-6736(11)61709-1"
   },
   {
@@ -813,7 +799,6 @@
       "Single district in Uganda; generalisability to other settings and age profiles may vary",
       "434 children were referred to child protective services based on survey disclosures - an important ethical/safeguarding consideration for future replications"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1016/S2214-109X(15)00060-1"
   },
   {
@@ -865,7 +850,6 @@
       "Conducted in a conflict-affected humanitarian setting; findings may not generalise to other populations in the region",
       "Only 12-month follow-up; longer-term effects unknown"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1136/bmjgh-2018-000824"
   },
   {
@@ -921,7 +905,6 @@
       "Only around a third of caregivers and learners attended all four family intervention sessions",
       "Self-reported violence perpetration/experience may be affected by honesty and social desirability, particularly for boys"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1371/journal.pone.0223562"
   },
   {
@@ -972,7 +955,6 @@
       "Possible social desirability bias in self-reported violence",
       "Contamination between geographically close clusters was not measured"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1371/journal.pone.0198926"
   },
   {
@@ -1025,7 +1007,6 @@
       "Findings specific to a rural, orphan-girl population in eastern Zimbabwe and may not generalise",
       "Support and monitoring became inconsistent once girls transitioned to secondary school"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.2105/AJPH.2010.300042"
   },
   {
@@ -1077,7 +1058,6 @@
       "Possible spillover/contamination between arms in the densely-populated Kibera site",
       "Limited statistical power for rarer long-term outcomes such as pregnancy and marriage"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1186/s12889-021-12224-3"
   },
   {
@@ -1129,7 +1109,6 @@
       "Multiple statistical comparisons increase the risk of chance findings",
       "All measures are self-report; sexual violence is likely under-reported"
     ],
-    "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1007/s11121-017-0775-3"
   }
 ]
