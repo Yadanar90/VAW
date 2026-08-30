@@ -15,7 +15,7 @@ const FILTERS = [
 
 const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
 const AGE_GROUP_ORDER = ['Under 10', '10-14', '15-19', 'Mixed/all ages']
-const INCOME_ORDER = ['Low-income', 'Lower-middle-income', 'Upper-middle-income', 'High-income']
+const INCOME_ORDER = ['Low income', 'Lower middle income', 'Upper middle income', 'High income']
 const REGION_ORDER = [...new Set(studies.map(s => s.region))]
 const EFFECT_STATUS = [
   { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
