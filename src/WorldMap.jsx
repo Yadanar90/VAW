@@ -72,10 +72,15 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
   return (
     <section className="chart-card world-map-card">
       <div className="chart-head">
-        <h2>Where the evidence comes from</h2>
+        <h2>Where the Evidence Comes From</h2>
         {tableRows.length > 0 && (
-          <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
-            {showTable ? 'Show map' : 'Show as table'}
+          <button
+            className="table-toggle"
+            onClick={() => setShowTable(v => !v)}
+            aria-label={showTable ? 'Show map' : 'Show as table'}
+            title={showTable ? 'Show map' : 'Show as table'}
+          >
+            ▦
           </button>
         )}
       </div>

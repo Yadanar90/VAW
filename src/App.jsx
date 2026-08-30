@@ -9,6 +9,8 @@ const FILTERS = [
   { key: 'region', label: 'Region', get: s => s.region, options: [...new Set(studies.map(s => s.region))] },
   { key: 'income', label: 'Income setting', get: s => s.income_setting, options: [...new Set(studies.map(s => s.income_setting).filter(Boolean))] },
   { key: 'setting', label: 'Intervention setting', get: s => s.population?.setting, options: ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed'] },
+  { key: 'ageGroup', label: 'Age group', get: s => s.population?.age_group_tag, options: ['Under 10', '10-14', '15-19', 'Mixed/all ages'] },
+  { key: 'duration', label: 'Duration', get: s => s.intervention?.duration_bucket, options: ['Short (<6 months)', 'Medium (6-18 months)', 'Long (>18 months)', 'Not reported'] },
   { key: 'design', label: 'Study design', get: s => s.study_design, options: ['RCT', 'Quasi-experimental', 'Cohort', 'Qualitative'] },
   { key: 'effect', label: 'Effectiveness', get: s => s.effect?.overall_tag, options: ['Worked', 'Mixed', "Didn't work"] },
 ]
@@ -124,7 +126,7 @@ function FilterDropdown({ label, value, onChange, options }) {
 // down by some other categorical field - trial design, age group, income
 // setting, region, etc. `categories` is the fixed display order; rows with
 // zero studies are hidden rather than shown empty.
-function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory }) {
+function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory, filterKey, active, onFilterChange }) {
   const [showTable, setShowTable] = useState(false)
 
   const rows = useMemo(() => {
@@ -142,13 +144,25 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
 
   const maxTotal = Math.max(1, ...rows.map(r => r.total))
 
+  const isSelected = (category, effectKey) => active?.[filterKey] === category && active?.effect === effectKey
+  const handleSegmentClick = (category, effectKey) => {
+    if (!filterKey || !onFilterChange) return
+    const already = isSelected(category, effectKey)
+    onFilterChange({ [filterKey]: already ? '' : category, effect: already ? '' : effectKey })
+  }
+
   return (
     <section className="chart-card">
       <div className="chart-head">
         <h2>{title}</h2>
         {rows.length > 0 && (
-          <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
-            {showTable ? 'Show chart' : 'Show as table'}
+          <button
+            className="table-toggle"
+            onClick={() => setShowTable(v => !v)}
+            aria-label={showTable ? 'Show chart' : 'Show as table'}
+            title={showTable ? 'Show chart' : 'Show as table'}
+          >
+            ▦
           </button>
         )}
       </div>
@@ -197,14 +211,16 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
                         <button
                           type="button"
                           key={s.key}
-                          className={`bar-segment status-${s.status}`}
+                          className={`bar-segment status-${s.status}${isSelected(r.category, s.key) ? ' is-selected' : ''}`}
                           style={{ flexGrow: s.count, flexBasis: 0 }}
+                          onClick={() => handleSegmentClick(r.category, s.key)}
+                          aria-pressed={isSelected(r.category, s.key)}
                         >
                           {(s.count / r.total) * 100 >= 14 && <span className="segment-label">{s.count}</span>}
                           <span className="segment-tooltip" role="tooltip">
-                            <strong>{s.count}</strong> {s.label} · {r.category}
+                            <strong>{s.count}</strong> {s.label} · {r.category} · click to filter
                           </span>
-                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}`}</span>
+                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}. Click to filter the list to these studies.`}</span>
                         </button>
                       ))}
                     </div>
@@ -263,10 +279,15 @@ function PublicationTimelineChart({ studies }) {
   return (
     <section className="chart-card publication-timeline-card">
       <div className="chart-head">
-        <h2>Publication timeline</h2>
+        <h2>Publication Timeline</h2>
         {rows.length > 0 && (
-          <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
-            {showTable ? 'Show chart' : 'Show as table'}
+          <button
+            className="table-toggle"
+            onClick={() => setShowTable(v => !v)}
+            aria-label={showTable ? 'Show chart' : 'Show as table'}
+            title={showTable ? 'Show chart' : 'Show as table'}
+          >
+            ▦
           </button>
         )}
       </div>
@@ -449,6 +470,7 @@ export default function App() {
   const [ageTo, setAgeTo] = useState(MAX_AGE)
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
+  const setFilters = patch => setActive(prev => ({ ...prev, ...patch }))
 
   // The inputs allow a transient empty string while typing (e.g. after
   // backspacing to clear a field) without forcing it back to a number on
@@ -567,51 +589,69 @@ export default function App() {
             <div className="charts-grid">
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Trial design & effectiveness"
+                title="Trial Design & Effectiveness"
                 subtitle="Whether the strength of the evidence (RCT vs quasi-experimental) tracks with how often the intervention worked."
                 columnLabel="Trial design"
                 categories={DESIGN_ORDER}
                 getCategory={s => s.study_design}
+                filterKey="design"
+                active={active}
+                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Age group & effectiveness"
+                title="Age Group & Effectiveness"
                 subtitle="Which age groups interventions tend to be effective for."
                 columnLabel="Age group"
                 categories={AGE_GROUP_ORDER}
                 getCategory={s => s.population?.age_group_tag}
+                filterKey="ageGroup"
+                active={active}
+                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Intervention setting & effectiveness"
+                title="Intervention Setting & Effectiveness"
                 subtitle="Whether delivery setting - school, community, home, or online - affects effectiveness."
                 columnLabel="Setting"
                 categories={SETTING_ORDER}
                 getCategory={s => s.population?.setting}
+                filterKey="setting"
+                active={active}
+                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Intervention duration & effectiveness"
+                title="Intervention Duration & Effectiveness"
                 subtitle="Whether longer programmes are more likely to work than shorter ones."
                 columnLabel="Duration"
                 categories={DURATION_ORDER}
                 getCategory={s => s.intervention?.duration_bucket}
+                filterKey="duration"
+                active={active}
+                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Income setting & effectiveness"
+                title="Income Setting & Effectiveness"
                 subtitle="Whether interventions work differently depending on the country's income level."
                 columnLabel="Income setting"
                 categories={INCOME_ORDER}
                 getCategory={s => s.income_setting}
+                filterKey="income"
+                active={active}
+                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
                 studies={filtered}
-                title="Region & effectiveness"
+                title="Region & Effectiveness"
                 subtitle="Where the evidence base is strongest, and how effectiveness varies by region."
                 columnLabel="Region"
                 categories={REGION_ORDER}
                 getCategory={s => s.region}
+                filterKey="region"
+                active={active}
+                onFilterChange={setFilters}
               />
             </div>
 
