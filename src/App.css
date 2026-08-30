@@ -164,8 +164,8 @@ body { margin: 0; }
 .list-effect-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 .list-effect-dot.status-neutral { background: #d3d1c7; }
 .list-study-link {
-  background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: #2c2c2a;
-  cursor: pointer; text-decoration: underline; text-decoration-color: transparent;
+  display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; font-weight: 600;
+  color: #2c2c2a; text-align: left; cursor: pointer; text-decoration: underline; text-decoration-color: transparent;
 }
 .list-study-link:hover { text-decoration-color: #2c2c2a; }
 .list-study-citation { color: #6b6a63; }
