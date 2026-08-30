@@ -133,8 +133,9 @@ body { margin: 0; }
   background: white; border: 1px solid #e0ddd3; border-radius: 12px;
   padding: 16px; margin-bottom: 14px;
 }
-.chart-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.chart-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 2px; }
 .chart-head h2 { margin: 0; font-size: 15px; font-weight: 600; }
+.chart-subtitle { margin: 0 0 12px; font-size: 12px; color: #6b6a63; }
 .table-toggle {
   background: none; border: 1px solid #d3d1c7; border-radius: 6px;
   padding: 5px 10px; font-size: 12px; cursor: pointer; color: #2c2c2a;

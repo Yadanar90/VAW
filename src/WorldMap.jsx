@@ -79,6 +79,7 @@ export default function WorldMap({ studies, activeCountry, onSelectCountry }) {
           </button>
         )}
       </div>
+      <p className="chart-subtitle">Which countries the included studies were conducted in, and how many per country.</p>
 
       {tableRows.length === 0 ? (
         <p className="chart-empty">No studies match these filters yet.</p>

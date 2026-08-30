@@ -124,7 +124,7 @@ function FilterDropdown({ label, value, onChange, options }) {
 // down by some other categorical field - trial design, age group, income
 // setting, region, etc. `categories` is the fixed display order; rows with
 // zero studies are hidden rather than shown empty.
-function CategoryEffectivenessChart({ studies, title, columnLabel, categories, getCategory }) {
+function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory }) {
   const [showTable, setShowTable] = useState(false)
 
   const rows = useMemo(() => {
@@ -152,6 +152,7 @@ function CategoryEffectivenessChart({ studies, title, columnLabel, categories, g
           </button>
         )}
       </div>
+      {subtitle && <p className="chart-subtitle">{subtitle}</p>}
 
       {rows.length === 0 ? (
         <p className="chart-empty">No studies match these filters yet.</p>
@@ -269,6 +270,7 @@ function PublicationTimelineChart({ studies }) {
           </button>
         )}
       </div>
+      <p className="chart-subtitle">When the underlying research was published, and which years it's concentrated in.</p>
 
       {rows.length === 0 ? (
         <p className="chart-empty">No studies match these filters yet.</p>
@@ -566,6 +568,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Trial design & effectiveness"
+                subtitle="Whether the strength of the evidence (RCT vs quasi-experimental) tracks with how often the intervention worked."
                 columnLabel="Trial design"
                 categories={DESIGN_ORDER}
                 getCategory={s => s.study_design}
@@ -573,6 +576,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Age group & effectiveness"
+                subtitle="Which age groups interventions tend to be effective for."
                 columnLabel="Age group"
                 categories={AGE_GROUP_ORDER}
                 getCategory={s => s.population?.age_group_tag}
@@ -580,6 +584,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Intervention setting & effectiveness"
+                subtitle="Whether delivery setting - school, community, home, or online - affects effectiveness."
                 columnLabel="Setting"
                 categories={SETTING_ORDER}
                 getCategory={s => s.population?.setting}
@@ -587,6 +592,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Intervention duration & effectiveness"
+                subtitle="Whether longer programmes are more likely to work than shorter ones."
                 columnLabel="Duration"
                 categories={DURATION_ORDER}
                 getCategory={s => s.intervention?.duration_bucket}
@@ -594,6 +600,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Income setting & effectiveness"
+                subtitle="Whether interventions work differently depending on the country's income level."
                 columnLabel="Income setting"
                 categories={INCOME_ORDER}
                 getCategory={s => s.income_setting}
@@ -601,6 +608,7 @@ export default function App() {
               <CategoryEffectivenessChart
                 studies={filtered}
                 title="Region & effectiveness"
+                subtitle="Where the evidence base is strongest, and how effectiveness varies by region."
                 columnLabel="Region"
                 categories={REGION_ORDER}
                 getCategory={s => s.region}
