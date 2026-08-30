@@ -273,7 +273,6 @@ function StudyCard({ study }) {
                 <strong>Limitations:</strong>
                 <ul>{study.limitations.map((x, i) => <li key={i}>{x}</li>)}</ul>
               </div>
-              <div><strong>Quality appraisal:</strong> {study.quality_appraisal}</div>
               {study.url && <div><a href={study.url} target="_blank" rel="noreferrer">View source</a></div>}
             </div>
           )}
