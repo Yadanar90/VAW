@@ -47,16 +47,20 @@ body { margin: 0; }
 }
 
 .filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: end;
   background: white;
   border: 1px solid #e0ddd3;
   border-radius: 10px;
   padding: 14px 16px;
   margin-bottom: 12px;
 }
+.filter-bar-head { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.reset-filters-btn {
+  background: none; border: 1px solid #d3d1c7; border-radius: 6px;
+  padding: 5px 10px; font-size: 12px; cursor: pointer; color: #2c2c2a;
+}
+.reset-filters-btn:hover:not(:disabled) { background: #F5F3EC; }
+.reset-filters-btn:disabled { color: #a8a6a0; cursor: default; }
+.filter-bar-fields { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
 .filter-field { min-width: 130px; }
 .filter-field-wide { flex: 1; min-width: 180px; }
 .filter-field label { display: block; font-size: 11px; font-weight: 600; margin-bottom: 4px; color: #6b6a63; }
@@ -148,12 +152,22 @@ body { margin: 0; }
 .chart-empty { color: #6b6a63; font-size: 13px; margin: 0; }
 
 .chart-list { display: flex; flex-direction: column; gap: 14px; }
+.list-clear-btn {
+  align-self: flex-start; background: none; border: 1px solid #d3d1c7; border-radius: 6px;
+  padding: 5px 10px; font-size: 12px; cursor: pointer; color: #2c2c2a; margin-bottom: 4px;
+}
+.list-clear-btn:hover { background: #F5F3EC; }
 .list-group-title { margin: 0 0 6px; font-size: 13px; font-weight: 600; display: flex; align-items: baseline; gap: 6px; }
 .list-group-count { font-size: 11px; font-weight: 400; color: #6b6a63; }
-.list-group ul { margin: 0; padding-left: 0; list-style: none; font-size: 12px; }
-.list-group li { margin-bottom: 4px; display: flex; align-items: baseline; gap: 6px; }
-.list-effect-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.list-group ul { margin: 0; padding-left: 0; font-size: 12px; line-height: 1.5; }
+.list-group li { list-style: none; margin-bottom: 6px; }
+.list-effect-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 .list-effect-dot.status-neutral { background: #d3d1c7; }
+.list-study-link {
+  background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: #2c2c2a;
+  cursor: pointer; text-decoration: underline; text-decoration-color: transparent;
+}
+.list-study-link:hover { text-decoration-color: #2c2c2a; }
 .list-study-citation { color: #6b6a63; }
 
 .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }

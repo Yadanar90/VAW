@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import studies from './data/studies.json'
 import WorldMap from './WorldMap'
-import { EFFECT_STATUS, ViewToggle, CategoryStudyList } from './ChartControls.jsx'
+import { EFFECT_STATUS, ViewToggle, CategoryStudyList, StudyModal } from './ChartControls.jsx'
 import './App.css'
 
 const FILTERS = [
@@ -122,8 +122,12 @@ function FilterDropdown({ label, value, onChange, options }) {
 // down by some other categorical field - trial design, age group, income
 // setting, region, etc. `categories` is the fixed display order; rows with
 // zero studies are hidden rather than shown empty.
-function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory, filterKey, active, onFilterChange }) {
+function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory }) {
   const [viewMode, setViewMode] = useState('chart')
+  // A segment click drills this chart - and only this chart - into its own
+  // List view for just that category+effectiveness combination; it never
+  // touches the shared filters, other charts, or the results count.
+  const [selected, setSelected] = useState(null) // { category, effectKey } | null
 
   const rows = useMemo(() => {
     return categories
@@ -140,18 +144,31 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
 
   const maxTotal = Math.max(1, ...rows.map(r => r.total))
 
-  const isSelected = (category, effectKey) => active?.[filterKey] === category && active?.effect === effectKey
+  const isSelected = (category, effectKey) => selected?.category === category && selected?.effectKey === effectKey
   const handleSegmentClick = (category, effectKey) => {
-    if (!filterKey || !onFilterChange) return
-    const already = isSelected(category, effectKey)
-    onFilterChange({ [filterKey]: already ? '' : category, effect: already ? '' : effectKey })
+    if (isSelected(category, effectKey)) {
+      setSelected(null)
+    } else {
+      setSelected({ category, effectKey })
+      setViewMode('list')
+    }
   }
+  const handleViewChange = mode => {
+    setSelected(null)
+    setViewMode(mode)
+  }
+
+  const listRows = selected
+    ? rows
+        .filter(r => r.category === selected.category)
+        .map(r => ({ label: r.category, total: r.studies.filter(s => s.effect?.overall_tag === selected.effectKey).length, studies: r.studies.filter(s => s.effect?.overall_tag === selected.effectKey) }))
+    : rows.map(r => ({ label: r.category, total: r.total, studies: r.studies }))
 
   return (
     <section className="chart-card">
       <div className="chart-head">
         <h2>{title}</h2>
-        {rows.length > 0 && <ViewToggle mode={viewMode} onChange={setViewMode} />}
+        {rows.length > 0 && <ViewToggle mode={viewMode} onChange={handleViewChange} />}
       </div>
       {subtitle && <p className="chart-subtitle">{subtitle}</p>}
 
@@ -171,7 +188,7 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
           )}
 
           {viewMode === 'list' ? (
-            <CategoryStudyList rows={rows.map(r => ({ label: r.category, total: r.total, studies: r.studies }))} />
+            <CategoryStudyList rows={listRows} onClear={selected ? () => setSelected(null) : undefined} />
           ) : viewMode === 'table' ? (
             <table className="chart-table">
               <thead>
@@ -209,9 +226,9 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
                         >
                           {(s.count / r.total) * 100 >= 14 && <span className="segment-label">{s.count}</span>}
                           <span className="segment-tooltip" role="tooltip">
-                            <strong>{s.count}</strong> {s.label} · {r.category} · click to filter
+                            <strong>{s.count}</strong> {s.label} · {r.category} · click to list these studies
                           </span>
-                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}. Click to filter the list to these studies.`}</span>
+                          <span className="sr-only">{`${r.category}: ${s.count} of ${r.total} studies ${s.label}. Click to list these studies here.`}</span>
                         </button>
                       ))}
                     </div>
@@ -344,70 +361,6 @@ function PublicationTimelineChart({ studies }) {
   )
 }
 
-function StudyDetails({ study }) {
-  return (
-    <div className="detail-panel">
-      <div className="key-message">{study.key_message}</div>
-      {study.source && <div><strong>Source:</strong> {study.source}</div>}
-      <div><strong>Population:</strong> {study.population.age_range}, {study.population.sex}, {study.population.setting} setting</div>
-      <div><strong>Sample size:</strong> {study.population.sample_size} ({study.population.sample_size_detail})</div>
-      <div><strong>Design:</strong> {study.study_design_full}</div>
-      <div><strong>Intervention:</strong> {study.intervention.description}</div>
-      <div><strong>Outcomes measured:</strong> {study.outcomes_measured.join(', ')}</div>
-      <div>
-        <strong>Worked for:</strong>
-        <ul>{study.effect.worked_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
-      </div>
-      {study.effect.did_not_work_for?.length > 0 && (
-        <div>
-          <strong>Did not work for:</strong>
-          <ul>{study.effect.did_not_work_for.map((x, i) => <li key={i}>{x}</li>)}</ul>
-        </div>
-      )}
-      <div>
-        <strong>Limitations:</strong>
-        <ul>{study.limitations.map((x, i) => <li key={i}>{x}</li>)}</ul>
-      </div>
-      {study.url && (
-        <div>
-          <a className="view-source-btn" href={study.url} target="_blank" rel="noreferrer">View source</a>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function StudyModal({ study, onClose }) {
-  useEffect(() => {
-    const onKeyDown = e => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', onKeyDown)
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previousOverflow
-    }
-  }, [onClose])
-
-  return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="modal-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-label={study.intervention_name}
-        onClick={e => e.stopPropagation()}
-      >
-        <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
-        <h3>{study.intervention_name}</h3>
-        <p className="citation">{study.citation}</p>
-        <p className="location">{study.country}{study.region ? `, ${study.region}` : ''}</p>
-        <StudyDetails study={study} />
-      </div>
-    </div>
-  )
-}
-
 function StudyCard({ study }) {
   const [showModal, setShowModal] = useState(false)
   const isFull = study.completeness === 'full'
@@ -456,8 +409,9 @@ export default function App() {
   const [ageFrom, setAgeFrom] = useState(MIN_AGE)
   const [ageTo, setAgeTo] = useState(MAX_AGE)
 
+  const [resetSignal, setResetSignal] = useState(0)
+
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
-  const setFilters = patch => setActive(prev => ({ ...prev, ...patch }))
 
   // The inputs allow a transient empty string while typing (e.g. after
   // backspacing to clear a field) without forcing it back to a number on
@@ -468,6 +422,19 @@ export default function App() {
   const effYearTo = numOr(yearTo, MAX_YEAR)
   const effAgeFrom = numOr(ageFrom, MIN_AGE)
   const effAgeTo = numOr(ageTo, MAX_AGE)
+
+  const hasActiveFilters = keyword !== '' || Object.values(active).some(Boolean)
+    || effYearFrom !== MIN_YEAR || effYearTo !== MAX_YEAR || effAgeFrom !== MIN_AGE || effAgeTo !== MAX_AGE
+
+  const resetFilters = () => {
+    setKeyword('')
+    setActive({})
+    setYearFrom(MIN_YEAR)
+    setYearTo(MAX_YEAR)
+    setAgeFrom(MIN_AGE)
+    setAgeTo(MAX_AGE)
+    setResetSignal(n => n + 1)
+  }
 
   const matchState = { active, keyword, yearFrom: effYearFrom, yearTo: effYearTo, ageFrom: effAgeFrom, ageTo: effAgeTo }
 
@@ -504,6 +471,17 @@ export default function App() {
 
       <div className="app-body">
         <div className="filter-bar">
+          <div className="filter-bar-head">
+            <button
+              type="button"
+              className="reset-filters-btn"
+              onClick={resetFilters}
+              disabled={!hasActiveFilters}
+            >
+              Reset all filters
+            </button>
+          </div>
+          <div className="filter-bar-fields">
           <div className="filter-field filter-field-wide">
             <label>Keyword</label>
             <input
@@ -567,6 +545,7 @@ export default function App() {
               />
             </div>
           </div>
+          </div>
         </div>
 
         <p className="result-count">{filtered.length} of {studies.length} studies</p>
@@ -575,76 +554,65 @@ export default function App() {
           <>
             <div className="charts-grid">
               <CategoryEffectivenessChart
+                key={`design-${resetSignal}`}
                 studies={filtered}
                 title="Trial Design & Effectiveness"
                 subtitle="Whether the strength of the evidence (RCT vs quasi-experimental) tracks with how often the intervention worked."
                 columnLabel="Trial design"
                 categories={DESIGN_ORDER}
                 getCategory={s => s.study_design}
-                filterKey="design"
-                active={active}
-                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
+                key={`ageGroup-${resetSignal}`}
                 studies={filtered}
                 title="Age Group & Effectiveness"
                 subtitle="Which age groups interventions tend to be effective for."
                 columnLabel="Age group"
                 categories={AGE_GROUP_ORDER}
                 getCategory={s => s.population?.age_group_tag}
-                filterKey="ageGroup"
-                active={active}
-                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
+                key={`setting-${resetSignal}`}
                 studies={filtered}
                 title="Intervention Setting & Effectiveness"
                 subtitle="Whether delivery setting - school, community, home, or online - affects effectiveness."
                 columnLabel="Setting"
                 categories={SETTING_ORDER}
                 getCategory={s => s.population?.setting}
-                filterKey="setting"
-                active={active}
-                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
+                key={`duration-${resetSignal}`}
                 studies={filtered}
                 title="Intervention Duration & Effectiveness"
                 subtitle="Whether longer programmes are more likely to work than shorter ones."
                 columnLabel="Duration"
                 categories={DURATION_ORDER}
                 getCategory={s => s.intervention?.duration_bucket}
-                filterKey="duration"
-                active={active}
-                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
+                key={`income-${resetSignal}`}
                 studies={filtered}
                 title="Income Setting & Effectiveness"
                 subtitle="Whether interventions work differently depending on the country's income level."
                 columnLabel="Income setting"
                 categories={INCOME_ORDER}
                 getCategory={s => s.income_setting}
-                filterKey="income"
-                active={active}
-                onFilterChange={setFilters}
               />
               <CategoryEffectivenessChart
+                key={`region-${resetSignal}`}
                 studies={filtered}
                 title="Region & Effectiveness"
                 subtitle="Where the evidence base is strongest, and how effectiveness varies by region."
                 columnLabel="Region"
                 categories={REGION_ORDER}
                 getCategory={s => s.region}
-                filterKey="region"
-                active={active}
-                onFilterChange={setFilters}
               />
             </div>
 
-            <PublicationTimelineChart studies={filtered} />
+            <PublicationTimelineChart key={`timeline-${resetSignal}`} studies={filtered} />
 
             <WorldMap
+              key={`map-${resetSignal}`}
               studies={filtered}
               activeCountry={active.country}
               onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
