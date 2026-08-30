@@ -1079,5 +1079,57 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1186/s12889-021-12224-3"
+  },
+  {
+    "id": "devries-2017",
+    "intervention_name": "Good School Toolkit (whole-school violence prevention intervention) - sex-disaggregated analysis",
+    "citation": "Devries, Knight, Allen, Parkes, Kyegombe & Naker (2017)",
+    "source": "Prevention Science 18(7):839-853",
+    "country": "Uganda",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Primary 5-7 students, approx. 11-14 years (mean 13 years)",
+      "age_group_tag": "10-14",
+      "sex": "Mixed (1,766 boys, 2,054 girls)",
+      "sex_tag": "Mixed",
+      "setting": "School",
+      "sample_size": 3820,
+      "sample_size_detail": "3,820 students interviewed at endline (92.3% retention) across 42 primary schools (21 intervention, 21 control) in Luwero District, Uganda; same trial and endline survey as Devries et al. (2015), re-analysed by sex"
+    },
+    "intervention": {
+      "description": "Same whole-school Good School Toolkit intervention as Devries et al. (2015) - a complex, six-step programme fostering change in school operational culture (respect, power dynamics, teaching methods, accountability, non-violent discipline), delivered by trained staff and student 'protagonists' - here re-analysed to test whether effectiveness differed for boys vs girls",
+      "duration": "18 months (baseline June/July 2012, endline June/July 2014)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Secondary, sex-disaggregated analysis of the same two-arm cluster-randomised controlled trial reported in Devries et al. (2015), across 42 primary schools in Luwero District, Uganda (wait-list control)",
+    "outcomes_measured": [
+      "Violence victimization (staff and peer)",
+      "Injuries from violence",
+      "Sex-by-treatment interaction effects"
+    ],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "The Toolkit reduced violence for both sexes, but effects were significantly stronger for boys than girls, with a non-significant signal of increased sexual violence reports among girls",
+      "worked_for": [
+        "Past-week violence from staff and/or peers reduced for both boys (aOR 0.34) and girls (aOR 0.55)",
+        "Injuries from staff violence reduced for both boys (aOR 0.36) and girls (aOR 0.51), with a larger effect in boys over the past term (p<0.0001)",
+        "No significant sex difference in reduction of peer emotional or physical violence"
+      ],
+      "did_not_work_for": [
+        "Past-week staff physical violence reduction was significantly weaker for girls (aOR 0.45) than boys (aOR 0.33), a significant sex interaction (p=0.033)",
+        "Borderline (non-significant) increase in reports of sexual violence for girls specifically"
+      ]
+    },
+    "key_message": "Re-analysing the Good School Toolkit trial by sex shows the intervention reduced violence for both boys and girls, but its protective effect was consistently weaker for girls - with a worrying, if non-significant, signal of increased sexual violence reports among girls - suggesting whole-school interventions may need stronger, explicit mechanisms to engage and protect girls specifically.",
+    "limitations": [
+      "Exploratory sex-disaggregated analysis with limited statistical power to detect interaction effects",
+      "Single-item outcome measures subject to measurement error",
+      "Multiple statistical comparisons increase the risk of chance findings",
+      "All measures are self-report; sexual violence is likely under-reported"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1007/s11121-017-0775-3"
   }
 ]
