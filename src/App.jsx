@@ -17,6 +17,8 @@ const DESIGN_ORDER = FILTERS.find(f => f.key === 'design').options
 const AGE_GROUP_ORDER = ['Under 10', '10-14', '15-19', 'Mixed/all ages']
 const INCOME_ORDER = ['Low income', 'Lower middle income', 'Upper middle income', 'High income']
 const REGION_ORDER = [...new Set(studies.map(s => s.region))]
+const SETTING_ORDER = ['School', 'Community', 'Home/family', 'Online/digital', 'Mixed']
+const DURATION_ORDER = ['Short (<6 months)', 'Medium (6-18 months)', 'Long (>18 months)', 'Not reported']
 const EFFECT_STATUS = [
   { key: 'Worked', label: 'Worked', status: 'good', icon: '✓' },
   { key: 'Mixed', label: 'Mixed', status: 'warning', icon: '~' },
@@ -212,6 +214,121 @@ function CategoryEffectivenessChart({ studies, title, columnLabel, categories, g
             </div>
           )}
         </>
+      )}
+    </section>
+  )
+}
+
+const TIMELINE_WIDTH = 900
+const TIMELINE_HEIGHT = 220
+const TIMELINE_PAD = { left: 28, right: 16, top: 16, bottom: 28 }
+
+// A count-per-year line chart (not split by effectiveness, unlike
+// CategoryEffectivenessChart) showing when the underlying research was
+// published, so it's easy to spot years where output was concentrated.
+// Gap years with zero studies are filled in so the line's shape over time
+// is accurate rather than jumping straight between non-adjacent years.
+function PublicationTimelineChart({ studies }) {
+  const [showTable, setShowTable] = useState(false)
+  const [hoverIdx, setHoverIdx] = useState(null)
+
+  const rows = useMemo(() => {
+    const years = studies.map(getYear).filter(Boolean)
+    if (years.length === 0) return []
+    const minYear = Math.min(...years)
+    const maxYear = Math.max(...years)
+    const counts = new Map()
+    for (const y of years) counts.set(y, (counts.get(y) || 0) + 1)
+    const out = []
+    for (let y = minYear; y <= maxYear; y++) out.push({ year: y, total: counts.get(y) || 0 })
+    return out
+  }, [studies])
+
+  const maxTotal = Math.max(1, ...rows.map(r => r.total))
+  const innerW = TIMELINE_WIDTH - TIMELINE_PAD.left - TIMELINE_PAD.right
+  const innerH = TIMELINE_HEIGHT - TIMELINE_PAD.top - TIMELINE_PAD.bottom
+  const baseline = TIMELINE_PAD.top + innerH
+
+  const points = rows.map((r, i) => ({
+    ...r,
+    x: TIMELINE_PAD.left + (rows.length > 1 ? (innerW * i) / (rows.length - 1) : innerW / 2),
+    y: TIMELINE_PAD.top + innerH - (r.total / maxTotal) * innerH,
+  }))
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ')
+  const areaPath = points.length > 0
+    ? `${linePath} L ${points[points.length - 1].x} ${baseline} L ${points[0].x} ${baseline} Z`
+    : ''
+
+  return (
+    <section className="chart-card publication-timeline-card">
+      <div className="chart-head">
+        <h2>Publication timeline</h2>
+        {rows.length > 0 && (
+          <button className="table-toggle" onClick={() => setShowTable(v => !v)}>
+            {showTable ? 'Show chart' : 'Show as table'}
+          </button>
+        )}
+      </div>
+
+      {rows.length === 0 ? (
+        <p className="chart-empty">No studies match these filters yet.</p>
+      ) : showTable ? (
+        <table className="chart-table">
+          <thead>
+            <tr><th>Year</th><th>Studies</th></tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr key={r.year}><td>{r.year}</td><td>{r.total}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="timeline-chart">
+          <svg
+            viewBox={`0 0 ${TIMELINE_WIDTH} ${TIMELINE_HEIGHT}`}
+            className="timeline-svg"
+            role="img"
+            aria-label="Number of studies published per year"
+          >
+            <line
+              x1={TIMELINE_PAD.left} y1={baseline} x2={TIMELINE_WIDTH - TIMELINE_PAD.right} y2={baseline}
+              className="timeline-baseline"
+            />
+            <path d={areaPath} className="timeline-area" />
+            <path d={linePath} className="timeline-line" fill="none" />
+            {points.map((p, i) => (
+              <g key={p.year}>
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={hoverIdx === i ? 5 : 3.5}
+                  className="timeline-dot"
+                  tabIndex={0}
+                  onMouseEnter={() => setHoverIdx(i)}
+                  onMouseLeave={() => setHoverIdx(null)}
+                  onFocus={() => setHoverIdx(i)}
+                  onBlur={() => setHoverIdx(null)}
+                >
+                  <title>{`${p.year}: ${p.total} ${p.total === 1 ? 'study' : 'studies'}`}</title>
+                </circle>
+                <text x={p.x} y={baseline + 18} className="timeline-year-label" textAnchor="middle">{p.year}</text>
+              </g>
+            ))}
+          </svg>
+
+          {hoverIdx !== null && (
+            <div
+              className="timeline-tooltip"
+              style={{
+                left: `${(points[hoverIdx].x / TIMELINE_WIDTH) * 100}%`,
+                top: `${(points[hoverIdx].y / TIMELINE_HEIGHT) * 100}%`,
+              }}
+            >
+              <strong>{points[hoverIdx].total}</strong> {points[hoverIdx].total === 1 ? 'study' : 'studies'} · {points[hoverIdx].year}
+            </div>
+          )}
+        </div>
       )}
     </section>
   )
@@ -462,6 +579,20 @@ export default function App() {
               />
               <CategoryEffectivenessChart
                 studies={filtered}
+                title="Intervention setting & effectiveness"
+                columnLabel="Setting"
+                categories={SETTING_ORDER}
+                getCategory={s => s.population?.setting}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
+                title="Intervention duration & effectiveness"
+                columnLabel="Duration"
+                categories={DURATION_ORDER}
+                getCategory={s => s.intervention?.duration_bucket}
+              />
+              <CategoryEffectivenessChart
+                studies={filtered}
                 title="Income setting & effectiveness"
                 columnLabel="Income setting"
                 categories={INCOME_ORDER}
@@ -475,6 +606,8 @@ export default function App() {
                 getCategory={s => s.region}
               />
             </div>
+
+            <PublicationTimelineChart studies={filtered} />
 
             <WorldMap
               studies={filtered}

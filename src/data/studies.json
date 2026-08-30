@@ -21,7 +21,8 @@
     },
     "intervention": {
       "description": "3 units (gender stereotypes, gender-based IPV, socio-emotional skills), 2 sessions/week for 3 months, delivered in classroom",
-      "duration": "3 months"
+      "duration": "3 months",
+      "duration_bucket": "Short (<6 months)"
     },
     "study_design": "Quasi-experimental",
     "study_design_full": "Quasi-experimental (non-randomized experimental vs control group, pre/post)",
@@ -79,7 +80,8 @@
     },
     "intervention": {
       "description": "Community mobilisation over 3 years of exposure (delivered 2018-2023, delayed by COVID-19): women's, men's, and youth peer-education groups; volunteer \"sanginis\" who identify and support survivors; caseworkers providing crisis, legal, and psychosocial support.",
-      "duration": "3 years of exposure (implemented over ~4-5 years including a COVID-19 pause)"
+      "duration": "3 years of exposure (implemented over ~4-5 years including a COVID-19 pause)",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm, pragmatic, theory-driven, cluster-randomised controlled trial; 48 clusters, 1:1 allocation",
@@ -136,7 +138,8 @@
     },
     "intervention": {
       "description": "Weekly life skills sessions (30 total) delivered by trained young female refugee mentors in \"safe spaces,\" plus 8 monthly discussion sessions for caregivers, covering communication, GBV awareness, and sexual/reproductive health.",
-      "duration": "Approximately 12 months, refugee camp setting"
+      "duration": "Approximately 12 months, refugee camp setting",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm, single-blinded, wait-list, cluster-randomised controlled trial across 62 clusters",
@@ -191,7 +194,8 @@
     },
     "intervention": {
       "description": "32 weekly life-skills sessions with trained female mentors in safe spaces, 8 monthly caregiver discussion groups, and individual girl savings accounts ($2/month). GE+ variant adds a cash incentive to caregivers for girls' attendance (~$1.25/session).",
-      "duration": "9 months of programming (Feb-Nov 2016), assessed at 24-month follow-up"
+      "duration": "9 months of programming (Feb-Nov 2016), assessed at 24-month follow-up",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Parallel, three-arm (control, GE, GE+), cluster-randomised controlled trial at the village level",
@@ -247,7 +251,8 @@
     },
     "intervention": {
       "description": "COVID-adapted 'No Means No' empowerment-based self-defense curriculum using experiential learning (e.g. role play) to build practical skills for recognizing and resisting sexual assault situations, delivered either to girls only or to girls and boys separately within the same schools",
-      "duration": "School-based delivery; outcomes assessed at baseline, 3, 6, and 12 months"
+      "duration": "School-based delivery; outcomes assessed at baseline, 3, 6, and 12 months",
+      "duration_bucket": "Not reported"
     },
     "study_design": "RCT",
     "study_design_full": "Hybrid type-1 effectiveness-implementation, three-arm, cluster-randomised controlled trial across 15 schools (girls-only intervention vs girls+boys intervention vs control, 1:1:1 allocation)",
@@ -296,7 +301,8 @@
     },
     "intervention": {
       "description": "Interactive, tailored online safety and health decision aid (iCAN Plan 4 Safety) that generates personalized safety planning content based on a woman's own risk and context, compared against a static, non-tailored version of the same tool",
-      "duration": "Self-directed online use; outcomes measured at baseline and 3, 6, and 12 months via online surveys"
+      "duration": "Self-directed online use; outcomes measured at baseline and 3, 6, and 12 months via online surveys",
+      "duration_bucket": "Not reported"
     },
     "study_design": "RCT",
     "study_design_full": "Double-blind, two-arm randomised controlled trial (tailored interactive tool vs static non-tailored tool)",
@@ -347,7 +353,8 @@
     },
     "intervention": {
       "description": "23-week group programme for male perpetrators of intimate partner violence in heterosexual relationships, with an average of three individual one-to-one sessions for men, plus separate one-to-one support for their current or ex female partners",
-      "duration": "23 weeks group programming; outcomes assessed via self-report at 9 months"
+      "duration": "23 weeks group programming; outcomes assessed via self-report at 9 months",
+      "duration_bucket": "Short (<6 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Pragmatic, individually randomised pilot and feasibility trial with an integrated qualitative study, conducted at one site (three local-authority areas) in England",
@@ -398,7 +405,8 @@
     },
     "intervention": {
       "description": "10-session participatory gender-training curriculum ('MAISHA') delivered to women in their existing microfinance loan groups, addressing gender norms, communication, and economic/social empowerment to prevent intimate partner violence; control groups were wait-listed for the intervention after the trial",
-      "duration": "10 sessions, delivered September 2014-June 2015"
+      "duration": "10 sessions, delivered September 2014-June 2015",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Cluster-randomised controlled trial; 66 pre-existing microfinance loan groups randomised in blocks of six to intervention or wait-list control",
@@ -452,7 +460,8 @@
     },
     "intervention": {
       "description": "Community-level mobilisation to shift attitudes, social norms, and behaviours around intimate partner violence, layered onto standard HIV testing/counselling services, plus screening and brief intervention promoting safe HIV-status disclosure among women (the SHARE Project)",
-      "duration": "Baseline survey Feb 2005-Jun 2006; two follow-up survey rounds through Dec 2009"
+      "duration": "Baseline survey Feb 2005-Jun 2006; two follow-up survey rounds through Dec 2009",
+      "duration_bucket": "Not reported"
     },
     "study_design": "RCT",
     "study_design_full": "Analysis of an intervention nested within an existing cluster-randomised cohort (Rakai Community Cohort Study); 4 intervention vs 7 control clusters",
@@ -503,7 +512,8 @@
     },
     "intervention": {
       "description": "Six 2-hour classroom sessions delivered by instructors from the same informal settlements: girls received IMpower (empowerment, gender relations, and self-defense skills), boys received 50:50 (healthy gender norms), delivered in parallel at the same schools; control schools received a health and hygiene curriculum",
-      "duration": "6 sessions; outcomes assessed at baseline and ~9 months later"
+      "duration": "6 sessions; outcomes assessed at baseline and ~9 months later",
+      "duration_bucket": "Short (<6 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Cluster-randomised, matched-pairs, parallel trial; 28 primary schools matched on school size, academic performance, and other covariates before randomisation to intervention or standard-of-care control (14 pairs)",
@@ -555,7 +565,8 @@
     },
     "intervention": {
       "description": "Two-year play-based life-skills programme (Right To Play's Positive Child and Youth Development Programme): biweekly structured game led by a trained coach, followed by 30 minutes of critical reflection and discussion",
-      "duration": "2 years; outcomes assessed at 24 months"
+      "duration": "2 years; outcomes assessed at 24 months",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm cluster-randomised controlled trial; 40 single-sex public schools (20 intervention, 20 control)",
@@ -612,7 +623,8 @@
     },
     "intervention": {
       "description": "Addition of 'Gender Dialogue Groups' (8 sessions targeting women and their male partners on gender norms) to an existing Village Savings and Loan Association (VSLA) economic-empowerment group savings program, compared to VSLA savings alone",
-      "duration": "8 sessions; study conducted 2010-2012, assessed at endline"
+      "duration": "8 sessions; study conducted 2010-2012, assessed at endline",
+      "duration_bucket": "Short (<6 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-armed, non-blinded, village-randomised controlled pilot trial (VSLA + Gender Dialogue Groups vs VSLA only); 24 villages",
@@ -668,7 +680,8 @@
     },
     "intervention": {
       "description": "SASA! community mobilisation intervention: local activists and staged phases (Start, Awareness, Support, Action) working to shift community norms around power, gender, and violence, aiming to reduce IPV and HIV risk",
-      "duration": "Implemented 2007-2012; outcomes assessed approximately 4 years post-implementation via repeated cross-sectional surveys"
+      "duration": "Implemented 2007-2012; outcomes assessed approximately 4 years post-implementation via repeated cross-sectional surveys",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Pair-matched, cluster-randomised controlled trial; 8 communities (4 intervention, 4 control) in Kampala, Uganda; repeated cross-sectional surveys at baseline and 4-year follow-up, adjusted cluster-level intention-to-treat analysis",
@@ -723,7 +736,8 @@
     },
     "intervention": {
       "description": "Monthly cash transfers to never-married adolescent girls/young women and their households over 2 school years; conditional arm required 80% school attendance, unconditional arm had no conditions; household amount $4-10/month, girl's amount $1-5/month, both randomly varied",
-      "duration": "2 years (Jan 2008-Dec 2009)"
+      "duration": "2 years (Jan 2008-Dec 2009)",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Cluster-randomised controlled trial; 176 enumeration areas in Zomba district randomised to conditional cash transfer, unconditional cash transfer, or control arms",
@@ -776,7 +790,8 @@
     },
     "intervention": {
       "description": "Good School Toolkit - a complex behavioural, whole-school intervention developed by Ugandan NGO Raising Voices, designed to change school culture and reduce corporal punishment/violence from staff toward students",
-      "duration": "18 months (Sept 2012-April 2014)"
+      "duration": "18 months (Sept 2012-April 2014)",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm cluster-randomised controlled trial; 42 primary schools in Luwero District randomised to intervention (21) or waitlist control (21), cross-sectional baseline (2012) and endline (2014) student surveys",
@@ -823,7 +838,8 @@
     },
     "intervention": {
       "description": "Adolescent girls in both arms received 32 life skills sessions; caregivers in the treatment arm additionally received 13 complementary caregiver sessions on emotional, parental and social support skills",
-      "duration": "12 months follow-up"
+      "duration": "12 months follow-up",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Two-arm, single-blinded, cluster-randomised controlled trial; 35 clusters (18 treatment, 17 wait-list control) in a humanitarian/conflict-affected setting in South Kivu, DRC",
@@ -874,7 +890,8 @@
     },
     "intervention": {
       "description": "Three-arm trial: (1) no-intervention control, (2) schools' package - a Life Orientation curriculum workbook plus teacher training, (3) combined schools' package plus a family package - caregiver/teen workshops supported by clubs in year 2",
-      "duration": "18 months"
+      "duration": "18 months",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Pragmatic, three-arm cluster-randomised controlled trial across 24 state schools in Grade 8 classes; under-powered by enrolment shortfalls",
@@ -927,7 +944,8 @@
     },
     "intervention": {
       "description": "Three-arm cluster trial nested on a base of community mobilisation and one-stop service centres: (A) base only (control), (B) base + 13 female-only group sessions on gender, rights, SRHR and violence prevention, (C) base + combined female and male group sessions",
-      "duration": "20 months"
+      "duration": "20 months",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Three-arm cluster-randomised controlled trial across 19 urban slum clusters in Dhaka, Bangladesh (March 2012-October 2013)",
@@ -977,7 +995,8 @@
     },
     "intervention": {
       "description": "Comprehensive support to keep orphan girls in school: payment of school fees, uniforms and supplies, plus a trained female teacher-mentor who monitored attendance and provided support; all schools (intervention and control) also received a universal school feeding programme",
-      "duration": "2 years (2007-2009)"
+      "duration": "2 years (2007-2009)",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "School-randomised controlled trial across 25 primary schools in rural eastern Zimbabwe (13 intervention, 12 control), with 3 annual survey waves",
@@ -1029,7 +1048,8 @@
     },
     "intervention": {
       "description": "Two-year, four-arm 'cash plus' trial nesting a violence-prevention community-dialogue component with additional layers: (1) violence prevention alone, (2) + education conditional cash transfer, (3) + health/life-skills girls' groups, (4) + wealth-creation/financial-literacy training",
-      "duration": "2 years (2015-2017)"
+      "duration": "2 years (2015-2017)",
+      "duration_bucket": "Long (>18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Multisectoral randomised trial with 4 nested arms; individually randomised in Kibera (urban) and cluster-randomised in Wajir (rural); no pure no-intervention control arm",
@@ -1080,7 +1100,8 @@
     },
     "intervention": {
       "description": "Same whole-school Good School Toolkit intervention as Devries et al. (2015) - a complex, six-step programme fostering change in school operational culture (respect, power dynamics, teaching methods, accountability, non-violent discipline), delivered by trained staff and student 'protagonists' - here re-analysed to test whether effectiveness differed for boys vs girls",
-      "duration": "18 months (baseline June/July 2012, endline June/July 2014)"
+      "duration": "18 months (baseline June/July 2012, endline June/July 2014)",
+      "duration_bucket": "Medium (6-18 months)"
     },
     "study_design": "RCT",
     "study_design_full": "Secondary, sex-disaggregated analysis of the same two-arm cluster-randomised controlled trial reported in Devries et al. (2015), across 42 primary schools in Luwero District, Uganda (wait-list control)",
