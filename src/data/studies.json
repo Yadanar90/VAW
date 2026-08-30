@@ -923,5 +923,161 @@
     ],
     "quality_appraisal": "Not yet appraised (pending JBI review)",
     "url": "https://doi.org/10.1371/journal.pone.0223562"
+  },
+  {
+    "id": "naved-2018",
+    "intervention_name": "SAFE (Sexual violence-free community mobilisation + group sessions) programme",
+    "citation": "Naved, Al Mamun, Mourin & Parvin (2018)",
+    "source": "PLOS ONE 13(6):e0198926",
+    "country": "Bangladesh",
+    "region": "Asia",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Women 15-29 and their husbands (men 18-35)",
+      "age_group_tag": "Mixed/all ages",
+      "sex": "Mixed (separate female and male surveys)",
+      "sex_tag": "Mixed",
+      "setting": "Community",
+      "sample_size": 2666,
+      "sample_size_detail": "2,666 currently-married women (15-29) and 930 men (18-35) at baseline across 19 slum clusters in Dhaka; 2,670 women and 1,026 men at endline"
+    },
+    "intervention": {
+      "description": "Three-arm cluster trial nested on a base of community mobilisation and one-stop service centres: (A) base only (control), (B) base + 13 female-only group sessions on gender, rights, SRHR and violence prevention, (C) base + combined female and male group sessions",
+      "duration": "20 months"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Three-arm cluster-randomised controlled trial across 19 urban slum clusters in Dhaka, Bangladesh (March 2012-October 2013)",
+    "outcomes_measured": [
+      "Physical IPV",
+      "Sexual IPV",
+      "Economic IPV"
+    ],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "No significant overall reduction in past-year IPV among women 15-29, but a significant reduction in physical IPV against adolescent wives (15-19) in the arm combining male and female group sessions",
+      "worked_for": [
+        "21% risk reduction in physical IPV against adolescent girls (15-19) in the combined male+female group sessions arm (C)",
+        "Consistent, though not statistically significant, reductions in sexual violence across both intervention arms"
+      ],
+      "did_not_work_for": [
+        "No significant reduction in physical, sexual or economic IPV for the full sample of women aged 15-29"
+      ]
+    },
+    "key_message": "Adding structured group sessions on gender, rights and violence to community mobilisation and service provision did not shift IPV for the wider population of women, but engaging husbands alongside wives was linked to a meaningful drop in physical violence against the youngest, most vulnerable wives - underscoring the value of involving men in prevention programming.",
+    "limitations": [
+      "Short follow-up period (about 4 months after the intervention ended)",
+      "High population turnover/out-migration in slum settings",
+      "Much lower male than female survey coverage (about 15% vs 51%), limiting power for male-reported outcomes",
+      "Possible social desirability bias in self-reported violence",
+      "Contamination between geographically close clusters was not measured"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1371/journal.pone.0198926"
+  },
+  {
+    "id": "hallfors-2011",
+    "intervention_name": "Comprehensive school support for orphan girls (fees, uniforms, supplies, teacher mentors)",
+    "citation": "Hallfors, Cho, Rusakaniko, Iritani, Mapfumo & Halpern (2011)",
+    "source": "American Journal of Public Health 101(6):1082-1088",
+    "country": "Zimbabwe",
+    "region": "Africa",
+    "income_setting": "Low-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "Grade 6 orphan girls, mean age 12.2 years",
+      "age_group_tag": "10-14",
+      "sex": "Girls only",
+      "sex_tag": "Girls only",
+      "setting": "School",
+      "sample_size": 329,
+      "sample_size_detail": "329 orphan girls in Grade 6 across 25 primary schools (184 intervention, 145 control) in rural Manicaland province, followed over 3 annual survey waves"
+    },
+    "intervention": {
+      "description": "Comprehensive support to keep orphan girls in school: payment of school fees, uniforms and supplies, plus a trained female teacher-mentor who monitored attendance and provided support; all schools (intervention and control) also received a universal school feeding programme",
+      "duration": "2 years (2007-2009)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "School-randomised controlled trial across 25 primary schools in rural eastern Zimbabwe (13 intervention, 12 control), with 3 annual survey waves",
+    "outcomes_measured": [
+      "School dropout",
+      "Child marriage",
+      "Pregnancy",
+      "School bonding/attendance",
+      "Gender attitudes",
+      "Sexual risk behaviour"
+    ],
+    "effect": {
+      "overall_tag": "Worked",
+      "direction": "Large reductions in school dropout and child marriage, alongside improved school bonding and gender attitudes",
+      "worked_for": [
+        "82% reduction in school dropout among intervention girls vs control",
+        "63% reduction in marriage rates",
+        "Greater school bonding, more equitable gender attitudes, and greater concern about the consequences of sex reported by intervention girls"
+      ],
+      "did_not_work_for": [
+        "Self-reported sexual intercourse was not reliably reduced (authors note self-report data on this outcome is unreliable)"
+      ]
+    },
+    "key_message": "Comprehensive economic and social support to keep orphan adolescent girls in school - covering fees, supplies and a caring teacher-mentor - produced large reductions in dropout and child marriage, suggesting school-retention support is a promising indirect pathway for reducing girls' HIV and violence risk.",
+    "limitations": [
+      "Self-reported sexual intercourse data considered unreliable",
+      "Findings specific to a rural, orphan-girl population in eastern Zimbabwe and may not generalise",
+      "Support and monitoring became inconsistent once girls transitioned to secondary school"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.2105/AJPH.2010.300042"
+  },
+  {
+    "id": "austrian-2021",
+    "intervention_name": "Adolescent Girls Initiative-Kenya (AGI-K) multisectoral cash-plus programme",
+    "citation": "Austrian, Soler-Hampejsek, Kangwana, Wado, Abuya & Maluccio (2021)",
+    "source": "BMC Public Health 21:2159",
+    "country": "Kenya",
+    "region": "Africa",
+    "income_setting": "Lower-middle-income",
+    "completeness": "full",
+    "population": {
+      "age_range": "11-14 years at baseline",
+      "age_group_tag": "10-14",
+      "sex": "Girls only",
+      "sex_tag": "Girls only",
+      "setting": "Community",
+      "sample_size": 4537,
+      "sample_size_detail": "2,390 girls in Kibera (urban informal settlement, individually randomised) and 2,147 girls in Wajir (rural pastoralist county, cluster-randomised) at baseline; 2,190 and 1,909 respectively at 2-year follow-up"
+    },
+    "intervention": {
+      "description": "Two-year, four-arm 'cash plus' trial nesting a violence-prevention community-dialogue component with additional layers: (1) violence prevention alone, (2) + education conditional cash transfer, (3) + health/life-skills girls' groups, (4) + wealth-creation/financial-literacy training",
+      "duration": "2 years (2015-2017)"
+    },
+    "study_design": "RCT",
+    "study_design_full": "Multisectoral randomised trial with 4 nested arms; individually randomised in Kibera (urban) and cluster-randomised in Wajir (rural); no pure no-intervention control arm",
+    "outcomes_measured": [
+      "Violence experience",
+      "Educational enrolment/attainment",
+      "Sexual and reproductive health knowledge",
+      "Gender attitudes",
+      "Financial literacy/savings"
+    ],
+    "effect": {
+      "overall_tag": "Mixed",
+      "direction": "Multisectoral cash-plus arms reduced violence in the urban site but showed little effect in the rural site",
+      "worked_for": [
+        "Violence experience fell 4-9 percentage points across arms in Kibera (from a 42% baseline), reaching statistical significance in the arms adding education and health components"
+      ],
+      "did_not_work_for": [
+        "No significant violence-reduction effects in Wajir after correcting for multiple comparisons, likely reflecting a much lower baseline violence rate (3.8%)",
+        "Gender-attitude effects were mixed and modest across sites"
+      ]
+    },
+    "key_message": "A multisectoral 'cash plus' approach - combining violence-prevention dialogues with education, health and economic-empowerment components - reduced girls' violence experience in an urban informal settlement, but context strongly moderated effectiveness, with little detectable effect in a rural pastoralist setting with a much lower baseline violence rate.",
+    "limitations": [
+      "No arm isolates the violence-prevention component alone, so its independent effect cannot be assessed",
+      "Different levels of intervention exposure across the nested arms complicate comparisons",
+      "Possible spillover/contamination between arms in the densely-populated Kibera site",
+      "Limited statistical power for rarer long-term outcomes such as pregnancy and marriage"
+    ],
+    "quality_appraisal": "Not yet appraised (pending JBI review)",
+    "url": "https://doi.org/10.1186/s12889-021-12224-3"
   }
 ]
