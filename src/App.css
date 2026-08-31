@@ -114,6 +114,12 @@ body { margin: 0; }
   .cta-arrow { transition: none; }
 }
 
+.clear-segment-btn {
+  display: block; margin: 8px auto 0; background: none; border: 0; padding: 0;
+  font-size: 12px; color: #6b6a63; text-decoration: underline; cursor: pointer;
+}
+.clear-segment-btn:hover { color: #2c2c2a; }
+
 .back-to-dashboard {
   align-self: flex-start; margin-bottom: 4px; background: none; border: 1px solid #d3d1c7; border-radius: 6px;
   padding: 6px 12px; font-size: 13px; cursor: pointer; color: #2c2c2a;
@@ -129,6 +135,17 @@ body { margin: 0; }
 .charts-grid .chart-card { margin-bottom: 0; }
 @media (max-width: 860px) {
   .charts-grid { grid-template-columns: 1fr; }
+}
+
+.bottom-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.bottom-charts-grid .chart-card { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .bottom-charts-grid { grid-template-columns: 1fr; }
 }
 
 .world-map-card { margin-bottom: 14px; }
@@ -164,10 +181,11 @@ body { margin: 0; }
 .list-effect-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 .list-effect-dot.status-neutral { background: #d3d1c7; }
 .list-study-link {
-  display: inline; background: none; border: 0; padding: 0; margin: 0; font: inherit; font-weight: 600;
-  color: #2c2c2a; text-align: left; cursor: pointer; text-decoration: underline; text-decoration-color: transparent;
+  font-weight: 600; color: #2c2c2a; cursor: pointer;
+  text-decoration: underline; text-decoration-color: transparent;
 }
-.list-study-link:hover { text-decoration-color: #2c2c2a; }
+.list-study-link:hover, .list-study-link:focus-visible { text-decoration-color: #2c2c2a; }
+.list-study-link:focus-visible { outline: 2px solid #7C1030; outline-offset: 2px; }
 .list-study-citation { color: #6b6a63; }
 
 .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; }
