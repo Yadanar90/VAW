@@ -371,7 +371,7 @@ function PublicationTimelineChart({ studies }) {
   )
 }
 
-function StudyCard({ study }) {
+function StudyCard({ study, selected, onToggleSelect }) {
   const [showModal, setShowModal] = useState(false)
   const isFull = study.completeness === 'full'
   const effectTag = study.effect?.overall_tag
@@ -380,6 +380,15 @@ function StudyCard({ study }) {
   return (
     <div className="study-card">
       <div className="card-tags">
+        {onToggleSelect && (
+          <input
+            type="checkbox"
+            className="study-select"
+            checked={selected}
+            onChange={() => onToggleSelect(study.id)}
+            aria-label={`Select ${study.intervention_name} for export`}
+          />
+        )}
         {isFull && study.study_design && <span className="tag tag-accent">{study.study_design}</span>}
         {isFull && effectMeta ? (
           <span className={`tag ${EFFECT_TAG_CLASS[effectTag]}`}>{effectMeta.icon} {effectMeta.label}</span>
@@ -424,8 +433,17 @@ export default function App() {
   // bottom "Read matching studies" button/results view to just that
   // segment's studies, independent of the shared filters.
   const [segmentSelection, setSegmentSelection] = useState(null) // { label, studies } | null
+  // Hand-picked studies to export from the results view. Empty = export
+  // everything currently shown, same as before this existed.
+  const [selectedIds, setSelectedIds] = useState(new Set())
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
+  const toggleSelected = id => setSelectedIds(prev => {
+    const next = new Set(prev)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
 
   // The inputs allow a transient empty string while typing (e.g. after
   // backspacing to clear a field) without forcing it back to a number on
@@ -448,6 +466,7 @@ export default function App() {
     setAgeFrom(MIN_AGE)
     setAgeTo(MAX_AGE)
     setSegmentSelection(null)
+    setSelectedIds(new Set())
     setResetSignal(n => n + 1)
   }
 
@@ -461,6 +480,13 @@ export default function App() {
   const resultsSource = segmentSelection ? segmentSelection.studies : filtered
   const handleSegmentSelect = (matching, label) => setSegmentSelection(matching ? { label, studies: matching } : null)
   const collectionLabel = segmentSelection ? segmentSelection.label : hasActiveFilters ? 'Filtered results' : 'All studies'
+
+  // A hand-picked subset (results view only) narrows what gets exported;
+  // with nothing selected, export behaves exactly as it did before.
+  const exportStudies = selectedIds.size > 0 ? resultsSource.filter(s => selectedIds.has(s.id)) : resultsSource
+  const exportCollectionLabel = selectedIds.size > 0
+    ? `${selectedIds.size} selected ${selectedIds.size === 1 ? 'study' : 'studies'}`
+    : collectionLabel
 
   const renderFilterDropdown = key => {
     const f = FILTERS.find(x => x.key === key)
@@ -670,15 +696,40 @@ export default function App() {
         ) : (
           <>
             <div className="results-toolbar">
-              <button className="back-to-dashboard" onClick={() => { setSegmentSelection(null); setView('dashboard') }}>
+              <button
+                className="back-to-dashboard"
+                onClick={() => { setSegmentSelection(null); setSelectedIds(new Set()); setView('dashboard') }}
+              >
                 &larr; Back to overview
               </button>
-              <ExportButtons studies={resultsSource} collectionLabel={collectionLabel} />
+              <div className="selection-controls">
+                {selectedIds.size > 0 && (
+                  <button type="button" className="clear-selection-btn" onClick={() => setSelectedIds(new Set())}>
+                    Clear selection
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="select-all-btn"
+                  onClick={() => setSelectedIds(new Set(resultsSource.map(s => s.id)))}
+                  disabled={resultsSource.length === 0}
+                >
+                  Select all
+                </button>
+              </div>
+              <ExportButtons studies={exportStudies} collectionLabel={exportCollectionLabel} />
             </div>
 
             <main className="results-grid">
               {resultsSource.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
-              {resultsSource.map(s => <StudyCard key={s.id} study={s} />)}
+              {resultsSource.map(s => (
+                <StudyCard
+                  key={s.id}
+                  study={s}
+                  selected={selectedIds.has(s.id)}
+                  onToggleSelect={toggleSelected}
+                />
+              ))}
             </main>
           </>
         )}
