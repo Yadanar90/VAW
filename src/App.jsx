@@ -488,6 +488,10 @@ export default function App() {
         <h1>Prevention of Violence Against Women and Girls Evidence Platform</h1>
       </header>
 
+      <div className="beta-banner">
+        This platform is in beta. New studies are being added on an ongoing basis.
+      </div>
+
       <div className="app-body">
         <div className="filter-bar">
           <div className="filter-bar-head">
@@ -666,7 +670,7 @@ export default function App() {
         ) : (
           <>
             <div className="results-toolbar">
-              <button className="back-to-dashboard" onClick={() => setView('dashboard')}>
+              <button className="back-to-dashboard" onClick={() => { setSegmentSelection(null); setView('dashboard') }}>
                 &larr; Back to overview
               </button>
               <ExportButtons studies={resultsSource} collectionLabel={collectionLabel} />
