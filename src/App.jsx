@@ -122,11 +122,15 @@ function FilterDropdown({ label, value, onChange, options }) {
 // down by some other categorical field - trial design, age group, income
 // setting, region, etc. `categories` is the fixed display order; rows with
 // zero studies are hidden rather than shown empty.
-function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory }) {
+function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, categories, getCategory, onSegmentSelect }) {
   const [viewMode, setViewMode] = useState('chart')
   // A segment click drills this chart - and only this chart - into its own
   // List view for just that category+effectiveness combination; it never
-  // touches the shared filters, other charts, or the results count.
+  // touches the shared filters, other charts, or the results count. It
+  // also reports the matching studies up to App() (onSegmentSelect) so
+  // the dashboard's "Read matching studies" button can offer to jump
+  // straight to just these studies, without that reporting affecting how
+  // any other chart renders.
   const [selected, setSelected] = useState(null) // { category, effectKey } | null
 
   const rows = useMemo(() => {
@@ -148,12 +152,17 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
   const handleSegmentClick = (category, effectKey) => {
     if (isSelected(category, effectKey)) {
       setSelected(null)
+      onSegmentSelect?.(null)
     } else {
       setSelected({ category, effectKey })
       setViewMode('list')
+      const matching = rows.find(r => r.category === category)?.studies.filter(s => s.effect?.overall_tag === effectKey) ?? []
+      const effectLabel = EFFECT_STATUS.find(e => e.key === effectKey)?.label ?? effectKey
+      onSegmentSelect?.(matching, `${columnLabel}: ${category} · ${effectLabel}`)
     }
   }
   const handleViewChange = mode => {
+    if (selected) onSegmentSelect?.(null)
     setSelected(null)
     setViewMode(mode)
   }
@@ -410,6 +419,10 @@ export default function App() {
   const [ageTo, setAgeTo] = useState(MAX_AGE)
 
   const [resetSignal, setResetSignal] = useState(0)
+  // Set by a chart's segment click (via onSegmentSelect) to scope the
+  // bottom "Read matching studies" button/results view to just that
+  // segment's studies, independent of the shared filters.
+  const [segmentSelection, setSegmentSelection] = useState(null) // { label, studies } | null
 
   const setFilter = (key, value) => setActive(prev => ({ ...prev, [key]: value }))
 
@@ -433,6 +446,7 @@ export default function App() {
     setYearTo(MAX_YEAR)
     setAgeFrom(MIN_AGE)
     setAgeTo(MAX_AGE)
+    setSegmentSelection(null)
     setResetSignal(n => n + 1)
   }
 
@@ -442,6 +456,9 @@ export default function App() {
     () => studies.filter(s => studyMatches(s, { ...matchState, skipKey: null })),
     [active, keyword, effYearFrom, effYearTo, effAgeFrom, effAgeTo]
   )
+
+  const resultsSource = segmentSelection ? segmentSelection.studies : filtered
+  const handleSegmentSelect = (matching, label) => setSegmentSelection(matching ? { label, studies: matching } : null)
 
   const renderFilterDropdown = key => {
     const f = FILTERS.find(x => x.key === key)
@@ -561,6 +578,7 @@ export default function App() {
                 columnLabel="Trial design"
                 categories={DESIGN_ORDER}
                 getCategory={s => s.study_design}
+                onSegmentSelect={handleSegmentSelect}
               />
               <CategoryEffectivenessChart
                 key={`ageGroup-${resetSignal}`}
@@ -570,6 +588,7 @@ export default function App() {
                 columnLabel="Age group"
                 categories={AGE_GROUP_ORDER}
                 getCategory={s => s.population?.age_group_tag}
+                onSegmentSelect={handleSegmentSelect}
               />
               <CategoryEffectivenessChart
                 key={`setting-${resetSignal}`}
@@ -579,6 +598,7 @@ export default function App() {
                 columnLabel="Setting"
                 categories={SETTING_ORDER}
                 getCategory={s => s.population?.setting}
+                onSegmentSelect={handleSegmentSelect}
               />
               <CategoryEffectivenessChart
                 key={`duration-${resetSignal}`}
@@ -588,6 +608,7 @@ export default function App() {
                 columnLabel="Duration"
                 categories={DURATION_ORDER}
                 getCategory={s => s.intervention?.duration_bucket}
+                onSegmentSelect={handleSegmentSelect}
               />
               <CategoryEffectivenessChart
                 key={`income-${resetSignal}`}
@@ -597,6 +618,7 @@ export default function App() {
                 columnLabel="Income setting"
                 categories={INCOME_ORDER}
                 getCategory={s => s.income_setting}
+                onSegmentSelect={handleSegmentSelect}
               />
               <CategoryEffectivenessChart
                 key={`region-${resetSignal}`}
@@ -606,23 +628,37 @@ export default function App() {
                 columnLabel="Region"
                 categories={REGION_ORDER}
                 getCategory={s => s.region}
+                onSegmentSelect={handleSegmentSelect}
               />
             </div>
 
-            <PublicationTimelineChart key={`timeline-${resetSignal}`} studies={filtered} />
+            <div className="bottom-charts-grid">
+              <PublicationTimelineChart key={`timeline-${resetSignal}`} studies={filtered} />
 
-            <WorldMap
-              key={`map-${resetSignal}`}
-              studies={filtered}
-              activeCountry={active.country}
-              onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
-            />
+              <WorldMap
+                key={`map-${resetSignal}`}
+                studies={filtered}
+                activeCountry={active.country}
+                onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+              />
+            </div>
 
-            <button className="view-results-cta" onClick={() => setView('results')} disabled={filtered.length === 0}>
-              {filtered.length === 0
+            <button className="view-results-cta" onClick={() => setView('results')} disabled={resultsSource.length === 0}>
+              {resultsSource.length === 0
                 ? 'No studies match these filters yet'
-                : <>Read the {filtered.length} matching {filtered.length === 1 ? 'study' : 'studies'} <span className="cta-arrow">→</span></>}
+                : (
+                  <>
+                    Read {resultsSource.length} {resultsSource.length === 1 ? 'study' : 'studies'}
+                    {segmentSelection ? <> — {segmentSelection.label}</> : ' matching these filters'}
+                    {' '}<span className="cta-arrow">→</span>
+                  </>
+                )}
             </button>
+            {segmentSelection && (
+              <button type="button" className="clear-segment-btn" onClick={() => setSegmentSelection(null)}>
+                Show all {filtered.length} matching studies instead
+              </button>
+            )}
           </>
         ) : (
           <>
@@ -631,8 +667,8 @@ export default function App() {
             </button>
 
             <main className="results-grid">
-              {filtered.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
-              {filtered.map(s => <StudyCard key={s.id} study={s} />)}
+              {resultsSource.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
+              {resultsSource.map(s => <StudyCard key={s.id} study={s} />)}
             </main>
           </>
         )}

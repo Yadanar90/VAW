@@ -159,9 +159,15 @@ export function CategoryStudyList({ rows, onClear }) {
                     aria-hidden="true"
                   />
                   {isFull ? (
-                    <button type="button" className="list-study-link" onClick={() => setOpenStudy(s)}>
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      className="list-study-link"
+                      onClick={() => setOpenStudy(s)}
+                      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpenStudy(s) } }}
+                    >
                       {s.intervention_name}
-                    </button>
+                    </span>
                   ) : (
                     s.intervention_name
                   )}
