@@ -254,123 +254,6 @@ function CategoryEffectivenessChart({ studies, title, subtitle, columnLabel, cat
   )
 }
 
-const TIMELINE_WIDTH = 900
-const TIMELINE_HEIGHT = 220
-const TIMELINE_PAD = { left: 28, right: 16, top: 16, bottom: 28 }
-
-// A count-per-year line chart (not split by effectiveness, unlike
-// CategoryEffectivenessChart) showing when the underlying research was
-// published, so it's easy to spot years where output was concentrated.
-// Gap years with zero studies are filled in so the line's shape over time
-// is accurate rather than jumping straight between non-adjacent years.
-function PublicationTimelineChart({ studies }) {
-  const [viewMode, setViewMode] = useState('chart')
-  const [hoverIdx, setHoverIdx] = useState(null)
-
-  const rows = useMemo(() => {
-    const years = studies.map(getYear).filter(Boolean)
-    if (years.length === 0) return []
-    const minYear = Math.min(...years)
-    const maxYear = Math.max(...years)
-    const out = []
-    for (let y = minYear; y <= maxYear; y++) {
-      const studiesInYear = studies.filter(s => getYear(s) === y)
-      out.push({ year: y, total: studiesInYear.length, studies: studiesInYear })
-    }
-    return out
-  }, [studies])
-
-  const maxTotal = Math.max(1, ...rows.map(r => r.total))
-  const innerW = TIMELINE_WIDTH - TIMELINE_PAD.left - TIMELINE_PAD.right
-  const innerH = TIMELINE_HEIGHT - TIMELINE_PAD.top - TIMELINE_PAD.bottom
-  const baseline = TIMELINE_PAD.top + innerH
-
-  const points = rows.map((r, i) => ({
-    ...r,
-    x: TIMELINE_PAD.left + (rows.length > 1 ? (innerW * i) / (rows.length - 1) : innerW / 2),
-    y: TIMELINE_PAD.top + innerH - (r.total / maxTotal) * innerH,
-  }))
-  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ')
-  const areaPath = points.length > 0
-    ? `${linePath} L ${points[points.length - 1].x} ${baseline} L ${points[0].x} ${baseline} Z`
-    : ''
-
-  return (
-    <section className="chart-card publication-timeline-card">
-      <div className="chart-head">
-        <h2>Publication Timeline</h2>
-        {rows.length > 0 && <ViewToggle mode={viewMode} onChange={setViewMode} />}
-      </div>
-      <p className="chart-subtitle">When the underlying research was published, and which years it's concentrated in.</p>
-
-      {rows.length === 0 ? (
-        <p className="chart-empty">No studies match these filters yet.</p>
-      ) : viewMode === 'list' ? (
-        <CategoryStudyList
-          rows={rows.filter(r => r.total > 0).map(r => ({ label: r.year, total: r.total, studies: r.studies }))}
-        />
-      ) : viewMode === 'table' ? (
-        <table className="chart-table">
-          <thead>
-            <tr><th>Year</th><th>Studies</th></tr>
-          </thead>
-          <tbody>
-            {rows.map(r => (
-              <tr key={r.year}><td>{r.year}</td><td>{r.total}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <div className="timeline-chart">
-          <svg
-            viewBox={`0 0 ${TIMELINE_WIDTH} ${TIMELINE_HEIGHT}`}
-            className="timeline-svg"
-            role="img"
-            aria-label="Number of studies published per year"
-          >
-            <line
-              x1={TIMELINE_PAD.left} y1={baseline} x2={TIMELINE_WIDTH - TIMELINE_PAD.right} y2={baseline}
-              className="timeline-baseline"
-            />
-            <path d={areaPath} className="timeline-area" />
-            <path d={linePath} className="timeline-line" fill="none" />
-            {points.map((p, i) => (
-              <g key={p.year}>
-                <circle
-                  cx={p.x}
-                  cy={p.y}
-                  r={hoverIdx === i ? 5 : 3.5}
-                  className="timeline-dot"
-                  tabIndex={0}
-                  onMouseEnter={() => setHoverIdx(i)}
-                  onMouseLeave={() => setHoverIdx(null)}
-                  onFocus={() => setHoverIdx(i)}
-                  onBlur={() => setHoverIdx(null)}
-                >
-                  <title>{`${p.year}: ${p.total} ${p.total === 1 ? 'study' : 'studies'}`}</title>
-                </circle>
-                <text x={p.x} y={baseline + 18} className="timeline-year-label" textAnchor="middle">{p.year}</text>
-              </g>
-            ))}
-          </svg>
-
-          {hoverIdx !== null && (
-            <div
-              className="timeline-tooltip"
-              style={{
-                left: `${(points[hoverIdx].x / TIMELINE_WIDTH) * 100}%`,
-                top: `${(points[hoverIdx].y / TIMELINE_HEIGHT) * 100}%`,
-              }}
-            >
-              <strong>{points[hoverIdx].total}</strong> {points[hoverIdx].total === 1 ? 'study' : 'studies'} · {points[hoverIdx].year}
-            </div>
-          )}
-        </div>
-      )}
-    </section>
-  )
-}
-
 function StudyCard({ study, selected, onToggleSelect }) {
   const [showModal, setShowModal] = useState(false)
   const isFull = study.completeness === 'full'
@@ -664,16 +547,12 @@ export default function App() {
               />
             </div>
 
-            <div className="bottom-charts-grid">
-              <PublicationTimelineChart key={`timeline-${resetSignal}`} studies={filtered} />
-
-              <WorldMap
-                key={`map-${resetSignal}`}
-                studies={filtered}
-                activeCountry={active.country}
-                onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
-              />
-            </div>
+            <WorldMap
+              key={`map-${resetSignal}`}
+              studies={filtered}
+              activeCountry={active.country}
+              onSelectCountry={country => setFilter('country', active.country === country ? '' : country)}
+            />
 
             <button className="view-results-cta" onClick={() => setView('results')} disabled={resultsSource.length === 0}>
               {resultsSource.length === 0
