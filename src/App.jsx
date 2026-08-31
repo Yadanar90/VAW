@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import studies from './data/studies.json'
 import WorldMap from './WorldMap'
 import { EFFECT_STATUS, ViewToggle, CategoryStudyList, StudyModal } from './ChartControls.jsx'
+import ExportButtons from './ExportButtons.jsx'
 import './App.css'
 
 const FILTERS = [
@@ -459,6 +460,7 @@ export default function App() {
 
   const resultsSource = segmentSelection ? segmentSelection.studies : filtered
   const handleSegmentSelect = (matching, label) => setSegmentSelection(matching ? { label, studies: matching } : null)
+  const collectionLabel = segmentSelection ? segmentSelection.label : hasActiveFilters ? 'Filtered results' : 'All studies'
 
   const renderFilterDropdown = key => {
     const f = FILTERS.find(x => x.key === key)
@@ -659,12 +661,16 @@ export default function App() {
                 Show all {filtered.length} matching studies instead
               </button>
             )}
+            <ExportButtons studies={resultsSource} collectionLabel={collectionLabel} />
           </>
         ) : (
           <>
-            <button className="back-to-dashboard" onClick={() => setView('dashboard')}>
-              &larr; Back to overview
-            </button>
+            <div className="results-toolbar">
+              <button className="back-to-dashboard" onClick={() => setView('dashboard')}>
+                &larr; Back to overview
+              </button>
+              <ExportButtons studies={resultsSource} collectionLabel={collectionLabel} />
+            </div>
 
             <main className="results-grid">
               {resultsSource.length === 0 && <p className="no-results">No studies match these filters yet.</p>}
