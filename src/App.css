@@ -126,6 +126,17 @@ body { margin: 0; }
 }
 .back-to-dashboard:hover { background: #F5F3EC; }
 
+.results-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.results-toolbar .back-to-dashboard { margin-bottom: 0; }
+
+.export-buttons { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.export-btn {
+  background: none; border: 1px solid #d3d1c7; border-radius: 6px;
+  padding: 6px 12px; font-size: 12px; cursor: pointer; color: #2c2c2a;
+}
+.export-btn:hover:not(:disabled) { background: #F5F3EC; }
+.export-btn:disabled { color: #a8a6a0; cursor: default; }
+
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
