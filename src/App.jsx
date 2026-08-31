@@ -570,7 +570,6 @@ export default function App() {
                 Show all {filtered.length} matching studies instead
               </button>
             )}
-            <ExportButtons studies={resultsSource} collectionLabel={collectionLabel} />
           </>
         ) : (
           <>
